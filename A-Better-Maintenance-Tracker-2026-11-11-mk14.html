@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Better Maintenance Tracker</title>
+<meta name="apple-mobile-web-app-title" content="A Better Maintenance Tracker">
+<meta name="author" content="SeanwithanAI">
+<meta name="theme-color" content="#1c1e21">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20role%3D%22img%22%20aria-label%3D%22A%20Better%20Maintenance%20Tracker%20logo%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22mtbg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F59E0B%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2410C%22/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22mtgl%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.22%22/%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url%28%23mtbg%29%22/%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url%28%23mtgl%29%22/%3E%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220.5%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.25%22%20stroke-width%3D%224.5%22/%3E%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220.5%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2296.6%20200%22%20transform%3D%22rotate%28-90%2032%2032%29%22/%3E%20%3Ccircle%20cx%3D%2211.5%22%20cy%3D%2232%22%20r%3D%224.2%22%20fill%3D%22%23fff%22/%3E%20%3Ccircle%20cx%3D%2211.5%22%20cy%3D%2232%22%20r%3D%221.8%22%20fill%3D%22%23C2410C%22/%3E%20%3Cg%20transform%3D%22translate%2832.5%2032.5%29%20scale%28.82%29%20translate%28-32%20-33%29%22%3E%20%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M15.5%2038.5v-4.2c0-1.2.7-2.2%201.8-2.6l3.4-1.2%204.6-6.1c.6-.8%201.5-1.2%202.4-1.2h8.6c.9%200%201.7.4%202.3%201.1l4.9%206.1%203.6.9c1.3.3%202.2%201.5%202.2%202.8v4.4c0%20.8-.7%201.5-1.5%201.5H17c-.8%200-1.5-.7-1.5-1.5z%22/%3E%20%3Cpath%20fill%3D%22%23D9580F%22%20d%3D%22M27.3%2025.3h4.2v5.2h-8.1zM33.6%2025.3h3.7l4%205.2h-7.7z%22/%3E%20%3Ccircle%20cx%3D%2223.5%22%20cy%3D%2240%22%20r%3D%224.3%22%20fill%3D%22%23C2410C%22/%3E%3Ccircle%20cx%3D%2223.5%22%20cy%3D%2240%22%20r%3D%222.2%22%20fill%3D%22%23fff%22/%3E%20%3Ccircle%20cx%3D%2240.5%22%20cy%3D%2240%22%20r%3D%224.3%22%20fill%3D%22%23C2410C%22/%3E%3Ccircle%20cx%3D%2240.5%22%20cy%3D%2240%22%20r%3D%222.2%22%20fill%3D%22%23fff%22/%3E%20%3C/g%3E%20%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%20role%3D%22img%22%20aria-label%3D%22A%20Better%20Maintenance%20Tracker%20logo%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22mtbg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F59E0B%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23C2410C%22/%3E%20%3C/linearGradient%3E%20%3ClinearGradient%20id%3D%22mtgl%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.22%22/%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url%28%23mtbg%29%22/%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url%28%23mtgl%29%22/%3E%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220.5%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-opacity%3D%22.25%22%20stroke-width%3D%224.5%22/%3E%20%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220.5%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%224.5%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2296.6%20200%22%20transform%3D%22rotate%28-90%2032%2032%29%22/%3E%20%3Ccircle%20cx%3D%2211.5%22%20cy%3D%2232%22%20r%3D%224.2%22%20fill%3D%22%23fff%22/%3E%20%3Ccircle%20cx%3D%2211.5%22%20cy%3D%2232%22%20r%3D%221.8%22%20fill%3D%22%23C2410C%22/%3E%20%3Cg%20transform%3D%22translate%2832.5%2032.5%29%20scale%28.82%29%20translate%28-32%20-33%29%22%3E%20%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M15.5%2038.5v-4.2c0-1.2.7-2.2%201.8-2.6l3.4-1.2%204.6-6.1c.6-.8%201.5-1.2%202.4-1.2h8.6c.9%200%201.7.4%202.3%201.1l4.9%206.1%203.6.9c1.3.3%202.2%201.5%202.2%202.8v4.4c0%20.8-.7%201.5-1.5%201.5H17c-.8%200-1.5-.7-1.5-1.5z%22/%3E%20%3Cpath%20fill%3D%22%23D9580F%22%20d%3D%22M27.3%2025.3h4.2v5.2h-8.1zM33.6%2025.3h3.7l4%205.2h-7.7z%22/%3E%20%3Ccircle%20cx%3D%2223.5%22%20cy%3D%2240%22%20r%3D%224.3%22%20fill%3D%22%23C2410C%22/%3E%3Ccircle%20cx%3D%2223.5%22%20cy%3D%2240%22%20r%3D%222.2%22%20fill%3D%22%23fff%22/%3E%20%3Ccircle%20cx%3D%2240.5%22%20cy%3D%2240%22%20r%3D%224.3%22%20fill%3D%22%23C2410C%22/%3E%3Ccircle%20cx%3D%2240.5%22%20cy%3D%2240%22%20r%3D%222.2%22%20fill%3D%22%23fff%22/%3E%20%3C/g%3E%20%3C/svg%3E">
+<style>
+:root{
+  --bg:#f2eee5; --card:#fffdf8; --ink:#1c1e21; --muted:#6c675d; --line:#ddd5c4; --soft:#ece6d8;
+  --accent:#c2410c; --accent-ink:#fff; --ok:#2f6f4f; --warn:#a86a10; --bad:#b42318; --info:#2b5c8a;
+  --okbg:#e4efe6; --warnbg:#f8ecd2; --badbg:#f9e0dc; --infobg:#e2ebf4;
+  --r:12px; --nav:64px;
+  --cond:"Barlow Condensed","Roboto Condensed","Arial Narrow","Helvetica Neue",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141619; --card:#1d2024; --ink:#ebe6da; --muted:#9a9488; --line:#33373d; --soft:#262a2f;
+  --accent:#f0874a; --accent-ink:#1a1006; --ok:#6cc093; --warn:#e2ad55; --bad:#f07b6b; --info:#7fb0e0;
+  --okbg:#1f3328; --warnbg:#3a2f18; --badbg:#3d1f1b; --infobg:#1c2b3b;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+h1,h2,h3,.lbl{font-family:var(--cond);letter-spacing:.04em;text-transform:uppercase;margin:0}
+h2{font-size:1.15rem}
+h3{font-size:.95rem;color:var(--muted)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 14px}
+@media (min-width:1000px){.wrap{padding:0 28px}}
+header.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:2px solid var(--ink);padding-top:env(safe-area-inset-top)}
+.topbar{display:flex;align-items:center;gap:10px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:9px;min-width:0;flex:1}
+.brand .logo{flex:none;width:44px;height:44px;align-self:flex-start;filter:drop-shadow(0 4px 10px rgba(194,65,12,.28))}
+.brand .bname{display:flex;flex-direction:column;line-height:1.15;min-width:0;font-family:var(--cond);font-weight:800;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase}
+.brand .bname small{font-family:system-ui,-apple-system,sans-serif;text-transform:none;font-size:12px;font-weight:600;letter-spacing:0;color:var(--muted);margin-top:3px;white-space:nowrap}
+.brand .bname small.by{font-size:11.5px;font-weight:500;font-style:italic;margin-top:1px}
+.brand .ver{align-self:flex-start;margin-top:6px;font-family:system-ui,-apple-system,sans-serif;text-transform:none;font-size:10.5px;font-weight:700;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:1px 7px;letter-spacing:.01em}
+.appinfo{font-size:12.5px;color:var(--muted);margin:22px 0 0}
+.appinfo b{color:var(--ink)}
+@media (max-width:700px){.topbar{flex-wrap:wrap}.brand{flex:1 1 100%;order:-1}.topbar .carsel{order:0;flex:1 1 0}}
+/* layout: side panel + main column on wide screens */
+.split{display:block}
+@media (max-width:999px){.split.hist{display:flex;flex-direction:column}.split.hist .maincol{order:-1}}
+.deskonly{display:none}
+@media (min-width:1000px){
+  .split{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+  .split.cal{grid-template-columns:minmax(0,1fr) 360px}
+  .split .side{position:sticky;top:var(--hdr,190px)}
+  .split.cal .side{max-height:calc(100vh - var(--hdr,190px) - 20px);overflow:auto}
+  .sidestats{grid-template-columns:1fr!important}
+  .deskonly{display:block}
+  .item{border-radius:8px;padding-left:6px;padding-right:6px;transition:background .12s}
+  .item:hover{background:var(--soft)}
+  .split.cal .day{min-height:96px}
+}
+/* phones */
+@media (max-width:700px){
+  header.top{position:static}
+  .brand .bname{flex-direction:row;flex-wrap:wrap;align-items:baseline;column-gap:6px;font-size:1.05rem}
+  .brand .bname .nm{flex-basis:100%}
+  .brand .bname small{white-space:normal}
+  .brand .ver{margin-top:3px}
+  .brand .logo{width:40px;height:40px}
+  .f input,.f select,.f textarea,.carsel select,.cal-head select{font-size:16px}
+  dialog{width:100vw;max-width:100vw;margin:auto 0 0;border-radius:18px 18px 0 0;max-height:92vh}
+  dialog form{max-height:92vh}
+  .df{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  .fr3{grid-template-columns:1fr 1fr}
+  .fr3 .f:first-child{grid-column:1/-1}
+  .fr3.ymm{grid-template-columns:78px 1fr 1fr}
+  .fr3.ymm .f:first-child{grid-column:auto}
+  .tbl.stack thead{display:none}
+  .tbl.stack,.tbl.stack tbody{display:block}
+  .tbl.stack tr{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;padding:12px 0;border-bottom:1px solid var(--line);position:relative}
+  .tbl.stack tr:last-child{border-bottom:0}
+  .tbl.stack td{border:0;padding:0;text-align:left!important}
+  .tbl.stack td[data-label]::before{content:attr(data-label);display:block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;font-size:.7rem;color:var(--muted);font-weight:700;margin-bottom:1px}
+  .tbl.stack td.full{grid-column:1/-1;padding-right:76px}
+  .tbl.stack td.act{position:absolute;top:10px;right:0}
+  .sched.card{padding-top:4px;padding-bottom:4px}
+  .item{grid-template-columns:70px 1fr auto}
+}
+@media (pointer:coarse){.btn.sm{padding:8px 12px}.seg button{padding:9px 12px}.iconbtn{min-width:44px;height:44px}}
+.carsel{flex:0 1 380px;min-width:0}
+.carsel select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-weight:600}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:10px;min-width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:grid;place-items:center}
+.menu{position:absolute;right:14px;top:58px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:6px;display:none;z-index:40;min-width:220px}
+.menu.open{display:block}
+.menu button{display:block;width:100%;text-align:left;padding:10px 12px;border:0;background:none;border-radius:8px;cursor:pointer}
+.menu button:hover{background:var(--soft)}
+.menu hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+.strip{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding:0 0 10px;font-size:.9rem;color:var(--muted)}
+.strip b{color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.c-overdue,.c-unknown{background:var(--badbg);color:var(--bad)}
+.c-soon{background:var(--warnbg);color:var(--warn)}
+.c-ok{background:var(--okbg);color:var(--ok)}
+.c-info{background:var(--infobg);color:var(--info)}
+nav.tabs{display:flex;gap:4px}
+nav.tabs button{flex:1;border:0;background:none;padding:10px 4px;cursor:pointer;font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--muted);border-bottom:3px solid transparent}
+nav.tabs button.on{color:var(--ink);border-color:var(--accent)}
+nav.tabs .ic{display:none}
+@media (max-width:700px){
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:4px 4px calc(4px + env(safe-area-inset-bottom));z-index:30}
+  nav.tabs button{border-bottom:0;border-top:3px solid transparent;font-size:.72rem;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:2px}
+  nav.tabs button.on{border-color:var(--accent)}
+  nav.tabs .ic{display:block;font-size:1.15rem;line-height:1}
+  main{padding-bottom:calc(var(--nav) + 24px + env(safe-area-inset-bottom))}
+}
+main{padding-top:16px;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.row-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.btn{border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.sm{padding:5px 10px;font-size:.85rem}
+.btn.ghost{background:none}
+.btn.danger{color:var(--bad)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.seg button{border:0;background:none;padding:7px 12px;cursor:pointer;font-weight:600;color:var(--muted)}
+.seg button.on{background:var(--ink);color:var(--bg)}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.tiny{font-size:.76rem}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:700px){.g2{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{gap:8px}.g3 .stat{padding:10px 8px}.g3 .stat .v{font-size:1.05rem}.g3 .stat .k{font-size:.7rem}.sched .nt{display:none}.brand .bname{font-size:1.1rem}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px}
+.stat .v{font-family:var(--mono);font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums}
+.stat .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-size:.8rem}
+.note{background:var(--infobg);color:var(--ink);border-left:4px solid var(--info);padding:10px 12px;border-radius:8px;font-size:.88rem;margin-bottom:14px}
+.note.warn{background:var(--warnbg);border-color:var(--warn)}
+/* agenda */
+.mgroup{margin:14px 0 6px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:4px}
+.item{display:grid;grid-template-columns:78px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border-bottom:0}
+.item .when b{display:block;font-family:var(--cond);font-size:1.05rem;letter-spacing:.03em}
+.item .when small{color:var(--muted);font-family:var(--mono);font-size:.74rem}
+.item .nm{font-weight:650}
+.item .meta{font-size:.82rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:2px}
+.item .meta .k{font-weight:700;color:var(--ink)}
+.bar-l{border-left:4px solid var(--line);padding-left:10px}
+.st-overdue .bar-l,.st-unknown .bar-l{border-color:var(--bad)}
+.st-soon .bar-l{border-color:var(--warn)}
+.st-ok .bar-l{border-color:var(--ok)}
+.st-done .bar-l{border-color:var(--info)}
+.imp{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:none;border:0;padding:0;font-family:inherit;line-height:1.3}
+button.imp{cursor:pointer;padding:2px 0}
+.imp .q{display:inline-grid;place-items:center;width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;font-size:.6rem;margin-left:2px;opacity:.75}
+.legend .imp{min-height:auto}
+.imp::before{content:"";width:8px;height:8px;border-radius:2px;background:currentColor}
+.imp-crit{color:var(--bad)}.imp-med{color:var(--warn)}.imp-low{color:var(--muted)}
+.tier-h td{padding-top:16px!important;border-bottom:1.5px solid var(--line)}
+.tier-h b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em}
+.legend{display:grid;gap:6px;font-size:.85rem}
+.legend div{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:baseline}
+.legendcard summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.legendcard summary::-webkit-details-marker{display:none}
+.legendcard summary::before{content:"▸";transition:transform .15s}
+.legendcard[open] summary::before{transform:rotate(90deg)}
+.tierbig{margin-bottom:8px}
+.map{height:300px;border:1px solid var(--line);border-radius:12px;background:var(--soft);position:relative;z-index:0;isolation:isolate}
+.pin{width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.pin span{transform:rotate(45deg);color:#fff;font:800 12px system-ui,sans-serif}
+.pin-from{background:#2b5c8a}.pin-to{background:#c2410c}
+#rtMap{height:260px;margin-bottom:6px}
+dialog.wide{width:min(720px,96vw)}
+.sbox{position:relative}
+.sugg{display:flex;flex-direction:column;background:var(--card);border-radius:10px;overflow:hidden}
+.sugg:not(:empty){border:1px solid var(--line);margin-top:4px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.sugg button{border:0;background:none;text-align:left;padding:9px 10px;cursor:pointer;font-size:.88rem;border-bottom:1px solid var(--line)}
+.sugg button:hover{background:var(--soft)}
+.sugg span{padding:8px 10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 12px;cursor:pointer;text-align:left;font-size:.9rem;display:flex;flex-direction:column;gap:2px;flex:1 1 200px}
+.opt .eff{font-size:.72rem;color:var(--muted);font-family:var(--mono)}
+.opt.on{border-color:var(--accent);background:var(--card);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.opt.on .eff{color:var(--accent)}
+.mixbar{height:12px;border-radius:999px;background:var(--warnbg);overflow:hidden;border:1px solid var(--line)}
+.mixbar i{display:block;height:100%;background:var(--info)}
+.mini-in{width:90px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);text-align:right}
+@media (max-width:700px){.mini-in{font-size:16px}.map{height:240px}#rtMap{height:220px}}
+/* calendar */
+.cal-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.cal-head select{padding:7px 8px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.month{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.month .dow{font-family:var(--cond);text-transform:uppercase;font-size:.75rem;color:var(--muted);text-align:center;padding:4px 0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft)}
+.day{min-height:84px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:4px;cursor:pointer;position:relative;background:var(--card);overflow:hidden}
+.day.out{background:transparent;opacity:.45}
+.day.today .dn{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:0 6px}
+.day.sel{outline:2px solid var(--ink);outline-offset:-2px}
+.dn{font-family:var(--mono);font-size:.78rem;font-weight:700}
+.ev{display:block;font-size:.7rem;line-height:1.25;padding:1px 4px;border-radius:4px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev.overdue,.ev.unknown{background:var(--badbg);color:var(--bad)}
+.ev.soon{background:var(--warnbg);color:var(--warn)}
+.ev.ok{background:var(--okbg);color:var(--ok)}
+.ev.done{background:var(--infobg);color:var(--info)}
+.dot.done{background:var(--info)}
+.mg span.e.done{color:var(--info);background:var(--infobg)}
+.more{font-size:.68rem;color:var(--muted)}
+.dots{display:none;gap:3px;flex-wrap:wrap;margin-top:4px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.dot.overdue,.dot.unknown{background:var(--bad)}.dot.soon{background:var(--warn)}
+@media (max-width:700px){.day{min-height:54px}.day .ev,.day .more{display:none}.day .dots{display:flex}}
+.year{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.year{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px;cursor:pointer}
+.mini:hover{border-color:var(--ink)}
+.mini .mh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.mini .mh b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em}
+.mg{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.mg span{font-family:var(--mono);font-size:.68rem;padding:2px 0;border-radius:4px}
+.mg span.h{color:var(--muted);font-family:var(--cond)}
+.mg span.e{font-weight:800;color:var(--ok);background:var(--okbg)}
+.mg span.e.soon{color:var(--warn);background:var(--warnbg)}
+.mg span.e.overdue,.mg span.e.unknown{color:var(--bad);background:var(--badbg)}
+.mg span.t{outline:1.5px solid var(--accent)}
+.mini .ms{font-size:.76rem;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between}
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem}
+.tbl th{text-align:left;font-family:var(--cond);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;padding:6px 6px;border-bottom:1.5px solid var(--ink);white-space:nowrap}
+.tbl td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td.r,.tbl th.r{text-align:right}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sched .off{opacity:.45}
+/* life */
+.gauge{height:18px;border-radius:999px;background:var(--soft);position:relative;overflow:hidden;border:1px solid var(--line)}
+.gauge .fill{position:absolute;inset:0 auto 0 0;background:var(--ink);opacity:.85}
+.gauge .mark{position:absolute;top:-3px;bottom:-3px;width:3px;background:var(--accent)}
+.bigv{font-family:var(--mono);font-size:2rem;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.kv:last-child{border:0}
+/* forms */
+dialog{border:0;border-radius:16px;padding:0;background:var(--card);color:var(--ink);width:min(560px,94vw);max-height:90vh;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog form{display:flex;flex-direction:column;max-height:90vh}
+.dh{padding:14px 16px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:center}
+.db{padding:14px 16px;overflow:auto}
+.df{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.f{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.f label,.flabel{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--muted);font-weight:700}
+.f input,.f select,.f textarea{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);width:100%}
+.f textarea{min-height:90px;font-family:var(--mono);font-size:.8rem}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.inline{display:flex;gap:8px}
+.inline input{flex:1}
+.timein{align-items:center}.timein input{max-width:80px}.timein span{color:var(--muted);font-size:.85rem}.timein .btn{margin-left:auto;white-space:nowrap}
+.timerbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:var(--bg);border-radius:12px;padding:8px 12px;margin:0 0 10px}
+.timerbar .tt{font-family:var(--mono);font-weight:800;font-size:1.1rem}
+.timerbar .btn{margin-left:auto}
+.hint{font-size:.76rem;color:var(--muted)}
+.radio{display:flex;gap:8px;flex-wrap:wrap}
+.radio input{width:auto!important;flex:none;margin:0}
+.radio label{display:flex;align-items:center;justify-content:flex-start;text-align:left;gap:6px;border:1px solid var(--line);padding:7px 10px;border-radius:10px;cursor:pointer;text-transform:none;font-family:inherit;letter-spacing:0;font-size:.9rem;color:var(--ink);font-weight:500}
+.empty{text-align:center;padding:40px 16px}
+.empty .big{font-family:var(--cond);font-size:1.8rem;text-transform:uppercase;letter-spacing:.05em;font-weight:800;margin-bottom:6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav) + 20px + env(safe-area-inset-bottom));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.88rem;z-index:100;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+a{color:var(--info)}
+</style>
+</head>
+<body>
+<div id="nojs" style="max-width:560px;width:calc(100% - 32px);box-sizing:border-box;margin:40px auto;padding:22px 24px;border:1px solid #E4E7EC;border-radius:16px;background:#fff;color:#101828;font:15px/1.6 system-ui,-apple-system,sans-serif">
+  <h1 style="font-size:24px;font-weight:800;margin:0 0 6px;letter-spacing:-.02em">A Better Maintenance Tracker</h1>
+  <p style="margin:0 0 14px;color:#667085;font-weight:600">Car Service &amp; Cost Planner · Version 2026-11-11 mk14 · by SeanwithanAI</p>
+  <strong style="font-size:17px">This preview can’t run the tracker.</strong>
+  <p style="margin:8px 0 0">The iPhone Files preview shows web pages without running their scripts, so the tracker stays blank here. Open this file in a web browser instead.</p>
+</div>
+<header class="top">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="A Better Maintenance Tracker logo"> <defs> <linearGradient id="mtbg" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#C2410C"/> </linearGradient> <linearGradient id="mtgl" x1="0" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/> </linearGradient> </defs> <rect width="64" height="64" rx="15" fill="url(#mtbg)"/> <rect width="64" height="64" rx="15" fill="url(#mtgl)"/> <circle cx="32" cy="32" r="20.5" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="4.5"/> <circle cx="32" cy="32" r="20.5" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="96.6 200" transform="rotate(-90 32 32)"/> <circle cx="11.5" cy="32" r="4.2" fill="#fff"/> <circle cx="11.5" cy="32" r="1.8" fill="#C2410C"/> <g transform="translate(32.5 32.5) scale(.82) translate(-32 -33)"> <path fill="#fff" d="M15.5 38.5v-4.2c0-1.2.7-2.2 1.8-2.6l3.4-1.2 4.6-6.1c.6-.8 1.5-1.2 2.4-1.2h8.6c.9 0 1.7.4 2.3 1.1l4.9 6.1 3.6.9c1.3.3 2.2 1.5 2.2 2.8v4.4c0 .8-.7 1.5-1.5 1.5H17c-.8 0-1.5-.7-1.5-1.5z"/> <path fill="#D9580F" d="M27.3 25.3h4.2v5.2h-8.1zM33.6 25.3h3.7l4 5.2h-7.7z"/> <circle cx="23.5" cy="40" r="4.3" fill="#C2410C"/><circle cx="23.5" cy="40" r="2.2" fill="#fff"/> <circle cx="40.5" cy="40" r="4.3" fill="#C2410C"/><circle cx="40.5" cy="40" r="2.2" fill="#fff"/> </g> </svg><span class="bname"><span class="nm">A Better Maintenance Tracker</span><small>Car Service &amp; Cost Planner</small><small class="by">by SeanwithanAI</small><b class="ver" id="appVer">2026-11-11 mk14</b></span></div>
+      <div class="carsel"><select id="carSelect" aria-label="Select car"></select></div>
+      <button class="iconbtn" id="addCarBtn" title="Add car" aria-label="Add car">＋</button>
+      <button class="iconbtn" id="menuBtn" title="More" aria-label="More options">⋯</button>
+    </div>
+    <div class="menu" id="menu">
+      <button data-m="editCar">Edit this car</button>
+      <button data-m="odo">Update odometer</button>
+      <button data-m="ics">Export upcoming to calendar (.ics)</button>
+      <hr>
+      <button data-m="importSched">Import maintenance schedule</button>
+      <button data-m="tmpl">Download schedule CSV template</button>
+      <hr>
+      <button data-m="backup">Back up &amp; restore…</button>
+      <hr>
+      <button data-m="delCar" class="danger" style="color:var(--bad)">Delete this car</button>
+    </div>
+    <div class="strip" id="strip"></div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="agenda"><span class="ic">☰</span>Agenda</button>
+      <button data-tab="history"><span class="ic">↺</span>History</button>
+      <button data-tab="calendar"><span class="ic">▦</span>Calendar</button>
+      <button data-tab="schedule"><span class="ic">⚙</span>Schedule</button>
+      <button data-tab="expenses"><span class="ic">$</span>Expenses</button>
+      <button data-tab="life"><span class="ic">♥</span>Lifespan</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap"><div id="main"></div>
+  <p class="appinfo"><b>A Better Maintenance Tracker</b> · Car Service &amp; Cost Planner · Version <span id="appVer2">2026-11-11 mk14</span> · by SeanwithanAI</p>
+</main>
+<div class="toast" id="toast"></div>
+<input type="file" id="fileIn" accept=".json,.csv,.txt,application/json,text/csv" hidden>
+
+<!-- Car dialog -->
+<dialog id="carDlg"><form method="dialog" id="carForm">
+  <div class="dh"><h2 id="carDlgTitle">Add a car</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="f"><label for="cf_vin">VIN (recommended for accuracy)</label>
+      <div class="inline"><input id="cf_vin" maxlength="17" autocomplete="off" placeholder="17 characters" style="text-transform:uppercase"><button type="button" class="btn" id="vinBtn">Decode</button></div>
+      <div class="hint" id="vinMsg">Decodes year, make, model, engine, transmission and drive type from the NHTSA database.</div>
+    </div>
+    <div class="fr3 ymm">
+      <div class="f"><label for="cf_year">Year</label><input id="cf_year" type="number" min="1950" max="2035" required inputmode="numeric"></div>
+      <div class="f"><label for="cf_make">Make</label><input id="cf_make" list="makesList" required autocomplete="off"></div>
+      <div class="f"><label for="cf_model">Model</label><input id="cf_model" list="modelsList" required autocomplete="off"></div>
+    </div>
+    <datalist id="makesList"></datalist><datalist id="modelsList"></datalist>
+    <div class="fr">
+      <div class="f"><label for="cf_trim">Trim / engine</label><input id="cf_trim" placeholder="e.g. LE 2.5L"></div>
+      <div class="f"><label for="cf_name">Nickname</label><input id="cf_name"></div>
+    </div>
+    <div class="fr">
+      <div class="f"><label for="cf_pt">Powertrain</label><select id="cf_pt">
+        <option value="gas">Gasoline</option><option value="turbo">Gasoline – turbocharged</option><option value="diesel">Diesel</option><option value="hybrid">Hybrid / plug-in hybrid</option><option value="ev">Electric (EV)</option></select></div>
+      <div class="f"><label for="cf_trans">Transmission</label><select id="cf_trans">
+        <option value="auto">Automatic</option><option value="cvt">CVT</option><option value="manual">Manual</option><option value="ev">EV single-speed</option></select></div>
+    </div>
+    <div class="fr3">
+      <div class="f"><label for="cf_drive">Drive</label><select id="cf_drive"><option value="fwd">FWD</option><option value="rwd">RWD</option><option value="awd">AWD</option><option value="4wd">4WD / 4x4</option></select></div>
+      <div class="f"><label for="cf_timing">Timing</label><select id="cf_timing"><option value="chain">Chain</option><option value="belt">Belt</option><option value="unsure">Not sure</option></select></div>
+      <div class="f"><label for="cf_plugs">Spark plugs</label><select id="cf_plugs"><option value="long">Iridium / platinum</option><option value="copper">Copper</option></select></div>
+    </div>
+    <div class="fr">
+      <div class="f"><label for="cf_odo">Current odometer (mi)</label><input id="cf_odo" type="number" min="0" required inputmode="numeric"></div>
+      <div class="f"><label for="cf_odoDate">Reading date</label><input id="cf_odoDate" type="date" required></div>
+    </div>
+    <div class="fr">
+      <div class="f"><label for="cf_annual">Miles driven per year</label><input id="cf_annual" type="number" min="500" value="12000" required inputmode="numeric"></div>
+      <div class="f"><label for="cf_inService">In service since</label><input id="cf_inService" type="date"><span class="hint">First sold / registered. Used for age-based items.</span></div>
+    </div>
+    <div class="fr">
+      <div class="f"><label for="cf_cond">Driving conditions</label><select id="cf_cond"><option value="normal">Normal</option><option value="severe">Severe</option></select>
+        <span class="hint">Severe = mostly short trips, stop-and-go, towing, dusty roads, extreme heat or cold.</span></div>
+      <div class="f"><label for="cf_rel">Model reliability reputation</label><select id="cf_rel"><option value="above">Above average</option><option value="avg" selected>Average</option><option value="below">Below average</option></select>
+        <span class="hint">Used only for the lifespan estimate.</span></div>
+    </div>
+    <div class="f" id="histWrap"><span class="flabel">Past service history</span>
+      <div class="radio">
+        <label><input type="radio" name="hist" value="onschedule" checked> Assume it's been kept on schedule</label>
+        <label><input type="radio" name="hist" value="new"> Brand new / nothing done yet</label>
+        <label><input type="radio" name="hist" value="unknown"> Unknown – flag everything</label>
+      </div>
+      <span class="hint">You can set the actual last-done date for any item later in the Schedule tab.</span>
+    </div>
+    <label class="radio" id="rebuildWrap" style="display:none"><label><input type="checkbox" id="cf_rebuild"> Rebuild schedule from specs (keeps your service log and custom items)</label></label>
+  </div>
+  <div class="df"><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok" id="carSave">Save car</button></div>
+</form></dialog>
+
+<!-- Log dialog -->
+<dialog id="logDlg"><form method="dialog" id="logForm">
+  <div class="dh"><h2 id="logTitle">Log service</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="f"><label for="lf_item">What was done</label><select id="lf_item"></select></div>
+    <div class="fr" id="lf_otherWrap">
+      <div class="f"><label for="lf_title">Description</label><input id="lf_title" placeholder="e.g. Alternator replaced"></div>
+      <div class="f"><label for="lf_cat">Category</label><select id="lf_cat"><option>Repair</option><option>Maintenance</option><option>Tires</option><option>Parts</option><option>Other</option></select></div>
+    </div>
+    <div class="fr">
+      <div class="f"><label for="lf_date">Date</label><input id="lf_date" type="date" required></div>
+      <div class="f"><label for="lf_miles">Odometer (mi)</label><input id="lf_miles" type="number" min="0" required inputmode="numeric"></div>
+    </div>
+    <div class="f"><span class="flabel">Done by</span>
+      <div class="radio"><label><input type="radio" name="lf_type" value="diy" checked> DIY</label><label><input type="radio" name="lf_type" value="shop"> Shop / dealer</label></div></div>
+    <div class="fr">
+      <div class="f"><label for="lf_cost">Total cost ($)</label><input id="lf_cost" type="number" min="0" step="0.01" inputmode="decimal"></div>
+    </div>
+    <div class="f"><label for="lf_h" id="lf_timeLbl">Time taken</label>
+      <div class="inline timein"><input id="lf_h" type="number" min="0" step="1" inputmode="numeric" placeholder="0"><span>h</span><input id="lf_m" type="number" min="0" max="59" step="1" inputmode="numeric" placeholder="0"><span>min</span>
+        <button type="button" class="btn" id="lf_timer">⏱ Start timer</button></div>
+      <span class="hint" id="lf_timeHint"></span></div>
+    <div class="f"><label for="lf_notes">Notes</label><input id="lf_notes" placeholder="Parts used, shop name, oil weight…"></div>
+  </div>
+  <div class="df"><button class="btn danger ghost" type="button" id="logDel" style="margin-right:auto;display:none">Delete</button><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok">Save</button></div>
+</form></dialog>
+
+<!-- Item dialog -->
+<dialog id="itemDlg"><form method="dialog" id="itemForm">
+  <div class="dh"><h2 id="itemTitle">Schedule item</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="fr"><div class="f"><label for="if_name">Name</label><input id="if_name" required></div>
+      <div class="f"><label for="if_cat">Category</label><input id="if_cat" list="catList"></div></div>
+    <datalist id="catList"><option>Engine</option><option>Filters</option><option>Brakes</option><option>Tires</option><option>Drivetrain</option><option>Cooling</option><option>Electrical</option><option>Fuel</option><option>Body</option></datalist>
+    <div class="flabel" style="margin-bottom:4px">Interval – whichever comes first (leave blank if not used)</div>
+    <div class="fr"><div class="f"><label for="if_mi">Normal: miles</label><input id="if_mi" type="number" min="0" inputmode="numeric"></div>
+      <div class="f"><label for="if_mo">Normal: months</label><input id="if_mo" type="number" min="0" inputmode="numeric"></div></div>
+    <div class="fr"><div class="f"><label for="if_smi">Severe: miles</label><input id="if_smi" type="number" min="0" inputmode="numeric"></div>
+      <div class="f"><label for="if_smo">Severe: months</label><input id="if_smo" type="number" min="0" inputmode="numeric"></div></div>
+    <div class="fr3"><div class="f"><label for="if_diy">DIY parts $</label><input id="if_diy" type="number" min="0" inputmode="decimal" placeholder="blank = shop only"></div>
+      <div class="f"><label for="if_shop">Shop $</label><input id="if_shop" type="number" min="0" inputmode="decimal"></div>
+      <div class="f"><label for="if_hrs">DIY hours</label><input id="if_hrs" type="number" min="0" step="0.25" inputmode="decimal"></div></div>
+    <div class="fr"><div class="f"><label for="if_w">Impact on car longevity</label><select id="if_w"><option value="crit">Critical</option><option value="med">Medium</option><option value="low">Low</option></select></div>
+      <div class="f"><label for="if_on">Status</label><select id="if_on"><option value="1">Active</option><option value="0">Disabled (not applicable)</option></select></div></div>
+    <div class="flabel" style="margin-bottom:4px">Last done (used if nothing is logged yet)</div>
+    <div class="fr"><div class="f"><label for="if_lmi">At miles</label><input id="if_lmi" type="number" min="0" inputmode="numeric"></div>
+      <div class="f"><label for="if_ld">On date</label><input id="if_ld" type="date"></div></div>
+    <div class="f"><label for="if_notes">Notes</label><input id="if_notes"></div>
+  </div>
+  <div class="df"><button class="btn danger ghost" type="button" id="itemDel" style="margin-right:auto">Delete</button><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok">Save</button></div>
+</form></dialog>
+
+<!-- Import dialog -->
+<dialog id="impDlg"><form method="dialog" id="impForm">
+  <div class="dh"><h2>Import maintenance schedule</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="note">For the most accurate schedule, copy the intervals from your owner's manual or the manufacturer's maintenance guide into the CSV template, then import it here. CSV or JSON both work.</div>
+    <div class="f"><span class="flabel">Source</span>
+      <div class="inline"><button type="button" class="btn" id="impFileBtn">Choose file…</button><button type="button" class="btn ghost" id="impTmplBtn">Get CSV template</button></div>
+      <span class="hint" id="impFileName"></span></div>
+    <div class="f"><label for="impText">…or paste CSV / JSON</label>
+      <textarea id="impText" placeholder="name,category,miles,months,severe_miles,severe_months,diy_cost,shop_cost,diy_hours,importance,notes&#10;Engine oil & filter,Engine,10000,12,5000,6,45,95,0.75,critical,0W-20 full synthetic"></textarea></div>
+    <div class="f"><span class="flabel">Mode</span>
+      <div class="radio"><label><input type="radio" name="impMode" value="merge" checked> Merge (update matching names, add new)</label><label><input type="radio" name="impMode" value="replace"> Replace whole schedule</label></div></div>
+    <div class="hint" id="impMsg"></div>
+  </div>
+  <div class="df"><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok">Import</button></div>
+</form></dialog>
+
+<!-- Route dialog -->
+<dialog id="routeDlg" class="wide"><form method="dialog" id="routeForm">
+  <div class="dh"><h2 id="routeTitle">Add a route</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="f"><label for="rt_name">Name</label><input id="rt_name" placeholder="e.g. Work, Gym, Grandma's on Sundays" required></div>
+    <div class="fr">
+      <div class="f sbox"><label for="rt_from">Start</label><div class="inline"><input id="rt_from" autocomplete="off" placeholder="Search an address or tap the map"><button type="button" class="btn" id="rt_here" title="Use my location">📍</button></div><div class="sugg" id="rt_from_s"></div></div>
+      <div class="f sbox"><label for="rt_to">End</label><input id="rt_to" autocomplete="off" placeholder="Search an address or tap the map"><div class="sugg" id="rt_to_s"></div></div>
+    </div>
+    <div id="rtMap" class="map"></div>
+    <p class="hint" id="rtMsg" style="min-height:1.2em"></p>
+    <div class="fr3">
+      <div class="f"><label for="rt_miles">One-way miles</label><input id="rt_miles" type="number" min="0" step="0.1" inputmode="decimal" required></div>
+      <div class="f"><label for="rt_hwy">Highway %</label><input id="rt_hwy" type="number" min="0" max="100" inputmode="numeric" placeholder="optional"></div>
+      <div class="f"><label for="rt_mins">Minutes</label><input id="rt_mins" type="number" min="0" inputmode="numeric" placeholder="optional"></div>
+    </div>
+    <div class="fr3">
+      <div class="f"><label for="rt_times">How often</label><input id="rt_times" type="number" min="0" step="0.5" inputmode="decimal" required></div>
+      <div class="f"><label for="rt_per">Per</label><select id="rt_per"><option value="week">Week</option><option value="month">Month</option></select></div>
+      <div class="f"><label for="rt_when">When</label><select id="rt_when"><option value="weekday">Weekdays</option><option value="weekend">Weekends</option><option value="any">Any day</option></select></div>
+    </div>
+    <label class="radio"><label><input type="checkbox" id="rt_round"> Round trip (there and back counts as one time)</label></label>
+  </div>
+  <div class="df"><button class="btn danger ghost" type="button" id="rt_del" style="margin-right:auto">Delete</button><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok">Save route</button></div>
+</form></dialog>
+
+<!-- Impact info dialog -->
+<dialog id="rankDlg"><form method="dialog">
+  <div class="dh"><h2>Longevity impact</h2><button class="iconbtn" value="cancel" aria-label="Close">✕</button></div>
+  <div class="db" id="rankBody"></div>
+  <div class="df"><button class="btn pri" value="ok">Got it</button></div>
+</form></dialog>
+
+<!-- Backup dialog -->
+<dialog id="bkDlg"><form method="dialog" id="bkForm">
+  <div class="dh"><h2>Back up &amp; restore</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="note" id="bkInfo"></div>
+    <div class="flabel" style="margin-bottom:6px">Make a backup</div>
+    <div class="inline" style="flex-wrap:wrap;margin-bottom:6px">
+      <button type="button" class="btn pri" id="bkDownload">Download file</button>
+      <button type="button" class="btn" id="bkCopy">Copy to clipboard</button>
+      <button type="button" class="btn" id="bkShare" hidden>Share…</button>
+    </div>
+    <p class="hint" style="margin:0 0 14px">If download doesn't work on your device, use Copy and paste the text into a note or email to yourself.</p>
+    <div class="flabel" style="margin-bottom:6px">Restore a backup</div>
+    <div class="inline" style="flex-wrap:wrap;margin-bottom:8px"><button type="button" class="btn" id="bkPick">Choose backup file…</button><span class="hint" id="bkFileName" style="align-self:center"></span></div>
+    <div class="f"><label for="bkText">Backup text (paste here to restore)</label><textarea id="bkText" spellcheck="false" style="min-height:120px"></textarea></div>
+    <div class="f"><span class="flabel">When restoring</span>
+      <div class="radio"><label><input type="radio" name="bkMode" value="merge" checked> Merge with what's here</label><label><input type="radio" name="bkMode" value="replace"> Replace everything</label></div>
+      <span class="hint">Merge adds cars you don't have and adds missing service entries to cars you do. Replace swaps in the backup completely.</span></div>
+    <div class="inline" style="flex-wrap:wrap"><button type="button" class="btn pri" id="bkLoad">Restore this data</button><button type="button" class="btn ghost" id="bkUndo" hidden>Undo last restore</button></div>
+    <p class="hint" id="bkStatus" style="min-height:1.2em"></p>
+  </div>
+  <div class="df"><button class="btn ghost" value="cancel" formnovalidate>Close</button></div>
+</form></dialog>
+
+<!-- Odometer dialog -->
+<dialog id="odoDlg"><form method="dialog" id="odoForm">
+  <div class="dh"><h2>Update odometer</h2><button class="iconbtn" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+  <div class="db">
+    <div class="fr"><div class="f"><label for="od_mi">Odometer (mi)</label><input id="od_mi" type="number" min="0" required inputmode="numeric"></div>
+      <div class="f"><label for="od_date">Date</label><input id="od_date" type="date" required></div></div>
+    <label class="radio"><label><input type="checkbox" id="od_recalc" checked> Re-estimate my yearly miles from this reading</label></label>
+    <p class="hint">Updating the odometer every month or two keeps due dates accurate.</p>
+  </div>
+  <div class="df"><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn pri" value="ok">Save</button></div>
+</form></dialog>
+
+<script>
+"use strict";
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const uid=()=>Math.random().toString(36).slice(2,10);
+const DAY=86400000;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function parseD(s){if(!s)return null;const p=String(s).split('-').map(Number);if(p.length<3||p.some(isNaN))return null;return new Date(p[0],p[1]-1,p[2]);}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function today0(){const t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate());}
+function addDays(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+Math.round(n));}
+function addMonths(d,n){const r=new Date(d.getFullYear(),d.getMonth()+n,1);const last=new Date(r.getFullYear(),r.getMonth()+1,0).getDate();r.setDate(Math.min(d.getDate(),last));return r;}
+function monthsBetween(a,b){return (b.getFullYear()-a.getFullYear())*12+(b.getMonth()-a.getMonth())-(b.getDate()<a.getDate()?1:0);}
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const fmtD=(d,y)=>d.toLocaleDateString(undefined,y?{month:'short',day:'numeric',year:'numeric'}:{month:'short',day:'numeric'});
+const money=n=>n==null||isNaN(n)?'—':'$'+Math.round(n).toLocaleString();
+const money2=n=>n==null||isNaN(n)?'—':'$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2});
+const miles=n=>n==null||isNaN(n)?'—':Math.round(n).toLocaleString()+' mi';
+const hrs=h=>h==null||h===''?'—':(+h<1?Math.round(h*60)+' min':(+h).toLocaleString(undefined,{maximumFractionDigits:2})+' h');
+const numOrNull=v=>v===''||v==null||isNaN(+v)?null:+v;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
+function download(name,text,type){const b=new Blob([text],{type:type||'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}
+
+/* ---------- storage ---------- */
+document.getElementById('nojs').remove();
+// version = the date of the update; a second update that day is "mk2", then "mk3"…
+const APP_NAME = 'A Better Maintenance Tracker', APP_VERSION = '2026-11-11 mk14', APP_BY = 'SeanwithanAI';   // bump the version with every update
+const FILE_BASE = APP_NAME.replace(/ /g, '-');   // A-Better-Maintenance-Tracker
+const KEY='servicebook.v1';
+let S, canStore=true;
+/* PageVault: when opened from a PageVault server, everything is saved on that server only
+   (the browser keeps no copy), separately for each signed-in person. */
+const PV=window.PageStore&&window.PageStore.persistent?window.PageStore:null;
+function storeChip(){
+  if(PV){
+    if(PV.conflicted)return '<span class="chip c-overdue" title="This was changed in another tab or on another device. Reload to see the latest.">Changed elsewhere – reload</span>';
+    if(PV.pending)return '<span class="chip c-info" title="Sending your changes to your PageVault server">Saving to your server…</span>';
+    return '<span class="chip c-ok" title="Saved on your PageVault server only – nothing is kept in this browser">Saved to your server</span>';
+  }
+  return canStore?'<span class="chip c-info" title="Stored in this browser only. Use ⋯ → Back up now and then.">Saved on this device only</span>':'';
+}
+function updStoreChip(){const el=document.getElementById('storeChip');if(el)el.innerHTML=storeChip();}
+function load(){try{S=JSON.parse(localStorage.getItem(KEY));}catch(e){canStore=false;}
+  if(!S||!Array.isArray(S.cars))S={cars:[],activeId:null};
+  if(!PV)try{localStorage.setItem(KEY+'.t','1');localStorage.removeItem(KEY+'.t');}catch(e){canStore=false;}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){canStore=false;}
+  if(PV){updStoreChip();PV.flush().then(updStoreChip);}}
+
+/* ---------- schedule template ----------
+   Typical intervals compiled from common manufacturer guidance. They are a starting point —
+   confirm against the owner's manual (or import the official schedule). Costs are 2026 US averages. */
+function template(c){
+  const pt=c.powertrain, ev=pt==='ev', hyb=pt==='hybrid', ice=!ev;
+  const items=[];
+  const add=o=>items.push(Object.assign({cat:'Engine',miles:0,months:0,sMiles:0,sMonths:0,diy:0,shop:0,hrs:0,w:1,notes:''},o));
+  if(ice){
+    const dsl=pt==='diesel';
+    add({key:'oil',name:'Engine oil & filter',cat:'Engine',miles:dsl?7500:(hyb?10000:7500),months:12,sMiles:5000,sMonths:6,diy:dsl?75:45,shop:dsl?150:95,hrs:.75,w:4,
+      notes:dsl?'Use diesel-rated oil (API CK-4). Check manual for capacity.':'Full synthetic. Many newer cars allow 10,000 mi — follow the oil-life monitor if equipped.'});
+  }
+  add({key:'rotate',name:'Tire rotation',cat:'Tires',miles:ev?6250:7500,months:12,sMiles:5000,sMonths:6,diy:0,shop:30,hrs:.75,w:.5,notes:'Check pressures and tread depth at the same time.'});
+  add({key:'inspect',name:'Brake & suspension inspection',cat:'Brakes',miles:15000,months:12,sMiles:7500,sMonths:6,diy:0,shop:40,hrs:.75,w:1,notes:'Pads, rotors, lines, ball joints, tie rods, boots, leaks.'});
+  add({key:'cabin',name:'Cabin air filter',cat:'Filters',miles:15000,months:12,sMiles:10000,sMonths:12,diy:18,shop:70,hrs:.25,w:.3});
+  if(ice) add({key:'air',name:'Engine air filter',cat:'Filters',miles:30000,months:36,sMiles:15000,sMonths:18,diy:22,shop:60,hrs:.25,w:1});
+  add({key:'wipers',name:'Wiper blades',cat:'Body',months:12,sMonths:6,diy:30,shop:55,hrs:.2,w:0});
+  add({key:'brakefluid',name:'Brake fluid flush',cat:'Brakes',months:36,sMonths:24,diy:20,shop:120,hrs:1,w:1,notes:'DOT 3/4 absorbs moisture over time.'});
+  add({key:'pads',name:'Brake pads (one axle)',cat:'Brakes',miles:(ev||hyb)?80000:50000,sMiles:(ev||hyb)?60000:30000,diy:70,shop:300,hrs:1.5,w:1,
+    notes:'Replace by measured thickness (under 3 mm), not just mileage. Regenerative braking makes pads last longer on hybrids/EVs.'});
+  if(ice) add({key:'coolant',name:'Engine coolant replacement',cat:'Cooling',miles:100000,months:120,sMiles:60000,sMonths:60,diy:40,shop:160,hrs:1.5,w:2,notes:'Long-life coolant: first change often 100k mi/10 yr, then every 50k mi/5 yr.'});
+  if(hyb) add({key:'invcool',name:'Inverter / hybrid system coolant',cat:'Cooling',miles:100000,months:120,sMiles:100000,sMonths:120,diy:40,shop:180,hrs:1,w:1.5});
+  if(hyb) add({key:'hvfan',name:'Hybrid battery cooling intake clean',cat:'Electrical',miles:30000,months:24,sMiles:15000,sMonths:12,diy:0,shop:80,hrs:.5,w:1,notes:'Clogged battery fan filter shortens hybrid battery life.'});
+  if(ev) add({key:'evcool',name:'Battery / drive-unit coolant',cat:'Cooling',miles:150000,months:120,sMiles:150000,sMonths:120,diy:null,shop:250,hrs:0,w:2,notes:'Many EVs specify ~150k mi or 10 yr; some say lifetime — check manual.'});
+  if(pt==='gas'||pt==='turbo'||hyb){
+    const m=c.plugs==='copper'?30000:(pt==='turbo'?60000:100000);
+    add({key:'plugs',name:'Spark plugs',cat:'Engine',miles:m,sMiles:pt==='turbo'?40000:m,diy:60,shop:260,hrs:1.5,w:1.5,notes:'Cost rises for V6/V8 engines with hard-to-reach rear plugs.'});
+  }
+  if(c.trans==='auto') add({key:'atf',name:'Automatic transmission fluid',cat:'Drivetrain',miles:60000,sMiles:30000,diy:80,shop:220,hrs:1.5,w:2,notes:'Some makers say "lifetime" fluid — a 60k drain-and-fill is cheap insurance.'});
+  if(c.trans==='cvt') add({key:'cvt',name:'CVT fluid',cat:'Drivetrain',miles:50000,sMiles:25000,diy:90,shop:240,hrs:1.5,w:2.5,notes:'Use the exact OEM CVT fluid specified.'});
+  if(c.trans==='manual') add({key:'mtf',name:'Manual transmission fluid',cat:'Drivetrain',miles:60000,sMiles:30000,diy:45,shop:130,hrs:1,w:1.5});
+  if(ev) add({key:'reduct',name:'Reduction gear oil (inspect)',cat:'Drivetrain',miles:100000,sMiles:60000,diy:null,shop:150,w:1,notes:'Not required on every EV — disable if your manual omits it.'});
+  if(c.drive!=='fwd'&&!ev) add({key:'diff',name:'Differential fluid',cat:'Drivetrain',miles:50000,sMiles:30000,diy:40,shop:140,hrs:1,w:1});
+  if((c.drive==='awd'||c.drive==='4wd')&&!ev) add({key:'xfer',name:'Transfer case / PTU fluid',cat:'Drivetrain',miles:50000,sMiles:30000,diy:35,shop:130,hrs:1,w:1});
+  if(ice) add({key:'belt',name:'Serpentine (drive) belt',cat:'Engine',miles:90000,months:84,sMiles:60000,sMonths:60,diy:40,shop:160,hrs:.75,w:1});
+  if(ice&&c.timing!=='chain') add({key:'tbelt',name:'Timing belt & water pump',cat:'Engine',miles:100000,months:84,sMiles:60000,sMonths:60,diy:250,shop:900,hrs:5,w:4,off:c.timing==='unsure',
+    notes:(c.timing==='unsure'?'Disabled until you confirm your engine uses a belt. ':'')+'On interference engines a snapped belt destroys the engine.'});
+  if(pt==='diesel') add({key:'fuelf',name:'Fuel filter / water separator',cat:'Fuel',miles:20000,months:24,sMiles:15000,sMonths:12,diy:50,shop:180,hrs:1,w:2});
+  add({key:'battery',name:'12-volt battery',cat:'Electrical',months:ev?48:48,sMonths:36,diy:180,shop:250,hrs:.5,w:.3,notes:'Free load test at most parts stores before replacing.'});
+  add({key:'tires',name:'Tires (set of 4)',cat:'Tires',miles:ev?40000:50000,months:72,sMiles:35000,sMonths:60,diy:null,shop:750,hrs:0,w:1,notes:'Replace at 4/32" tread or 6 years old, whichever first. Shop install needed.'});
+  return items.map(o=>({id:o.key,key:o.key,name:o.name,cat:o.cat,miles:o.miles||null,months:o.months||null,sMiles:o.sMiles||null,sMonths:o.sMonths||null,
+    diy:o.diy,shop:o.shop,hrs:o.hrs||null,w:o.w,notes:o.notes,off:!!o.off,lastMiles:null,lastDate:null}));
+}
+const BASE_LIFE={gas:200000,turbo:180000,diesel:300000,hybrid:230000,ev:250000};
+const PT_LBL={gas:'Gasoline',turbo:'Turbo gasoline',diesel:'Diesel',hybrid:'Hybrid',ev:'Electric'};
+const MAKES=['Acura','Alfa Romeo','Audi','BMW','Buick','Cadillac','Chevrolet','Chrysler','Dodge','Fiat','Ford','Genesis','GMC','Honda','Hyundai','Infiniti','Jaguar','Jeep','Kia','Land Rover','Lexus','Lincoln','Lucid','Mazda','Mercedes-Benz','Mini','Mitsubishi','Nissan','Polestar','Porsche','Ram','Rivian','Subaru','Tesla','Toyota','Volkswagen','Volvo'];
+
+/* ---------- core calculations ---------- */
+const getCar=()=>S.cars.find(c=>c.id===S.activeId)||S.cars[0]||null;
+const mpd=c=>Math.max(500,+c.annualMiles||12000)/365.25;
+const odoAt=(c,d)=>Math.max(+c.odo,Math.round(+c.odo+(d-parseD(c.odoDate))/DAY*mpd(c)));
+const dateAtMiles=(c,m)=>addDays(parseD(c.odoDate),(m-c.odo)/mpd(c));
+function intv(c,it){const sev=c.condition==='severe';return{mi:+((sev&&it.sMiles)?it.sMiles:it.miles)||0,mo:+((sev&&it.sMonths)?it.sMonths:it.months)||0};}
+function itemLogs(c,it){return c.logs.filter(l=>l.itemId===it.id).sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:b.miles-a.miles);}
+function lastDone(c,it){
+  const l=itemLogs(c,it)[0];
+  if(l)return{miles:+l.miles,date:parseD(l.date),src:'log'};
+  if(it.lastMiles==null&&!it.lastDate)return null;
+  return{miles:it.lastMiles==null?null:+it.lastMiles,date:parseD(it.lastDate),src:'baseline'};
+}
+function nextDue(c,it){
+  const iv=intv(c,it),T=today0();
+  if(!iv.mi&&!iv.mo)return null;
+  const ld=lastDone(c,it);
+  if(!ld)return{date:T,miles:null,status:'unknown',iv,ld,daysLeft:0,milesLeft:null};
+  let dM=null,dT=null,dueMiles=null;
+  if(iv.mi&&ld.miles!=null){dueMiles=ld.miles+iv.mi;dM=dateAtMiles(c,dueMiles);}
+  if(iv.mo&&ld.date)dT=addMonths(ld.date,iv.mo);
+  const date=dM&&dT?(dM<dT?dM:dT):(dM||dT);
+  if(!date)return{date:T,miles:null,status:'unknown',iv,ld,daysLeft:0,milesLeft:null};
+  const est=odoAt(c,T),daysLeft=Math.round((date-T)/DAY),milesLeft=dueMiles!=null?dueMiles-est:null;
+  let status='ok';
+  if(daysLeft<0||(milesLeft!=null&&milesLeft<=0))status='overdue';
+  else if(daysLeft<=30||(milesLeft!=null&&milesLeft<=750))status='soon';
+  return{date:status==='overdue'&&date>T?T:date,miles:dueMiles,status,iv,ld,daysLeft,milesLeft};
+}
+/* projects each item forward, assuming each service is done when due (overdue ones: today) */
+function occurrences(c,from,to){
+  const out=[],T=today0();
+  for(const it of c.schedule){
+    if(it.off)continue;const n=nextDue(c,it);if(!n)continue;
+    let d=n.date,m=n.miles,k=0;
+    while(d&&d<=to&&k<200){
+      if(d>=from)out.push({it,date:d,miles:m,status:k===0?n.status:'ok',first:k===0});
+      const doneD=d<T?T:d,doneM=odoAt(c,doneD);
+      const nm=n.iv.mi?dateAtMiles(c,doneM+n.iv.mi):null,nt=n.iv.mo?addMonths(doneD,n.iv.mo):null;
+      const nd=nm&&nt?(nm<nt?nm:nt):(nm||nt);
+      m=n.iv.mi?doneM+n.iv.mi:null;
+      if(!nd||nd<=d)break;d=nd;k++;
+    }
+  }
+  return out.sort((a,b)=>a.date-b.date||(b.it.w||0)-(a.it.w||0));
+}
+function applyBaseline(c,it,mode){
+  const iv=intv(c,it),T=today0(),ins=parseD(c.inService)||T;
+  if(mode==='unknown'){it.lastMiles=null;it.lastDate=null;return;}
+  if(mode==='new'){it.lastMiles=0;it.lastDate=iso(ins);return;}
+  let lm=null,ld=null;
+  if(iv.mi){lm=Math.floor(c.odo/iv.mi)*iv.mi;ld=lm===0?ins:dateAtMiles(c,lm);if(ld<ins)ld=ins;}
+  if(iv.mo){const mo=Math.max(0,monthsBetween(ins,T));const t=addMonths(ins,Math.floor(mo/iv.mo)*iv.mo);if(!ld||t>ld)ld=t;}
+  it.lastMiles=lm;it.lastDate=ld?iso(ld):null;
+}
+function lifeEstimate(c,opt){
+  const D=(opt&&opt.neutral)?{mi:1,age:1,mix:1,answered:0,total:0,rs:routeStats(c)}:drivingFactors(c);
+  const T=today0(),base=BASE_LIFE[c.powertrain]||200000;
+  const rel={above:1.15,avg:1,below:.85}[c.reliability||'avg'];
+  const cond=c.condition==='severe'?.9:1;
+  let wc=0,sc=0,wh=0,sh=0;const hurts=[];
+  for(const it of c.schedule){
+    if(it.off)continue;const w=+it.w||0;if(!w)continue;
+    const n=nextDue(c,it);if(!n)continue;
+    let s=1;
+    if(n.status==='unknown')s=.85;  // unknown history ≠ neglected; small penalty for uncertainty
+    else if(n.status==='overdue'){
+      const oMi=n.milesLeft!=null&&n.iv.mi?-n.milesLeft/n.iv.mi:0;
+      const oT=n.iv.mo?-n.daysLeft/(n.iv.mo*30.44):0;
+      s=Math.max(0,1-Math.max(oMi,oT,0)*1.5);
+    }
+    wc+=w;sc+=w*s;
+    if(s<1)hurts.push({it,s,w,impact:w*(1-s)});
+    const logs=itemLogs(c,it).slice().reverse();
+    for(let i=1;i<logs.length;i++){
+      const gm=n.iv.mi?(logs[i].miles-logs[i-1].miles)/n.iv.mi:0;
+      const gt=n.iv.mo?(parseD(logs[i].date)-parseD(logs[i-1].date))/DAY/(n.iv.mo*30.44):0;
+      const r=Math.max(gm,gt);wh+=w;sh+=w*(r<=1.15?1:Math.max(0,1-(r-1.15)));
+    }
+  }
+  const cur=wc?sc/wc:1,hist=wh?sh/wh:null;
+  const score=hist==null?cur:.65*cur+.35*hist;
+  const core=base*rel*cond*D.mi;
+  const est=odoAt(c,T),annual=Math.max(500,+c.annualMiles||12000);
+  const ins=parseD(c.inService)||new Date(+c.year||T.getFullYear(),0,1);
+  const age=Math.max(0,(T-ins)/DAY/365.25);
+  /* Remaining life tapers instead of hitting zero: a car that is still running at or past
+     the typical figure still has some life left (it's already beaten the average). */
+  const tail=x=>x<.6?1-x:.4/(1+(x-.6)/.4);   // smooth: same slope at 0.6, then a long tail
+  const typMiles=sc0=>core*(.7+.35*sc0);
+  const remFor=sc0=>{const t=typMiles(sc0);return t*tail(est/t);};
+  const lifeTyp=typMiles(score),remaining=remFor(score),lifeMiles=est+remaining;
+  const best=est+remFor(1),worst=est+remFor(0);
+  const ageTyp=(c.powertrain==='ev'?18:20)*(c.condition==='severe'?.9:1)*(.85+.15*score)*D.age;
+  const yMiles=remaining/annual,yAge=ageTyp*tail(age/ageTyp);
+  const yearsLeft=Math.min(yMiles,yAge);
+  const share=hist==null?1:.65;
+  for(const h of hurts)h.gain=Math.max(0,remFor(Math.min(1,score+share*h.w*(1-h.s)/wc))-remaining);
+  hurts.sort((a,b)=>b.gain-a.gain);
+  return{D,base,rel,cond,cur,hist,score,core,lifeTyp,lifeMiles,best,worst,est,remaining,annual,age,ageCap:ageTyp,yMiles,yAge,yearsLeft,
+    limitedBy:yMiles<=yAge?'mileage':'age',pastMiles:est>=lifeTyp,pastAge:age>=ageTyp,endDate:addDays(T,yearsLeft*365.25),hurts};
+}
+
+/* ---------- UI state ---------- */
+let tab='agenda',agRange=90,calView='month';
+let calY=today0().getFullYear(),calM=today0().getMonth(),calSel=null,expFilter='all';
+
+function render(){
+  const c=getCar();
+  const sel=$('#carSelect');
+  sel.innerHTML=S.cars.length?S.cars.map(x=>`<option value="${x.id}" ${c&&x.id===c.id?'selected':''}>${esc(carLabel(x))}</option>`).join(''):'<option>No cars yet</option>';
+  sel.disabled=!S.cars.length;
+  $$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  $('#tabs').style.display=c?'':'none';
+  const strip=$('#strip');
+  if(!c){strip.innerHTML='';$('#main').innerHTML=emptyView();return;}
+  const T=today0(),est=odoAt(c,T);
+  let od=0,sn=0;for(const it of c.schedule){if(it.off)continue;const n=nextDue(c,it);if(!n)continue;if(n.status==='overdue'||n.status==='unknown')od++;else if(n.status==='soon')sn++;}
+  strip.innerHTML=`<span><b>${esc(c.year)} ${esc(c.make)} ${esc(c.model)}</b> ${c.trim?esc(c.trim):''}</span>
+    <span>Est. odometer <b class="num">${miles(est)}</b> <a href="#" data-act="odo">update</a></span>
+    ${od?`<span class="chip c-overdue">${od} overdue</span>`:''}${sn?`<span class="chip c-soon">${sn} due soon</span>`:''}${!od&&!sn?'<span class="chip c-ok">All caught up</span>':''}
+    <span id="storeChip">${storeChip()}</span>${canStore||PV?'':'<span class="chip c-soon">Storage blocked – use Back up</span>'}${backupDue()?'<a href="#" data-act="backup" class="chip c-soon" style="text-decoration:none">Backup due – tap to save</a>':''}`;
+  const v={agenda:agendaView,history:historyView,calendar:calendarView,schedule:scheduleView,expenses:expensesView,life:lifeView}[tab];
+  $('#main').innerHTML=timerBar()+v(c);
+  if(typeof setHdr==='function')setHdr();
+  if(tab==='life'&&lifeSub==='routes')setTimeout(()=>initOverview(c),0);
+  else if(ovMap){try{ovMap.remove();}catch(e){}ovMap=null;}
+}
+const carLabel=c=>(c.name?c.name+' – ':'')+`${c.year} ${c.make} ${c.model}`;
+function emptyView(){
+  return `<div class="card empty"><div class="big">Your garage is empty</div>
+  <p class="muted">Add a car to build its maintenance schedule. Entering the VIN gives the most accurate result.</p>
+  <p><button class="btn pri" data-act="addCar">＋ Add a car</button> <button class="btn" data-act="restore">Restore backup</button></p></div>
+  <div class="note">${PV?'Everything is saved on your PageVault server, privately for your account, and follows you to any device.':'Everything is stored only in this browser on this device. Use <b>⋯ → Export full backup</b> now and then so you don\'t lose your history.'}</div>`;
+}
+const fmtHM=h=>{if(h==null||h===''||isNaN(h))return '—';const t=Math.round(+h*60),H=Math.floor(t/60),M=t%60;return H?(M?H+' h '+M+' min':H+' h'):M+' min';};
+function avgTime(c,it){const l=c.logs.filter(x=>x.itemId===it.id&&x.type==='diy'&&+x.hrs>0);return l.length?{h:l.reduce((a,x)=>a+ +x.hrs,0)/l.length,n:l.length}:null;}
+const curC=()=>getCar();
+function diyHours(c,it){const a=avgTime(c,it);return a?a.h:(+it.hrs||0);}
+/* Longevity impact: how much skipping an item shortens the car's life.
+   Critical = can ruin the engine/transmission; Medium = wears or damages other parts; Low = comfort, convenience or safety-only. */
+const TIER_W={crit:4,med:1,low:.3};
+const TIER_LBL={crit:'Critical',med:'Medium',low:'Low'};
+const impTier=w=>+w>=2?'crit':+w>=.6?'med':'low';
+const WHY={
+  oil:'Old or low oil wears bearings, cams and turbos – the #1 cause of engine failure.',
+  tbelt:'A snapped belt usually bends the valves – often a total engine loss.',
+  cvt:'CVTs are sensitive to worn fluid, and replacing one can cost more than an older car is worth.',
+  atf:'Old fluid overheats and wears clutches; transmissions are among the most expensive repairs.',
+  coolant:'Worn coolant corrodes the radiator, water pump and head gasket; overheating can ruin the engine.',
+  fuelf:'Water or dirt in diesel fuel damages costly injectors and the high-pressure pump.',
+  evcool:'Keeps the battery pack at the right temperature – the most expensive part of an EV.',
+  plugs:'Worn plugs cause misfires that can damage the catalytic converter.',
+  invcool:'Cools the hybrid inverter and motor electronics.',
+  mtf:'Protects gears and synchros from wear.',
+  inspect:'Catches worn parts early, before they damage other parts.',
+  air:'A clogged filter lets dirt in and cuts power and mileage.',
+  brakefluid:'Old fluid absorbs water, corroding ABS parts and weakening braking – mainly a safety item.',
+  pads:'Safety item; pads worn to metal also ruin the rotors.',
+  hvfan:'A clogged battery fan overheats the hybrid battery and shortens its life.',
+  diff:'Old gear oil wears the differential gears and bearings.',
+  xfer:'Protects the AWD/4WD system\'s gears and chain.',
+  belt:'A snapped belt stops the alternator and often the water pump.',
+  tires:'Safety and handling; little effect on how long the car lasts.',
+  reduct:'Protects the EV drive gears.',
+  rotate:'Evens out tire wear so tires last longer.',
+  cabin:'Air quality and A/C performance only.',
+  battery:'A weak battery strands you but rarely harms the car.',
+  wipers:'Visibility and safety only.'
+};
+const TIER_DESC={
+  crit:'Skipping these can ruin the engine, transmission or EV battery – the most expensive parts of the car. Never let them go overdue; they affect the lifespan estimate the most.',
+  med:'Skipping these wears out or damages other parts over time, or makes the car less safe. Do them on schedule; a short delay is usually OK.',
+  low:'Comfort, convenience or inexpensive parts. They have little effect on how long the car lasts, so they can wait when money or time is tight.'};
+function impChip(it){const t=impTier(it.w??1);return `<button type="button" class="imp imp-${t}" data-act="impInfo" data-id="${esc(it.id||'')}" data-t="${t}" title="${esc(TIER_LBL[t]+' impact – tap for details')}">${TIER_LBL[t]}<span class="q">?</span></button>`;}
+function openImp(t,id){const c=getCar(),it=c&&c.schedule.find(i=>i.id===id);
+  const its=c?c.schedule.filter(i=>!i.off&&impTier(i.w??1)===t):[];
+  $('#rankBody').innerHTML=`<div class="tierbig imp-${t}"><span class="imp imp-${t}" style="font-size:1rem">${TIER_LBL[t]} impact on longevity</span></div>
+    <p>${TIER_DESC[t]}</p>
+    ${it?`<div class="note"><b>${esc(it.name)}:</b> ${esc(WHY[it.key]||it.notes||'Custom item – you set this rank.')}</div>`:''}
+    ${its.length?`<div class="flabel" style="margin:6px 0">${TIER_LBL[t]} items on this car</div><ul class="small" style="margin:0;padding-left:18px">${its.map(i=>`<li>${esc(i.name)}</li>`).join('')}</ul>`:''}
+    <div class="flabel" style="margin:14px 0 6px">All ranks</div>${legendHTML()}
+    <p class="tiny muted">You can change any item's rank with Edit on the Schedule tab.</p>`;
+  $('#rankDlg').showModal();}
+function legendHTML(){return `<div class="legend">${['crit','med','low'].map(t=>`<div><span class="imp imp-${t}">${TIER_LBL[t]}</span><span>${TIER_DESC[t]}</span></div>`).join('')}</div>`;}
+function costLine(it){
+  const parts=[];
+  if(it.diy==null||it.diy==='')parts.push(`<span><span class="k">DIY</span> shop only</span>`);
+  else{const a=avgTime(curC(),it);parts.push(`<span><span class="k">DIY</span> ${money(it.diy)} · ${a?'your avg '+fmtHM(a.h):'est. '+fmtHM(it.hrs)}</span>`);}
+  parts.push(`<span><span class="k">Shop</span> ${money(it.shop)}</span>`);
+  return parts.join('');
+}
+const ST_LBL={overdue:'Overdue',soon:'Due soon',ok:'Upcoming',unknown:'Unknown history'};
+
+/* Agenda */
+function agendaView(c){
+  const T=today0(),to=addDays(T,agRange);
+  const occ=occurrences(c,new Date(1900,0,1),to);
+  let diy=0,shop=0,h=0;
+  for(const o of occ){shop+=+o.it.shop||0;diy+=o.it.diy==null?(+o.it.shop||0):+o.it.diy;h+=o.it.diy==null?0:diyHours(c,o.it);}
+  const L=lifeEstimate(c);
+  let html=`<div class="row-h"><h2>Upcoming maintenance</h2><button class="btn sm pri" data-act="logNew">＋ Log maintenance</button></div>
+  <div class="split"><div class="side">
+  <div class="row-h"><div class="seg">${[[30,'30 days'],[90,'3 mo'],[180,'6 mo'],[365,'1 yr']].map(([v,l])=>`<button data-act="range" data-v="${v}" class="${agRange===v?'on':''}">${l}</button>`).join('')}</div></div>
+  <div class="grid g3 sidestats" style="margin-bottom:14px">
+    <div class="stat"><div class="k">If you DIY</div><div class="v">${money(diy)}</div><div class="tiny muted">parts; shop-only items at shop price</div></div>
+    <div class="stat"><div class="k">At a shop</div><div class="v">${money(shop)}</div><div class="tiny muted">${shop>diy?'DIY saves '+money(shop-diy):''}</div></div>
+    <div class="stat"><div class="k">DIY time</div><div class="v">${fmtHM(h)}</div><div class="tiny muted">${occ.length} service${occ.length===1?'':'s'}</div></div>
+  </div>
+  <p class="small" style="margin:-4px 0 12px"><a href="#" data-act="impInfo" data-t="crit">What do Critical, Medium and Low mean?</a></p>
+  <div class="card deskonly small"><h3 style="margin-bottom:6px">Car outlook</h3>
+    <div class="kv"><span>Maintenance score</span><b class="num">${Math.round(L.score*100)}%</b></div>
+    <div class="kv"><span>Expected life</span><b class="num">${miles(Math.round(L.lifeMiles/1000)*1000)}</b></div>
+    <div class="kv"><span>Likely useful until</span><b class="num">${L.endDate.getFullYear()}</b></div>
+    <p style="margin:8px 0 0"><a href="#" data-act="gotab" data-v="life">See lifespan details</a></p></div>
+  </div><div class="maincol">`;
+  if(!occ.length)return html+`<div class="card muted">Nothing due in this window.</div></div></div>`;
+  const groups=[];
+  const past=occ.filter(o=>o.status==='overdue'||o.status==='unknown');
+  if(past.length)groups.push(['Needs attention now',past]);
+  const rest=occ.filter(o=>!past.includes(o));
+  const byM={};for(const o of rest){const k=o.date.getFullYear()*12+o.date.getMonth();(byM[k]=byM[k]||[]).push(o);}
+  Object.keys(byM).sort((a,b)=>a-b).forEach(k=>{const d=byM[k][0].date;groups.push([MONTHS[d.getMonth()]+' '+d.getFullYear(),byM[k]]);});
+  html+=`<div class="card">`;
+  for(const [title,list] of groups){
+    const sum=list.reduce((a,o)=>a+(+o.it.shop||0),0);
+    html+=`<div class="mgroup"><h3>${esc(title)}</h3><span class="tiny muted">shop ≈ ${money(sum)}</span></div>`;
+    html+=list.map(o=>agendaRow(c,o)).join('');
+  }
+  return html+`</div></div></div>`;
+}
+function agendaRow(c,o){
+  const it=o.it,st=o.status;
+  const when=st==='unknown'?'<b>Now</b><small>no record</small>':`<b>${fmtD(o.date)}</b><small>${o.miles!=null?'~'+(Math.round(o.miles/100)*100).toLocaleString()+' mi':''}</small>`;
+  let sub='';
+  if(o.first){const n=nextDue(c,it);
+    if(st==='overdue'){const bits=[];if(n.milesLeft!=null&&n.milesLeft<0)bits.push(miles(-n.milesLeft)+' over');if(n.daysLeft<0)bits.push(Math.abs(n.daysLeft)+' days late');sub=`<span class="chip c-overdue">Overdue${bits.length?' · '+bits.join(', '):''}</span>`;}
+    else if(st==='soon')sub=`<span class="chip c-soon">Due soon</span>`;
+    else if(st==='unknown')sub=`<span class="chip c-unknown">Unknown history</span>`;
+  }
+  return `<div class="item st-${st}">
+    <div class="when bar-l">${when}</div>
+    <div><div class="nm">${esc(it.name)} ${sub}</div><div class="meta">${impChip(it)}${costLine(it)}</div></div>
+    <div>${o.first?`<button class="btn sm" data-act="done" data-id="${esc(it.id)}">✓ Done</button>`:''}</div></div>`;
+}
+
+
+/* History (past maintenance) */
+let histItem='all',histType='all',histYear='all';
+const logName=(c,l)=>{const it=c.schedule.find(i=>i.id===l.itemId);return it?it.name:(l.title||'Other');};
+function logsByDay(c){const m={};for(const l of c.logs)(m[l.date]=m[l.date]||[]).push(l);return m;}
+function histRow(c,l){
+  return `<div class="item st-done"><div class="when bar-l"><b>${fmtD(parseD(l.date))}</b><small>${parseD(l.date).getFullYear()}</small></div>
+    <div><div class="nm">${esc(logName(c,l))} <span class="chip ${l.type==='diy'?'c-info':'c-ok'}">${l.type==='diy'?'DIY':'Shop'}</span></div>
+      <div class="meta"><span class="num">${miles(l.miles)}</span><span><span class="k">Cost</span> ${money2(l.cost)}</span>${+l.hrs>0?`<span><span class="k">Time</span> ${fmtHM(l.hrs)}</span>`:''}${!l.itemId&&l.cat?`<span>${esc(l.cat)}</span>`:''}</div>
+      ${l.notes?`<div class="tiny muted" style="margin-top:2px">${esc(l.notes)}</div>`:''}</div>
+    <div><button class="btn sm ghost" data-act="editLog" data-id="${l.id}">Edit</button></div></div>`;
+}
+function historyView(c){
+  const all=c.logs.slice().sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:(b.miles-a.miles));
+  const years=[...new Set(all.map(l=>l.date.slice(0,4)))].sort().reverse();
+  if(histYear!=='all'&&!years.includes(histYear))histYear='all';
+  const used=c.schedule.filter(i=>all.some(l=>l.itemId===i.id));
+  const hasOther=all.some(l=>!l.itemId||!c.schedule.some(i=>i.id===l.itemId));
+  const list=all.filter(l=>(histType==='all'||l.type===histType)&&(histYear==='all'||l.date.startsWith(histYear))&&
+    (histItem==='all'||(histItem==='other'?(!l.itemId||!c.schedule.some(i=>i.id===l.itemId)):l.itemId===histItem)));
+  const spent=list.reduce((a,l)=>a+(+l.cost||0),0),time=list.filter(l=>l.type==='diy').reduce((a,l)=>a+(+l.hrs||0),0);
+  let html=`<div class="row-h"><h2>Maintenance history</h2><button class="btn sm pri" data-act="logNew">＋ Log maintenance</button></div>`;
+  if(!all.length)return html+`<div class="card empty"><div class="big" style="font-size:1.3rem">Nothing logged yet</div><p class="muted">Every service you log – from ✓ Done on the Agenda, the timer, or ＋ Log maintenance – shows up here with its date, mileage, cost and time.</p></div>`;
+  html+=`<div class="cal-head">
+    <select data-act="histItem" aria-label="Service"><option value="all">All services</option>${used.map(i=>`<option value="${esc(i.id)}" ${histItem===i.id?'selected':''}>${esc(i.name)}</option>`).join('')}${hasOther?`<option value="other" ${histItem==='other'?'selected':''}>Repairs &amp; other</option>`:''}</select>
+    <select data-act="histYear" aria-label="Year"><option value="all">All years</option>${years.map(y=>`<option ${histYear===y?'selected':''}>${y}</option>`).join('')}</select>
+    <div class="seg">${[['all','All'],['diy','DIY'],['shop','Shop']].map(([v,l])=>`<button data-act="histType" data-v="${v}" class="${histType===v?'on':''}">${l}</button>`).join('')}</div></div>
+  <div class="grid g3" style="margin-bottom:14px">
+    <div class="stat"><div class="k">Services</div><div class="v">${list.length}</div><div class="tiny muted">${list.length?'since '+fmtD(parseD(list[list.length-1].date),true):''}</div></div>
+    <div class="stat"><div class="k">Spent</div><div class="v">${money(spent)}</div></div>
+    <div class="stat"><div class="k">DIY time</div><div class="v">${fmtHM(time)}</div></div></div>`;
+  // per-service summary
+  const rows=used.filter(i=>histItem==='all'||histItem===i.id).map(it=>{
+    const ls=all.filter(l=>l.itemId===it.id).slice().sort((a,b)=>a.date<b.date?-1:1);
+    const gaps=[];for(let k=1;k<ls.length;k++){const g=ls[k].miles-ls[k-1].miles;if(g>0)gaps.push(g);}
+    const last=ls[ls.length-1],dt=ls.filter(l=>l.type==='diy'&&+l.hrs>0);
+    return `<tr><td class="full"><a href="#" data-act="histPick" data-id="${esc(it.id)}"><b>${esc(it.name)}</b></a> ${impChip(it)}</td><td class="num small" data-label="Times done">${ls.length}</td>
+      <td class="small" data-label="Last done">${fmtD(parseD(last.date),true)}<div class="tiny num muted">${miles(last.miles)}</div></td>
+      <td class="num small" data-label="Avg. miles between">${gaps.length?miles(gaps.reduce((a,b)=>a+b,0)/gaps.length):'—'}</td>
+      <td class="num small r" data-label="Avg. cost">${money(ls.reduce((a,l)=>a+(+l.cost||0),0)/ls.length)}</td>
+      <td class="num small r" data-label="Avg. DIY time">${dt.length?fmtHM(dt.reduce((a,l)=>a+ +l.hrs,0)/dt.length):'—'}</td></tr>`;}).join('');
+  html+=`<div class="split hist"><div class="side"><div class="card scroll"><h3 style="margin-bottom:6px">By service</h3>${rows?`<table class="tbl stack"><thead><tr><th>Service</th><th>Times</th><th>Last</th><th>Avg. miles between</th><th class="r">Avg. cost</th><th class="r">Avg. time</th></tr></thead><tbody>${rows}</tbody></table>`:'<p class="muted small">Only repairs/other in this view.</p>'}</div></div><div class="maincol"><div class="card">`;
+  if(!list.length)html+='<p class="muted">No services match these filters.</p>';
+  let cur='';
+  for(const l of list){const d=parseD(l.date),k=MONTHS[d.getMonth()]+' '+d.getFullYear();
+    if(k!==cur){cur=k;const ml=list.filter(x=>{const y=parseD(x.date);return y.getMonth()===d.getMonth()&&y.getFullYear()===d.getFullYear();});
+      html+=`<div class="mgroup"><h3>${k}</h3><span class="tiny muted">${ml.length} service${ml.length>1?'s':''} · ${money2(ml.reduce((a,x)=>a+(+x.cost||0),0))}</span></div>`;}
+    html+=histRow(c,l);}
+  return html+`</div></div></div>`;
+}
+
+/* Calendar */
+function calendarView(c){
+  const T=today0();
+  const yrs=[];for(let y=T.getFullYear()-2;y<=T.getFullYear()+5;y++)yrs.push(y);
+  let html=`<div class="cal-head">
+    <div class="seg"><button data-act="calv" data-v="month" class="${calView==='month'?'on':''}">Month</button><button data-act="calv" data-v="year" class="${calView==='year'?'on':''}">Year</button></div>
+    <button class="btn sm" data-act="calprev" aria-label="Previous">‹</button>
+    ${calView==='month'?`<select data-act="calm">${MONTHS.map((m,i)=>`<option value="${i}" ${i===calM?'selected':''}>${m}</option>`).join('')}</select>`:''}
+    <select data-act="caly">${yrs.map(y=>`<option ${y===calY?'selected':''}>${y}</option>`).join('')}</select>
+    <button class="btn sm" data-act="calnext" aria-label="Next">›</button>
+    <button class="btn sm ghost" data-act="caltoday">Today</button></div>`;
+  return html+(calView==='month'?monthView(c):yearView(c));
+}
+function occByDay(c,from,to){const m={};for(const o of occurrences(c,from,to)){const k=iso(o.date);(m[k]=m[k]||[]).push(o);}return m;}
+function monthView(c){
+  const T=today0(),first=new Date(calY,calM,1),start=addDays(first,-first.getDay()),end=addDays(start,41);
+  const map=occByDay(c,start,end),done=logsByDay(c);
+  let g=`<div class="month">${['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<div class="dow">${d}</div>`).join('')}`;
+  for(let i=0;i<42;i++){
+    const d=addDays(start,i),k=iso(d),ev=map[k]||[],dn=done[k]||[];
+    const cls=['day',d.getMonth()!==calM?'out':'',+d===+T?'today':'',calSel===k?'sel':''].join(' ');
+    g+=`<div class="${cls}" data-act="day" data-d="${k}"><span class="dn">${d.getDate()}</span>
+      ${dn.slice(0,2).map(l=>`<span class="ev done">✓ ${esc(logName(c,l))}</span>`).join('')}${ev.slice(0,Math.max(0,2-dn.length)).map(o=>`<span class="ev ${o.status}">${esc(o.it.name)}</span>`).join('')}${ev.length+dn.length>2?`<span class="more">+${ev.length+dn.length-2} more</span>`:''}
+      <span class="dots">${dn.slice(0,3).map(()=>'<i class="dot done"></i>').join('')}${ev.slice(0,4).map(o=>`<i class="dot ${o.status}"></i>`).join('')}</span></div>`;
+  }
+  g+='</div>';
+  // month list
+  const mStart=first,mEnd=new Date(calY,calM+1,0);
+  let list=[],dl=[];const daySel=calSel&&(map[calSel]||done[calSel]);
+  if(daySel){list=map[calSel]||[];dl=done[calSel]||[];}
+  else{list=occurrences(c,mStart,mEnd);dl=c.logs.filter(l=>{const d=parseD(l.date);return d>=mStart&&d<=mEnd;}).sort((a,b)=>a.date<b.date?-1:1);}
+  const label=daySel?fmtD(parseD(calSel),true):MONTHS[calM]+' '+calY;
+  const tot=list.reduce((a,o)=>a+(+o.it.shop||0),0),totD=list.reduce((a,o)=>a+(o.it.diy==null?+o.it.shop||0:+o.it.diy),0);
+  return `<div class="split cal"><div class="maincol"><div class="card" style="padding:0;overflow:hidden">${g}</div></div>
+    <div class="side"><div class="card"><div class="row-h"><h2>${esc(label)}</h2><span class="small muted">DIY ≈ ${money(totD)} · Shop ≈ ${money(tot)}</span></div>
+    ${dl.length?`<div class="mgroup"><h3>Done</h3><span class="tiny muted">spent ${money2(dl.reduce((a,l)=>a+(+l.cost||0),0))}</span></div>${dl.map(l=>histRow(c,l)).join('')}`:''}
+    ${dl.length&&list.length?'<div class="mgroup"><h3>Scheduled</h3><span></span></div>':''}
+    ${list.length?list.map(o=>agendaRow(c,o)).join(''):(dl.length?'':'<p class="muted">Nothing scheduled.</p>')}
+    ${calSel?'<p><a href="#" data-act="clearsel">Show whole month</a></p>':''}</div></div></div>`;
+}
+function yearView(c){
+  const T=today0(),from=new Date(calY,0,1),to=new Date(calY,11,31);
+  const occ=occurrences(c,from,to),map={};for(const o of occ){const k=iso(o.date);(map[k]=map[k]||[]).push(o);}
+  const doneY=logsByDay(c);
+  const rank={overdue:3,unknown:3,soon:2,ok:1};
+  let yDiy=0,yShop=0,yH=0;
+  let html='<div class="year">';
+  for(let m=0;m<12;m++){
+    const f=new Date(calY,m,1),days=new Date(calY,m+1,0).getDate();
+    let g=['S','M','T','W','T','F','S'].map(d=>`<span class="h">${d}</span>`).join('');
+    for(let i=0;i<f.getDay();i++)g+='<span></span>';
+    let n=0,cost=0,dc=0;
+    for(let d=1;d<=days;d++){const dt=new Date(calY,m,d),ev=map[iso(dt)]||[];
+      let st=(doneY[iso(dt)]&&!ev.length)?'done':'';for(const o of ev){n++;cost+=+o.it.shop||0;dc+=o.it.diy==null?+o.it.shop||0:+o.it.diy;yH+=o.it.diy==null?0:diyHours(c,o.it);if(!st||rank[o.status]>rank[st])st=o.status;}
+      g+=`<span class="${ev.length||st==='done'?'e '+st:''} ${+dt===+T?'t':''}" title="${esc((doneY[iso(dt)]||[]).map(l=>'✓ '+logName(c,l)).concat(ev.map(o=>o.it.name)).join(', '))}">${d}</span>`;}
+    yDiy+=dc;yShop+=cost;
+    html+=`<div class="mini" data-act="gomonth" data-m="${m}"><div class="mh"><b>${MONTHS[m]}</b><span class="tiny muted">${n?n+' item'+(n>1?'s':''):''}</span></div>
+      <div class="mg">${g}</div><div class="ms"><span>${n?'DIY '+money(dc):'—'}</span><span>${n?'Shop '+money(cost):''}</span></div></div>`;
+  }
+  html+='</div>';
+  return `<div class="grid g3" style="margin-bottom:14px">
+    <div class="stat"><div class="k">${calY} total – DIY</div><div class="v">${money(yDiy)}</div></div>
+    <div class="stat"><div class="k">${calY} total – Shop</div><div class="v">${money(yShop)}</div></div>
+    <div class="stat"><div class="k">${calY} DIY time</div><div class="v">${fmtHM(yH)}</div><div class="tiny muted">${occ.length} services</div></div></div>`+html+
+    `<p class="tiny muted">Tap a month to open it. Future dates are projected from your yearly mileage and assume each service is done when due.</p>`;
+}
+
+/* Schedule */
+function scheduleView(c){
+  const rowFor=it=>{
+    const n=nextDue(c,it),iv=intv(c,it),ld=lastDone(c,it);
+    const ivs=[iv.mi?iv.mi.toLocaleString()+' mi':'',iv.mo?(iv.mo%12===0?iv.mo/12+' yr':iv.mo+' mo'):''].filter(Boolean).join(' / ')||'—';
+    const st=it.off?'<span class="chip">Off</span>':n?`<span class="chip c-${n.status}">${n.status==='unknown'?'Unknown':fmtD(n.date,true)}</span>`:'—';
+    const last=ld?`${ld.date?fmtD(ld.date,true):''}${ld.miles!=null?'<br><span class="num tiny">'+miles(ld.miles)+'</span>':''}${ld.src==='baseline'?'<br><span class="tiny muted">assumed</span>':''}`:'<span class="muted">unknown</span>';
+    return `<tr class="${it.off?'off':''}"><td class="full"><b>${esc(it.name)}</b> ${impChip(it)}<div class="tiny muted">${esc(it.cat||'')}${WHY[it.key]?' · '+esc(WHY[it.key]):''}<span class="nt">${it.notes?' · '+esc(it.notes):''}</span></div></td>
+      <td class="num small" data-label="Every">${ivs}</td><td class="small" data-label="Last done">${last}</td><td data-label="Next due">${st}${n&&n.miles&&!it.off&&n.status!=='unknown'?'<div class="tiny num muted">'+miles(n.miles)+'</div>':''}</td>
+      <td class="r num small" data-label="DIY">${it.diy==null?'shop only':money(it.diy)}<div class="tiny muted">${it.diy==null?'':fmtHM(diyHours(c,it))}</div></td><td class="r num small" data-label="Shop">${money(it.shop)}</td>
+      <td class="r act"><button class="btn sm" data-act="editItem" data-id="${esc(it.id)}">Edit</button></td></tr>`;};
+  const rows=['crit','med','low'].map(t=>{const its=c.schedule.filter(i=>impTier(i.w??1)===t);if(!its.length)return '';
+    return `<tr class="tier-h"><td colspan="7" class="full"><span class="imp imp-${t}">${TIER_LBL[t]} impact</span> <span class="tiny muted">· ${its.length} item${its.length>1?'s':''}</span></td></tr>`+its.map(rowFor).join('');}).join('');
+  return `<div class="row-h"><h2>Maintenance schedule</h2><div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn sm" data-act="importSched">Import</button><button class="btn sm" data-act="addItem">＋ Item</button><button class="btn sm pri" data-act="logNew">Log service</button></div></div>
+    <div class="note warn"><b>Check accuracy:</b> this schedule is built from typical intervals for a ${esc(PT_LBL[c.powertrain])} ${esc(c.trans==='ev'?'':c.trans.toUpperCase()+' ')}${esc(c.drive.toUpperCase())} vehicle${c.condition==='severe'?' under <b>severe</b> conditions':''}. Exact intervals vary by model, so check them against your ${esc(c.year)} ${esc(c.make)} ${esc(c.model)} owner's manual, then tap <b>Edit</b> to fix any item or <b>Import</b> the official schedule.</div>
+    <details class="card legendcard" ${S.legendSeen?'':'open'}><summary><b>What do Critical, Medium and Low mean?</b> <span class="tiny muted">Longevity impact – what happens if you skip it</span></summary>
+      <div style="margin-top:10px">${legendHTML()}<p class="tiny muted" style="margin:8px 0 0">Tap any rank label in the app for details. Ranks also drive the lifespan estimate – overdue critical items lower it the most.</p></div></details>
+    <div class="card scroll sched"><table class="tbl stack"><thead><tr><th>Item</th><th>Every</th><th>Last done</th><th>Next due</th><th class="r">DIY</th><th class="r">Shop</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="card"><div class="row-h"><h2>Safety recalls</h2><button class="btn sm" data-act="recalls">Check NHTSA</button></div><div id="recallBox" class="small muted">Look up open recalls for this year, make and model. Recall repairs are free at the dealer.</div></div>
+    <div class="card small"><div class="kv"><span>VIN</span><span class="num">${esc(c.vin||'—')}</span></div><div class="kv"><span>Powertrain</span><span>${esc(PT_LBL[c.powertrain])}</span></div>
+      <div class="kv"><span>Yearly miles</span><span class="num">${(+c.annualMiles).toLocaleString()}</span></div><div class="kv"><span>Last odometer reading</span><span class="num">${miles(c.odo)} · ${fmtD(parseD(c.odoDate),true)}</span></div>
+      <p style="margin:10px 0 0"><button class="btn sm" data-act="editCar">Edit car details</button></p></div>`;
+}
+
+/* Expenses */
+function expensesView(c){
+  const T=today0(),y=T.getFullYear(),yearAgo=addDays(T,-365);
+  const logs=c.logs.slice().sort((a,b)=>a.date<b.date?1:-1);
+  const sum=a=>a.reduce((s,l)=>s+(+l.cost||0),0);
+  const ytd=sum(logs.filter(l=>parseD(l.date).getFullYear()===y)),l12=sum(logs.filter(l=>parseD(l.date)>=yearAgo)),all=sum(logs);
+  const diySaved=logs.filter(l=>l.type==='diy'&&l.itemId).reduce((s,l)=>{const it=c.schedule.find(i=>i.id===l.itemId);return s+(it?Math.max(0,(+it.shop||0)-(+l.cost||0)):0);},0);
+  const ms=logs.map(l=>+l.miles).filter(n=>!isNaN(n));
+  const span=ms.length>1?Math.max(...ms)-Math.min(...ms):0;
+  const byCat={},byYear={};
+  for(const l of logs){const it=c.schedule.find(i=>i.id===l.itemId);const cat=it?it.cat:(l.cat||'Other');byCat[cat]=(byCat[cat]||0)+(+l.cost||0);const yy=l.date.slice(0,4);byYear[yy]=byYear[yy]||{diy:0,shop:0,n:0};byYear[yy][l.type==='diy'?'diy':'shop']+=+l.cost||0;byYear[yy].n++;}
+  const filtered=expFilter==='all'?logs:logs.filter(l=>l.type===expFilter);
+  const tl=logs.filter(l=>l.type==='diy'&&+l.hrs>0),tAll=tl.reduce((a,l)=>a+ +l.hrs,0),tY=tl.filter(l=>parseD(l.date).getFullYear()===y).reduce((a,l)=>a+ +l.hrs,0);
+  return `<div class="row-h"><h2>Expenses</h2><button class="btn sm pri" data-act="logNew">＋ Log maintenance / expense</button></div>
+  <div class="grid g3" style="margin-bottom:14px">
+    <div class="stat"><div class="k">${y} so far</div><div class="v">${money(ytd)}</div></div>
+    <div class="stat"><div class="k">Last 12 months</div><div class="v">${money(l12)}</div></div>
+    <div class="stat"><div class="k">All time</div><div class="v">${money(all)}</div><div class="tiny muted">${logs.length} entries</div></div>
+    <div class="stat"><div class="k">DIY savings</div><div class="v">${money(diySaved)}</div><div class="tiny muted">${span?'≈ '+money2((all/span).toFixed(3))+'/mi':'vs. shop price'}</div></div>
+    <div class="stat"><div class="k">DIY time ${y}</div><div class="v">${fmtHM(tY)}</div></div>
+    <div class="stat"><div class="k">DIY time, all</div><div class="v">${fmtHM(tAll)}</div><div class="tiny muted">${tl.length} timed job${tl.length===1?'':'s'}</div></div></div>
+  ${logs.length?`<div class="grid g2">
+    <div class="card"><h3 style="margin-bottom:6px">By category</h3><table class="tbl"><tbody>${Object.entries(byCat).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="r num">${money(v)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="card"><h3 style="margin-bottom:6px">By year</h3><table class="tbl"><thead><tr><th>Year</th><th class="r">DIY</th><th class="r">Shop</th><th class="r">Total</th></tr></thead><tbody>${Object.keys(byYear).sort().reverse().map(k=>`<tr><td class="num">${k}</td><td class="r num">${money(byYear[k].diy)}</td><td class="r num">${money(byYear[k].shop)}</td><td class="r num"><b>${money(byYear[k].diy+byYear[k].shop)}</b></td></tr>`).join('')}</tbody></table></div></div>`:''}
+  <div class="card"><div class="row-h"><h2>Service log</h2><div class="seg">${[['all','All'],['diy','DIY'],['shop','Shop']].map(([v,l])=>`<button data-act="expf" data-v="${v}" class="${expFilter===v?'on':''}">${l}</button>`).join('')}</div></div>
+  ${filtered.length?`<div class="scroll"><table class="tbl stack"><thead><tr><th>Service</th><th>Date</th><th>Miles</th><th>By</th><th>Time</th><th class="r">Cost</th><th></th></tr></thead><tbody>
+  ${filtered.map(l=>{const it=c.schedule.find(i=>i.id===l.itemId);return `<tr><td class="full"><b>${esc(it?it.name:l.title||'Other')}</b>${l.notes?`<div class="tiny muted">${esc(l.notes)}</div>`:''}</td><td class="num small" data-label="Date">${fmtD(parseD(l.date),true)}</td><td class="num small" data-label="Miles">${miles(l.miles)}</td><td data-label="By"><span class="chip ${l.type==='diy'?'c-info':'c-ok'}">${l.type==='diy'?'DIY':'Shop'}</span></td><td class="small num" data-label="Time">${+l.hrs>0?fmtHM(l.hrs):'—'}</td><td class="r num" data-label="Cost">${money2(l.cost)}</td><td class="r act"><button class="btn sm ghost" data-act="editLog" data-id="${l.id}">Edit</button></td></tr>`;}).join('')}
+  </tbody></table></div>`:'<p class="muted">No entries yet. Tap <b>✓ Done</b> on an agenda item or log a repair here.</p>'}</div>`;
+}
+
+/* Lifespan */
+function lifeView(c){
+  if(lifeSub==='habits')return habitsView(c);
+  if(lifeSub==='routes')return routesView(c);
+  const L=lifeEstimate(c),pct=v=>Math.round(v*100);
+  const max=L.best*1.05,pos=v=>Math.min(100,v/max*100);
+  return `<h2 style="margin-bottom:10px">Estimated life expectancy</h2>${lifeTabs()}
+  ${L.D.answered===0&&!(c.routes||[]).length?`<div class="note">Make this estimate more personal: answer a few <a href="#" data-act="lifeSub" data-v="habits">driving habit questions</a> and add your regular <a href="#" data-act="lifeSub" data-v="routes">routes</a>.</div>`:''}
+  <div class="card">
+    <div class="grid g2">
+      <div><div class="lbl muted small">Expected lifetime mileage</div><div class="bigv">${miles(Math.round(L.lifeMiles/1000)*1000)}</div>
+        <div class="small muted">At your current maintenance pattern</div></div>
+      <div><div class="lbl muted small">Likely useful until</div><div class="bigv">${L.endDate.getFullYear()}</div>
+        <div class="small muted">≈ ${L.yearsLeft<1?'under a year':L.yearsLeft.toFixed(1)+' more years'} · about ${miles(Math.max(1000,Math.round(L.remaining/1000)*1000))} to go</div></div>
+    </div>
+    ${L.pastMiles||L.pastAge?`<div class="note" style="margin:12px 0 0">This car is already past the typical ${L.pastMiles&&L.pastAge?'mileage and age':L.pastMiles?'mileage':'age'} for its type, so it has beaten the average. The estimate now shows the extra life cars like this usually get. Expect more repairs, and plan for a replacement without rushing into one.</div>`:''}
+    <div style="margin:16px 0 6px" class="gauge" title="Today's estimated odometer vs expected life"><div class="fill" style="width:${pos(L.est)}%"></div><div class="mark" style="left:${pos(L.lifeMiles)}%"></div></div>
+    <div class="tiny muted" style="display:flex;justify-content:space-between"><span>Now: ${miles(L.est)}</span><span style="color:var(--accent)">▲ expected: ${miles(Math.round(L.lifeMiles/1000)*1000)}</span></div>
+  </div>
+  <div class="grid g3" style="margin-bottom:14px">
+    <div class="stat"><div class="k">Maintenance score</div><div class="v">${pct(L.score)}%</div><div class="tiny muted">${L.hist==null?'based on what is due now':'now '+pct(L.cur)+'% · history '+pct(L.hist)+'%'}</div></div>
+    <div class="stat"><div class="k">Fully maintained</div><div class="v">${miles(Math.round(L.best/1000)*1000)}</div><div class="tiny muted">every item on time</div></div>
+    <div class="stat"><div class="k">Neglected</div><div class="v">${miles(Math.round(L.worst/1000)*1000)}</div><div class="tiny muted">maintenance skipped</div></div>
+  </div>
+  ${L.hurts.length?`<div class="card"><h3 style="margin-bottom:6px">Biggest gains available</h3>${L.hurts.slice(0,5).map(h=>`<div class="kv"><span>${impChip(h.it)} ${esc(h.it.name)}${h.s>=.85&&nextDue(c,h.it).status==='unknown'?' <span class="tiny muted">(no record)</span>':''}</span><span class="small" style="color:var(--ok)">${h.gain>=500?'+'+miles(Math.round(h.gain/500)*500)+' if done':'small gain'}</span></div>`).join('')}</div>`:''}
+  <div class="card small"><h3 style="margin-bottom:6px">How this is calculated</h3>
+    <div class="kv"><span>Typical life for a ${esc(PT_LBL[c.powertrain].toLowerCase())} vehicle</span><span class="num">${miles(L.base)}</span></div>
+    <div class="kv"><span>Reliability reputation</span><span class="num">×${L.rel.toFixed(2)}</span></div>
+    <div class="kv"><span>Driving conditions (${esc(c.condition)})</span><span class="num">×${L.cond.toFixed(2)}</span></div>
+    <div class="kv"><span>Driving habits${L.D.rs.hwy!=null?' &amp; highway/city mix':''} (<a href="#" data-act="lifeSub" data-v="habits">${L.D.answered}/${L.D.total} answered</a>)</span><span class="num">×${L.D.mi.toFixed(2)}</span></div>
+    ${L.D.age!==1?`<div class="kv"><span>Climate &amp; parking (affects age)</span><span class="num">×${L.D.age.toFixed(2)} yrs</span></div>`:''}
+    <div class="kv"><span>Maintenance (0.70 neglected → 1.05 perfect)</span><span class="num">×${(.7+.35*L.score).toFixed(2)}</span></div>
+    <div class="kv"><span>Typical lifetime mileage for this car</span><span class="num">${miles(Math.round(L.lifeTyp/1000)*1000)}</span></div>
+    <div class="kv"><span>Years left by mileage (${miles(L.remaining)} at ${(+L.annual).toLocaleString()} mi/yr)</span><span class="num">${L.yMiles.toFixed(1)} yr</span></div>
+    <div class="kv"><span>Years left by age (rust, rubber, electronics – typical ~${L.ageCap.toFixed(0)} yr; now ${L.age.toFixed(1)} yr old)</span><span class="num">${L.yAge.toFixed(1)} yr</span></div>
+    <p class="tiny muted" style="margin:10px 0 0">Years left is the smaller of the two, so this car is limited by <b>${L.limitedBy}</b>. Near or past the typical figure, remaining life tapers off gradually rather than hitting zero. This is a planning estimate, not a guarantee: accidents, rust, climate, and model-specific weak points can shorten life, and many well-kept cars go well beyond these numbers. Overdue critical items (oil, timing belt, transmission fluid, coolant) lower the score most.</p>
+  </div>`;
+}
+function sumW(c){return c.schedule.filter(i=>!i.off).reduce((a,i)=>a+(+i.w||0),0);}
+
+
+/* ---------- driving habits & routes ----------
+   Multipliers are rough, judgment-based estimates from general automotive guidance.
+   [value, label, miles-life factor, age-life factor] */
+const HABITS=[
+ {id:'accel',ice:true,title:'How do you usually get up to speed?',why:'Revving to 4,000–5,000 RPM now and then is fine once the engine is warm. Doing it constantly – or before the engine is warm – adds wear to the engine and transmission.',
+  opts:[['gentle','Gently – light throttle or cruise control, shifts under ~3,000 RPM',1.03],['normal','Normal – a mix',1],['hard','Hard – often 4,000–5,000+ RPM',.94]]},
+ {id:'cold',ice:true,title:'What do you do on a cold start?',why:'Modern fuel-injected engines don\'t need to idle to warm up – driving gently after about 30 seconds warms them faster. Long idling adds engine hours and can thin the oil with fuel. Driving hard on a cold engine causes the most wear.',
+  opts:[['gentle','Drive off gently after ~30 seconds',1.02],['idle','Idle several minutes before driving',.99],['hard','Drive hard right away',.93]]},
+ {id:'trips',title:'How long are most of your trips?',why:'Trips under about 10 minutes never fully warm the engine, so moisture and fuel build up in the oil. This is the most common "severe" driving condition.',
+  opts:[['long','Mostly 20 minutes or more',1.03],['mix','A mix',1],['short','Mostly under 10 minutes',.93]]},
+ {id:'brake',title:'How do you usually brake?',why:'Smooth, early braking mostly saves pads and rotors, and eases strain on suspension parts.',
+  opts:[['smooth','Early and smooth – I coast a lot',1.01],['normal','Normal',1],['hard','Late and hard',.98]]},
+ {id:'load',title:'Do you tow or haul heavy loads?',why:'Towing and heavy loads heat the transmission and engine and wear brakes and suspension faster.',
+  opts:[['no','Rarely or never',1],['some','Sometimes',.97],['often','Regularly',.92]]},
+ {id:'idle',title:'How much time does it spend idling?',why:'Long idling – remote start, drive-thrus, deliveries, waiting in the car – adds engine wear without adding miles.',
+  opts:[['little','Not much',1],['lots','A lot',.96]]},
+ {id:'roads',title:'What roads do you drive on most?',why:'Potholes and rough roads wear suspension, steering and mounts. Dust and gravel clog filters.',
+  opts:[['paved','Mostly smooth pavement',1],['rough','Lots of potholes or rough roads',.97],['gravel','Gravel or dusty roads',.96]]},
+ {id:'climate',title:'What are your winters and summers like?',why:'Road salt causes rust – the most common reason older cars are scrapped. Rinsing the underside during winter slows it a lot. Extreme heat ages batteries, rubber and fluids.',
+  opts:[['mild','Mild',1,1],['salt','Snowy, with salted roads',1,.85],['saltwash','Salted roads, but I rinse the underside',1,.93],['hot','Very hot summers',.98,.96],['cold','Very cold, little salt',.98,1]]},
+ {id:'park',title:'Where is it usually parked?',why:'A garage protects paint, rubber, the interior and the battery from sun, heat and freezing.',
+  opts:[['garage','Garage',1,1.05],['covered','Carport or covered',1,1.02],['outside','Outside',1,1]]},
+ {id:'fuel',ice:true,title:'Which fuel do you use?',why:'Using lower octane than your manual requires (common on turbo engines) can cause knock and shorten engine life.',
+  opts:[['spec','What the manual recommends',1],['lower','Lower octane than recommended',.96]]},
+ {id:'cruise',title:'Do you use cruise control on the highway?',why:'Steadier speed means smoother throttle – a small benefit.',
+  opts:[['yes','Usually',1.01],['no','Rarely',1]]},
+ {id:'charge',ev:true,title:'How full do you usually charge?',why:'Keeping an EV battery at 100% for long periods ages it faster. About 80% for daily driving is easiest on it.',
+  opts:[['80','About 80% for daily driving',1.04],['100','100% most of the time',.95]]},
+ {id:'fast',ev:true,title:'How often do you DC fast-charge?',why:'Frequent DC fast charging heats the battery more than home charging.',
+  opts:[['rare','Rarely – mostly at home or Level 2',1],['often','Most of the time',.95]]},
+];
+const habitQs=c=>HABITS.filter(q=>(q.ice?c.powertrain!=='ev':true)&&(q.ev?c.powertrain==='ev':true));
+const WEEKS_PER_MONTH=4.345;
+function routeStats(c){
+  const rs={monthly:0,routeMonthly:0,other:+c.otherMonthly||0,hwyMi:0,mixMi:0,legs:0,shortLegs:0,longLegs:0,weekday:0,weekend:0,any:0,routes:(c.routes||[]).length};
+  for(const r of c.routes||[]){
+    const legs=(+r.times||0)*(r.per==='month'?1:WEEKS_PER_MONTH)*(r.roundTrip?2:1),mi=legs*(+r.miles||0);
+    rs.routeMonthly+=mi;rs.legs+=legs;rs[r.when||'any']+=mi;
+    if(r.hwy!=null&&r.hwy!==''){rs.hwyMi+=mi*(+r.hwy);rs.mixMi+=mi;}
+    const mins=+r.mins||(+r.miles||0)/(25+30*(+r.hwy||0))*60;
+    if((+r.miles||0)<5||mins<10)rs.shortLegs+=legs;else if(mins>=20)rs.longLegs+=legs;
+  }
+  rs.monthly=rs.routeMonthly+rs.other;rs.yearly=rs.monthly*12;
+  rs.hwy=rs.mixMi?rs.hwyMi/rs.mixMi:null;
+  rs.shortShare=rs.legs?rs.shortLegs/rs.legs:null;rs.longShare=rs.legs?rs.longLegs/rs.legs:null;
+  rs.tripsAuto=rs.legs?(rs.shortShare>.5?'short':rs.longShare>.5?'long':'mix'):null;
+  return rs;
+}
+function drivingFactors(c){
+  const h=c.habits||{},rs=routeStats(c);let mi=1,age=1,answered=0;const qs=habitQs(c);
+  for(const q of qs){const v=(q.id==='trips'&&rs.tripsAuto&&!h.tripsManual)?rs.tripsAuto:h[q.id];const o=q.opts.find(x=>x[0]===v);
+    if(o){answered++;mi*=o[2];age*=(o[3]??1);}}
+  const mix=rs.hwy!=null?.95+.10*rs.hwy:1;mi*=mix;
+  return{mi:Math.min(1.12,Math.max(.8,mi)),age:Math.min(1.1,Math.max(.78,age)),mix,answered,total:qs.length,rs};
+}
+function severeHint(c){
+  const D=drivingFactors(c),h=c.habits||{},why=[];
+  const trips=(D.rs.tripsAuto&&!h.tripsManual)?D.rs.tripsAuto:h.trips;
+  if(trips==='short')why.push('mostly short trips');if(h.load==='often')why.push('regular towing or heavy loads');
+  if(h.roads==='gravel')why.push('dusty or gravel roads');if(h.idle==='lots')why.push('lots of idling');if(h.climate==='hot')why.push('extreme heat');
+  if(D.rs.hwy!=null&&D.rs.hwy<.2&&D.rs.routeMonthly>0)why.push('mostly stop-and-go city driving');
+  return why;
+}
+
+/* Lifespan sub-views */
+let lifeSub='estimate';
+function lifeTabs(){return `<div class="row-h"><div class="seg">${[['estimate','Estimate'],['habits','Driving habits'],['routes','Routes']].map(([v,l])=>`<button data-act="lifeSub" data-v="${v}" class="${lifeSub===v?'on':''}">${l}</button>`).join('')}</div></div>`;}
+function factorTxt(x){return '×'+x.toFixed(2);}
+function habitsView(c){
+  const D=drivingFactors(c),L=lifeEstimate(c),N=lifeEstimate(c,{neutral:true}),h=c.habits||{},sev=severeHint(c);
+  const diff=L.yearsLeft-N.yearsLeft;
+  let html=`<h2 style="margin-bottom:10px">Driving habits</h2>${lifeTabs()}
+  <div class="card"><div class="grid g3 sidestats2">
+    <div><div class="lbl muted small">Answered</div><div class="bigv" style="font-size:1.5rem">${D.answered}/${D.total}</div></div>
+    <div><div class="lbl muted small">Effect on mileage life</div><div class="bigv" style="font-size:1.5rem">${factorTxt(D.mi)}</div></div>
+    <div><div class="lbl muted small">Effect on age life</div><div class="bigv" style="font-size:1.5rem">${factorTxt(D.age)}</div></div></div>
+    <p class="small" style="margin:10px 0 0">${Math.abs(diff)<.1?'Your habits are about average – no change to the lifespan estimate.':`Your habits ${diff>0?'add':'take off'} about <b>${Math.abs(diff).toFixed(1)} year${Math.abs(diff)>=1.05?'s':''}</b> compared with average driving.`}
+    Maintenance still matters much more than driving style.</p>
+    ${sev.length&&c.condition!=='severe'?`<div class="note warn" style="margin:10px 0 0">You mentioned ${esc(sev.join(', '))}. Manufacturers count that as <b>severe</b> driving, which uses shorter service intervals. <button class="btn sm" data-act="setSevere">Switch to severe schedule</button></div>`:''}
+    ${!sev.length&&c.condition==='severe'&&D.answered>=4?`<div class="note" style="margin:10px 0 0">Nothing you've answered here counts as severe driving, but your schedule is set to <b>severe</b>. <button class="btn sm" data-act="setNormal">Switch to normal schedule</button></div>`:''}
+  </div>`;
+  for(const q of habitQs(c)){
+    const auto=q.id==='trips'&&D.rs.tripsAuto&&!h.tripsManual,val=auto?D.rs.tripsAuto:h[q.id];
+    html+=`<div class="card habit"><div class="nm"><b>${esc(q.title)}</b></div><p class="small muted" style="margin:4px 0 10px">${esc(q.why)}</p>
+      <div class="opts">${q.opts.map(o=>`<button class="opt ${val===o[0]?'on':''}" data-act="habit" data-q="${q.id}" data-v="${o[0]}">${esc(o[1])}<span class="eff">${effTxt(o)}</span></button>`).join('')}</div>
+      ${auto?`<p class="tiny muted" style="margin:8px 0 0">Set automatically from your routes (${Math.round(D.rs.shortShare*100)}% of trips are short). Tap an answer to override.</p>`:''}
+      ${q.id==='trips'&&h.tripsManual&&D.rs.tripsAuto?`<p class="tiny" style="margin:8px 0 0"><a href="#" data-act="tripsAuto">Use my routes instead</a></p>`:''}</div>`;
+  }
+  return html+`<p class="tiny muted">These effects are rough estimates based on general automotive guidance, not measurements of your car.</p>`;
+}
+function effTxt(o){const m=o[2],a=o[3]??1;if(m===1&&a===1)return 'no change';const p=[];if(m!==1)p.push((m>1?'+':'−')+Math.round(Math.abs(m-1)*100)+'% miles');if(a!==1)p.push((a>1?'+':'−')+Math.round(Math.abs(a-1)*100)+'% years');return p.join(', ');}
+
+function routesView(c){
+  const rs=routeStats(c),cur=+c.annualMiles||12000,yr=Math.round(rs.yearly/100)*100;
+  const routes=c.routes||[];
+  const hw=rs.hwy!=null?Math.round(rs.hwy*100):null;
+  let html=`<h2 style="margin-bottom:10px">Routes &amp; mileage</h2>${lifeTabs()}
+  <div class="split"><div class="side">
+  <div class="card"><h3 style="margin-bottom:6px">Your driving, from routes</h3>
+    <div class="kv"><span>Routes per month</span><b class="num">${miles(rs.routeMonthly)}</b></div>
+    <div class="kv"><span>Weekdays / weekends</span><span class="num small">${miles(rs.weekday)} / ${miles(rs.weekend)}</span></div>
+    <div class="kv"><span>Other driving per month</span><span class="inline" style="align-items:center;gap:4px"><input type="number" min="0" step="50" inputmode="numeric" value="${+c.otherMonthly||0}" data-act="otherMonthly" class="mini-in"> mi</span></div>
+    <div class="kv"><span><b>Total per month</b></span><b class="num">${miles(rs.monthly)}</b></div>
+    <div class="kv"><span><b>Per year</b></span><b class="num">${miles(rs.yearly)}</b></div>
+    ${hw!=null?`<div style="margin:10px 0 4px" class="flabel">Highway vs city</div><div class="mixbar"><i style="width:${hw}%"></i></div>
+      <div class="tiny muted" style="display:flex;justify-content:space-between"><span>Highway ${hw}%</span><span>City ${100-hw}%</span></div>`:''}
+    ${rs.shortShare!=null?`<div class="kv" style="margin-top:6px"><span>Short trips (under 10 min / 5 mi)</span><span class="num">${Math.round(rs.shortShare*100)}%</span></div>`:''}
+    ${rs.monthly>0?`<p class="small" style="margin:10px 0 0">The car is set to <b>${cur.toLocaleString()} mi/yr</b>.${Math.abs(yr-cur)>=300?` <button class="btn sm pri" data-act="useRouteMiles" data-v="${yr}">Use ${yr.toLocaleString()} mi/yr</button>`:' That matches your routes.'}</p>
+      <p class="tiny muted" style="margin:6px 0 0">Yearly miles set when maintenance is due and how many years the car has left.</p>`:''}
+  </div></div>
+  <div class="maincol">
+  <div class="card" style="padding:0;overflow:hidden"><div id="ovMap" class="map" style="border:0;border-radius:0"></div><div id="ovMsg" class="tiny muted" style="padding:8px 12px"></div></div>
+  <div class="card"><div class="row-h"><h3>Routes</h3><button class="btn sm pri" data-act="addRoute">＋ Add route</button></div>
+  ${routes.length?routes.map((r,i)=>{const legs=(+r.times||0)*(r.per==='month'?1:WEEKS_PER_MONTH)*(r.roundTrip?2:1);
+    return `<div class="item"><div class="when bar-l" style="border-color:${RCOL[i%RCOL.length]}"><b>${esc((+r.miles||0).toFixed(1))} mi</b><small>${r.roundTrip?'round trip':'one way'}</small></div>
+      <div><div class="nm">${esc(r.name||'Route')}</div><div class="meta"><span>${esc(r.times)}× per ${r.per==='month'?'month':'week'}</span><span>${{weekday:'weekdays',weekend:'weekends',any:'any day'}[r.when||'any']}</span><span><span class="k">${miles(legs*(+r.miles||0))}</span>/mo</span>${r.hwy!=null&&r.hwy!==''?`<span>${Math.round(r.hwy*100)}% highway</span>`:''}</div>
+      ${r.from&&r.from.label?`<div class="tiny muted">${esc(r.from.label)} → ${esc((r.to&&r.to.label)||'')}</div>`:''}</div>
+      <div><button class="btn sm ghost" data-act="editRoute" data-id="${r.id}">Edit</button></div></div>`;}).join(''):`<p class="muted small">Add the trips you make regularly – work, school, the gym, weekend trips. Each route's distance and highway share come from the map, and they add up to your monthly and yearly miles.</p>`}
+  </div>
+  ${mapSettingsHTML()}
+  <p class="tiny muted">Maps: © OpenStreetMap contributors${mapProvider()==='carto'?', © CARTO':mapProvider()==='ofm'?', OpenFreeMap':''}. Routes: OSRM. Place search: Photon. Addresses you search or tap are sent to these free services to find places and routes, and are saved only with your tracker data.</p>
+  </div></div>`;
+  return html;
+}
+const RCOL=['#c2410c','#2b5c8a','#2f6f4f','#8a3ab9','#a86a10','#b42318','#0e7490'];
+
+/* ---- map plumbing (Leaflet loaded on demand) ---- */
+function loadLeaflet(){
+  if(window.L&&window.L.map&&loadLeaflet.ok)return Promise.resolve(window.L);
+  if(loadLeaflet.p)return loadLeaflet.p;
+  const srcs=[['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'],['https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css','https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js']];
+  /* wait for BOTH the stylesheet and the script – drawing before the CSS arrives scrambles the map */
+  const tryOne=i=>new Promise((res,rej)=>{
+    if(i>=srcs.length)return rej(new Error('lib'));
+    let done=false;const fail=()=>{if(done)return;done=true;clearTimeout(t);l.remove();sc.remove();tryOne(i+1).then(res,rej);};
+    const t=setTimeout(fail,15000);
+    const l=document.createElement('link');l.rel='stylesheet';l.href=srcs[i][0];
+    const css=new Promise((ok,no)=>{l.onload=ok;l.onerror=no;});
+    const sc=document.createElement('script');sc.src=srcs[i][1];
+    const js=new Promise((ok,no)=>{sc.onload=ok;sc.onerror=no;});
+    document.head.appendChild(l);document.head.appendChild(sc);
+    Promise.all([css,js]).then(()=>{if(done)return;done=true;clearTimeout(t);if(window.L&&window.L.map){loadLeaflet.ok=true;res(window.L);}else fail();},fail);
+  });
+  loadLeaflet.p=tryOne(0).catch(e=>{loadLeaflet.p=null;throw e;});
+  return loadLeaflet.p;
+}
+/* Map images.
+   - OpenFreeMap (default): free, no key, no sign-up, works even when opened as a local file.
+     Vector map drawn by MapLibre GL inside Leaflet.
+   - CARTO: needs a free key (carto.com/basemaps/apikey); without it images say "API key required".
+   - OpenStreetMap: free, but blocks pages that aren't served from a web address ("Access blocked"). */
+function mapProvider(){
+  const st=S.mapSettings=S.mapSettings||{};
+  if(!st.v2){if(st.provider==='osm')delete st.provider;st.v2=true;}
+  return st.provider||(st.cartoKey?'carto':'ofm');
+}
+function loadScript(src){return new Promise((ok,no)=>{const sc=document.createElement('script');sc.src=src;sc.onload=ok;sc.onerror=()=>{sc.remove();no(new Error(src));};document.head.appendChild(sc);});}
+function loadCSS(href){return new Promise(ok=>{const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.onload=ok;l.onerror=ok;document.head.appendChild(l);});}
+function loadMapLibre(){
+  if(window.maplibregl&&L.maplibreGL)return Promise.resolve();
+  if(loadMapLibre.p)return loadMapLibre.p;
+  const cdns=['https://unpkg.com/','https://cdn.jsdelivr.net/npm/'];
+  const tryOne=i=>i>=cdns.length?Promise.reject(new Error('maplibre')):
+    Promise.all([loadCSS(cdns[i]+'maplibre-gl/dist/maplibre-gl.css'),window.maplibregl?Promise.resolve():loadScript(cdns[i]+'maplibre-gl/dist/maplibre-gl.js')])
+      .then(()=>L.maplibreGL?null:loadScript(cdns[i]+'@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js'))
+      .then(()=>{if(!(window.maplibregl&&L.maplibreGL))throw new Error('maplibre');})
+      .catch(()=>tryOne(i+1));
+  loadMapLibre.p=tryOne(0).catch(e=>{loadMapLibre.p=null;throw e;});
+  return loadMapLibre.p;
+}
+const OSM_ATTR='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+function rasterLayer(map,url,opts,say){
+  const layer=L.tileLayer(url,Object.assign({maxZoom:19},opts));let ok=0,bad=0;
+  layer.on('tileload',()=>{ok++;if(ok===1)say('');});
+  layer.on('tileerror',()=>{bad++;if(bad===4&&ok===0)say('The map images aren\'t loading. Your routes still work – see "Map images" on the Routes page for options.');});
+  layer.addTo(map);return layer;
+}
+function addTiles(map,statusEl){
+  const st=S.mapSettings||{},prov=mapProvider(),key=(st.cartoKey||'').trim();
+  const dark=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
+  const say=m=>{if(statusEl&&document.body.contains(statusEl))statusEl.textContent=m;};
+  say('Loading map…');
+  if(prov==='carto'&&key)return rasterLayer(map,`https://{s}.basemaps.cartocdn.com/rastertiles/${dark?'dark_all':'voyager'}/{z}/{x}/{y}{r}.png?key=${encodeURIComponent(key)}`,
+    {subdomains:'abcd',attribution:OSM_ATTR+' &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'},say);
+  if(prov==='osm')return rasterLayer(map,'https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:OSM_ATTR,referrerPolicy:'strict-origin-when-cross-origin'},say);
+  /* OpenFreeMap */
+  loadMapLibre().then(()=>{
+    try{if(!document.body.contains(map.getContainer()))return;}catch(e){return;}
+    const gl=L.maplibreGL({style:`https://tiles.openfreemap.org/styles/${dark?'dark':'liberty'}`,
+      attribution:'<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> '+OSM_ATTR}).addTo(map);
+    let loaded=false;
+    try{const m=gl.getMaplibreMap();m.on('load',()=>{loaded=true;say('');});
+      m.on('error',ev=>{if(!loaded)say('The map images couldn\'t load from OpenFreeMap. Your routes still work – try CARTO under "Map images".');});}catch(e){}
+    setTimeout(()=>{if(!loaded)say('The map is slow to load. If it stays blank, your routes still work – try CARTO under "Map images".');},12000);
+  }).catch(()=>say('The map drawing library couldn\'t load. Your routes still work – try CARTO under "Map images".'));
+}
+function mapSettingsHTML(){
+  const st=S.mapSettings||{},prov=mapProvider(),local=location.protocol==='file:';
+  return `<div class="card small"><h3 style="margin-bottom:6px">Map images</h3>
+    <div class="radio" style="margin-bottom:8px">
+      <label><input type="radio" name="mapProv" value="ofm" ${prov==='ofm'?'checked':''} data-act="mapProv"> OpenFreeMap (free, no key – recommended)</label>
+      <label><input type="radio" name="mapProv" value="carto" ${prov==='carto'?'checked':''} data-act="mapProv"> CARTO (free key)</label>
+      <label><input type="radio" name="mapProv" value="osm" ${prov==='osm'?'checked':''} data-act="mapProv"> OpenStreetMap</label></div>
+    ${prov==='ofm'?`<p style="margin:0">Free with no key or sign-up, and works whether you open the tracker as a file or from PageVault.</p>`:''}
+    ${prov==='osm'?`<p style="margin:0">Only works when the tracker is opened from a web address, like your PageVault server.${local?' <b>You\'re opening it as a local file, so the map will say "Access blocked".</b>':' If the map says "Access blocked", switch to OpenFreeMap.'}</p>`:''}
+    ${prov==='carto'?`<div class="f" style="margin:0"><label for="cartoKey">CARTO key</label><div class="inline"><input id="cartoKey" value="${esc(st.cartoKey||'')}" placeholder="Paste your key" autocomplete="off" spellcheck="false"><button type="button" class="btn" data-act="saveCartoKey">Save</button></div>
+      <span class="hint">Get one free at <a href="https://carto.com/basemaps/apikey" target="_blank" rel="noopener">carto.com/basemaps/apikey</a> – emailed right away, no account needed.</span></div>
+      ${!st.cartoKey?'<p style="margin:6px 0 0;color:var(--warn)">Until you add a key, the map uses OpenFreeMap.</p>':''}`:''}
+  </div>`;
+}
+/* pins drawn with CSS (no image files to go missing) */
+function pinIcon(kind){return L.divIcon({className:'',html:`<div class="pin pin-${kind}"><span>${kind==='from'?'A':'B'}</span></div>`,iconSize:[28,36],iconAnchor:[14,34],tooltipAnchor:[0,-30]});}
+const MAP_FAIL='The map couldn\'t load. This usually means the tracker is open in a preview (the Claude app or the Files app), which blocks internet access, or you\'re offline. Open it in Safari or from PageVault for the map. You can still add routes by typing the distance yourself.';
+let ovMap=null;
+function initOverview(c){
+  const el=document.getElementById('ovMap');if(!el)return;
+  if(ovMap){try{ovMap.remove();}catch(e){}ovMap=null;}
+  const routes=(c.routes||[]).filter(r=>r.geom&&r.geom.length>1);
+  $('#ovMsg').textContent='Loading map…';
+  loadLeaflet().then(()=>{
+    if(!document.body.contains(el))return;
+    ovMap=L.map(el,{scrollWheelZoom:false});addTiles(ovMap,$('#ovMsg'));
+    const all=[];
+    (c.routes||[]).forEach((r,i)=>{if(!r.geom||r.geom.length<2)return;const col=RCOL[i%RCOL.length];
+      L.polyline(r.geom,{color:col,weight:5,opacity:.85}).addTo(ovMap).bindPopup(`<b>${esc(r.name||'Route')}</b><br>${(+r.miles).toFixed(1)} mi one way`);
+      L.circleMarker(r.geom[0],{radius:6,color:col,fillColor:'#fff',fillOpacity:1,weight:3}).addTo(ovMap);
+      L.circleMarker(r.geom[r.geom.length-1],{radius:6,color:col,fillColor:col,fillOpacity:1,weight:2}).addTo(ovMap);
+      all.push(...r.geom);});
+    if(all.length)ovMap.fitBounds(L.latLngBounds(all),{padding:[24,24]});else ovMap.setView([39.5,-98.35],4);
+    setTimeout(()=>{try{ovMap&&ovMap.invalidateSize();}catch(e){}},150);
+    if(!routes.length)setTimeout(()=>{const m=$('#ovMsg');if(m&&!m.textContent)m.textContent='Your routes will appear here.';},1500);
+  }).catch(()=>{el.style.display='none';$('#ovMsg').textContent=MAP_FAIL;});
+}
+
+/* ---- route editor ---- */
+let rt=null,rtMap=null,rtLayer=null,editingRoute=null;
+function openRoute(r){
+  editingRoute=r||null;
+  rt=r?{from:r.from?{...r.from}:null,to:r.to?{...r.to}:null,geom:r.geom||null}:{from:null,to:null,geom:null};
+  $('#routeTitle').textContent=r?'Edit route':'Add a route';
+  $('#rt_name').value=r?r.name||'':'';$('#rt_from').value=rt.from?rt.from.label||'':'';$('#rt_to').value=rt.to?rt.to.label||'':'';
+  $('#rt_miles').value=r&&r.miles?(+r.miles).toFixed(1):'';$('#rt_hwy').value=r&&r.hwy!=null&&r.hwy!==''?Math.round(r.hwy*100):'';$('#rt_mins').value=r&&r.mins?Math.round(r.mins):'';
+  $('#rt_round').checked=r?!!r.roundTrip:true;$('#rt_times').value=r?r.times:5;$('#rt_per').value=r?r.per||'week':'week';$('#rt_when').value=r?r.when||'any':'weekday';
+  $('#rt_del').style.display=r?'':'none';$('#rtMsg').textContent='';$('#rt_from_s').innerHTML='';$('#rt_to_s').innerHTML='';
+  $('#routeDlg').showModal();
+  const el=$('#rtMap');el.style.display='';$('#rtMsg').textContent='Loading map…';
+  loadLeaflet().then(()=>{
+    if(rtMap){try{rtMap.remove();}catch(e){}}
+    rtMap=L.map(el);addTiles(rtMap,$('#rtMsg'));rtLayer=L.layerGroup().addTo(rtMap);
+    rtMap.on('click',ev=>{const which=!rt.from?'from':'to';setPoint(which,ev.latlng.lat,ev.latlng.lng,null);});
+    drawRoute(true);setTimeout(()=>{if(rtMap){rtMap.invalidateSize();drawRoute(true);}},120);
+  }).catch(()=>{el.style.display='none';$('#rtMsg').textContent=MAP_FAIL+' Search still works if you\'re online.';});
+}
+function drawRoute(fit){
+  if(!rtMap||!rtLayer)return;rtLayer.clearLayers();const pts=[];
+  for(const w of ['from','to']){const p=rt[w];if(!p)continue;
+    const m=L.marker([p.lat,p.lng],{draggable:true,title:w==='from'?'Start':'End',icon:pinIcon(w)}).addTo(rtLayer).bindTooltip(w==='from'?'Start':'End');
+    m.on('dragend',()=>{const ll=m.getLatLng();setPoint(w,ll.lat,ll.lng,null);});pts.push([p.lat,p.lng]);}
+  if(rt.geom&&rt.geom.length>1){L.polyline(rt.geom,{color:'#c2410c',weight:5,opacity:.85}).addTo(rtLayer);pts.push(...rt.geom);}
+  if(fit){if(pts.length>1)rtMap.fitBounds(L.latLngBounds(pts),{padding:[30,30]});else if(pts.length)rtMap.setView(pts[0],13);else rtMap.setView(guessCenter(),11);}
+}
+function guessCenter(){for(const c of S.cars)for(const r of c.routes||[])if(r.from)return[r.from.lat,r.from.lng];return[41.88,-87.63];}
+async function setPoint(which,lat,lng,label){
+  rt[which]={lat:+lat,lng:+lng,label:label||`${(+lat).toFixed(4)}, ${(+lng).toFixed(4)}`};
+  $('#rt_'+which).value=rt[which].label;$('#rt_'+which+'_s').innerHTML='';
+  rt.geom=null;drawRoute(!rt.from||!rt.to);
+  if(!label)reverseGeo(which,lat,lng);
+  if(rt.from&&rt.to)await computeRoute();
+}
+async function reverseGeo(which,lat,lng){
+  try{const r=await fetch(`https://photon.komoot.io/reverse?lon=${lng}&lat=${lat}`);const j=await r.json();const f=j.features&&j.features[0];
+    if(f&&rt[which]&&rt[which].lat===+lat){rt[which].label=placeLabel(f.properties);$('#rt_'+which).value=rt[which].label;}}catch(e){}
+}
+function placeLabel(p){const a=[p.name,[p.housenumber,p.street].filter(Boolean).join(' '),p.city||p.town||p.village,p.state].filter(Boolean);return [...new Set(a)].join(', ');}
+async function computeRoute(){
+  const a=rt.from,b=rt.to;$('#rtMsg').textContent='Finding the route…';
+  try{
+    const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),15000);
+    const r=await fetch(`https://router.project-osrm.org/route/v1/driving/${a.lng},${a.lat};${b.lng},${b.lat}?overview=full&geometries=geojson&annotations=distance,speed`,{signal:ctl.signal});clearTimeout(tm);
+    const j=await r.json();if(!j.routes||!j.routes.length)throw new Error(j.message||'no route');
+    const ro=j.routes[0];let hw=0,tot=0;
+    for(const leg of ro.legs||[]){const an=leg.annotation||{};(an.distance||[]).forEach((d,i)=>{tot+=d;if((an.speed||[])[i]>=20.1)hw+=d;});}
+    const coords=ro.geometry.coordinates,step=Math.max(1,Math.ceil(coords.length/300));
+    rt.geom=coords.filter((_,i)=>i%step===0||i===coords.length-1).map(p=>[+p[1].toFixed(5),+p[0].toFixed(5)]);
+    const mi=ro.distance/1609.344,mins=ro.duration/60,share=tot?hw/tot:0;
+    $('#rt_miles').value=mi.toFixed(1);$('#rt_hwy').value=Math.round(share*100);$('#rt_mins').value=Math.round(mins);
+    $('#rtMsg').innerHTML=`<b>${mi.toFixed(1)} mi</b> one way · about ${Math.round(mins)} min · ${Math.round(share*100)}% highway (roads at 45 mph or faster)`;
+    drawRoute(true);
+  }catch(e){$('#rtMsg').textContent='Couldn\'t get a route from the routing service. Type the one-way distance and highway % yourself.';}
+}
+let srchT=null;
+function searchPlace(which){
+  clearTimeout(srchT);const q=$('#rt_'+which).value.trim(),box=$('#rt_'+which+'_s');
+  if(q.length<3){box.innerHTML='';return;}
+  srchT=setTimeout(async()=>{
+    const ctr=rtMap?rtMap.getCenter():{lat:guessCenter()[0],lng:guessCenter()[1]};
+    try{const r=await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&limit=5&lat=${ctr.lat}&lon=${ctr.lng}`);const j=await r.json();
+      box.innerHTML=(j.features||[]).map(f=>`<button type="button" data-lat="${f.geometry.coordinates[1]}" data-lng="${f.geometry.coordinates[0]}" data-l="${esc(placeLabel(f.properties))}">${esc(placeLabel(f.properties))}</button>`).join('')||'<span class="tiny muted">No matches</span>';
+    }catch(e){box.innerHTML='<span class="tiny muted">Search unavailable – tap the map or type the distance yourself.</span>';}
+  },450);
+}
+
+/* ---------- dialogs ---------- */
+let editingCar=null;
+function openCar(c){
+  editingCar=c||null;
+  $('#carDlgTitle').textContent=c?'Edit car':'Add a car';
+  const T=iso(today0());
+  const v=c||{vin:'',year:'',make:'',model:'',trim:'',name:'',powertrain:'gas',trans:'auto',drive:'fwd',timing:'chain',plugs:'long',odo:'',odoDate:T,annualMiles:12000,inService:'',condition:'normal',reliability:'avg'};
+  const set=(id,val)=>{$('#'+id).value=val??'';};
+  set('cf_vin',v.vin);set('cf_year',v.year);set('cf_make',v.make);set('cf_model',v.model);set('cf_trim',v.trim);set('cf_name',v.name);
+  set('cf_pt',v.powertrain);set('cf_trans',v.trans);set('cf_drive',v.drive);set('cf_timing',v.timing);set('cf_plugs',v.plugs);
+  set('cf_odo',v.odo);set('cf_odoDate',v.odoDate);set('cf_annual',v.annualMiles);set('cf_inService',v.inService);set('cf_cond',v.condition);set('cf_rel',v.reliability);
+  $('#histWrap').style.display=c?'none':'';$('#rebuildWrap').style.display=c?'':'none';$('#cf_rebuild').checked=false;
+  $('#vinMsg').textContent='Decodes year, make, model, engine, transmission and drive type from the NHTSA database.';
+  $('#carDlg').showModal();
+}
+$('#carDlg').addEventListener('close',()=>{
+  if($('#carDlg').returnValue!=='ok')return;
+  const g=id=>$('#'+id).value.trim();
+  const d={vin:g('cf_vin').toUpperCase(),year:+g('cf_year'),make:g('cf_make'),model:g('cf_model'),trim:g('cf_trim'),name:g('cf_name'),powertrain:g('cf_pt'),trans:g('cf_trans'),drive:g('cf_drive'),
+    timing:g('cf_timing'),plugs:g('cf_plugs'),odo:+g('cf_odo')||0,odoDate:g('cf_odoDate')||iso(today0()),annualMiles:+g('cf_annual')||12000,inService:g('cf_inService')||`${+g('cf_year')||today0().getFullYear()}-01-01`,condition:g('cf_cond'),reliability:g('cf_rel')};
+  if(d.powertrain==='ev')d.trans='ev';else if(d.trans==='ev')d.trans='auto';
+  if(editingCar){
+    const c=editingCar;const specChanged=['powertrain','trans','drive','timing','plugs'].some(k=>c[k]!==d[k]);
+    Object.assign(c,d);
+    if($('#cf_rebuild').checked||specChanged){
+      const old={};c.schedule.forEach(i=>old[i.id]=i);
+      const fresh=template(c).map(i=>{const o=old[i.id];if(o){i.lastMiles=o.lastMiles;i.lastDate=o.lastDate;}else applyBaseline(c,i,'onschedule');return i;});
+      const custom=c.schedule.filter(i=>!i.key);c.schedule=fresh.concat(custom);
+      toast('Schedule rebuilt for new specs');
+    }
+  }else{
+    const mode=($('input[name=hist]:checked')||{}).value||'onschedule';
+    const c=Object.assign({id:uid(),logs:[],created:iso(today0())},d);
+    c.schedule=template(c);c.schedule.forEach(i=>applyBaseline(c,i,mode));
+    S.cars.push(c);S.activeId=c.id;tab='agenda';toast('Car added');
+  }
+  save();render();
+});
+$('#vinBtn').addEventListener('click',async()=>{
+  const vin=$('#cf_vin').value.trim().toUpperCase(),msg=$('#vinMsg');
+  if(!/^[A-HJ-NPR-Z0-9]{17}$/.test(vin)){msg.textContent='A VIN is 17 letters/numbers (no I, O or Q).';return;}
+  msg.textContent='Decoding…';
+  try{
+    const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),15000);
+    const r=await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/${vin}?format=json`,{signal:ctl.signal});clearTimeout(tm);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const v=(await r.json()).Results[0];
+    if(!v||!v.Make){msg.textContent='Could not decode that VIN. Check it and try again, or fill in the fields by hand.';return;}
+    const title=s=>s?s.toLowerCase().replace(/\b\w/g,ch=>ch.toUpperCase()).replace(/\bBmw\b/,'BMW').replace(/\bGmc\b/,'GMC').replace(/\bMini\b/,'MINI'):'';
+    if(v.ModelYear)$('#cf_year').value=v.ModelYear;
+    $('#cf_make').value=title(v.Make);if(v.Model)$('#cf_model').value=v.Model;
+    const trim=[v.Trim,v.DisplacementL?(+v.DisplacementL).toFixed(1)+'L':'',v.EngineCylinders?v.EngineCylinders+'-cyl':''].filter(Boolean).join(' ');
+    if(trim)$('#cf_trim').value=trim;
+    const fuel=(v.FuelTypePrimary||'')+' '+(v.FuelTypeSecondary||''),el=v.ElectrificationLevel||'';
+    let pt='gas';
+    if(/BEV|Battery Electric/i.test(el)||(/Electric/i.test(v.FuelTypePrimary||'')&&!/Gasoline|Diesel/i.test(fuel)))pt='ev';
+    else if(/HEV|Hybrid/i.test(el))pt='hybrid';else if(/Diesel/i.test(v.FuelTypePrimary||''))pt='diesel';else if(/yes/i.test(v.Turbo||''))pt='turbo';
+    $('#cf_pt').value=pt;
+    const dr=v.DriveType||'';
+    if(/4WD|4x4|4-Wheel/i.test(dr))$('#cf_drive').value='4wd';else if(/AWD|All/i.test(dr))$('#cf_drive').value='awd';else if(/RWD|Rear/i.test(dr))$('#cf_drive').value='rwd';else if(/FWD|Front/i.test(dr))$('#cf_drive').value='fwd';
+    const tr=v.TransmissionStyle||'';
+    if(pt==='ev')$('#cf_trans').value='ev';else if(/CVT|Continuously/i.test(tr))$('#cf_trans').value='cvt';else if(/Manual/i.test(tr))$('#cf_trans').value='manual';else if(tr)$('#cf_trans').value='auto';
+    if(!$('#cf_inService').value&&v.ModelYear)$('#cf_inService').value=`${v.ModelYear}-01-01`;
+    const missing=[];if(!dr)missing.push('drive');if(!tr&&pt!=='ev')missing.push('transmission');
+    msg.innerHTML=`✓ Decoded: <b>${esc(v.ModelYear)} ${esc(title(v.Make))} ${esc(v.Model)}</b> ${esc(trim)} · ${esc(PT_LBL[pt])}${missing.length?`. The VIN doesn't say the ${missing.join(' or ')} — please check ${missing.length>1?'those':'it'}.`:''} Also confirm timing belt vs. chain.`;
+    loadModels();
+  }catch(e){
+    let copied=false;try{await navigator.clipboard.writeText(vin);copied=true;}catch(_){}
+    const preview=location.protocol==='file:'||location.origin==='null'||window.top!==window.self;
+    msg.innerHTML=`<b style="color:var(--bad)">Couldn't reach the NHTSA VIN service from here.</b> `+
+      (navigator.onLine===false?'Your device looks offline. ':preview?'This usually happens when the file is open in a preview (the Claude app or the Files app), which blocks internet access. Open the tracker in Safari or from your PageVault server and try again. ':'Check your connection and try again. ')+
+      `Or <a href="https://vpic.nhtsa.dot.gov/decoder/" target="_blank" rel="noopener">open NHTSA's VIN decoder</a>${copied?' (your VIN is copied – paste it there)':''} and fill in the fields below by hand.`;
+  }
+});
+let modelsKey='';
+async function loadModels(){
+  const y=$('#cf_year').value,m=$('#cf_make').value.trim();if(!y||!m)return;const k=y+'|'+m.toLowerCase();if(k===modelsKey)return;modelsKey=k;
+  try{const r=await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${encodeURIComponent(m)}/modelyear/${encodeURIComponent(y)}?format=json`);
+    const j=await r.json();const names=[...new Set((j.Results||[]).map(x=>x.Model_Name))].sort();
+    $('#modelsList').innerHTML=names.map(n=>`<option value="${esc(n)}">`).join('');}catch(e){}
+}
+$('#cf_make').addEventListener('change',loadModels);$('#cf_year').addEventListener('change',loadModels);
+$('#cf_pt').addEventListener('change',e=>{if(e.target.value==='ev')$('#cf_trans').value='ev';});
+$('#makesList').innerHTML=MAKES.map(m=>`<option value="${m}">`).join('');
+
+/* log dialog */
+let editingLog=null;
+function openLog(itemId,log){
+  const c=getCar();editingLog=log||null;
+  $('#logTitle').textContent=log?'Edit entry':'Log service';
+  $('#lf_item').innerHTML=c.schedule.map(i=>`<option value="${esc(i.id)}">${esc(i.name)}</option>`).join('')+'<option value="">Other / repair / expense…</option>';
+  const T=today0();
+  $('#lf_item').value=log?(log.itemId||''):(itemId??'');
+  $('#lf_title').value=log?log.title||'':'';$('#lf_cat').value=log?log.cat||'Repair':'Repair';
+  $('#lf_date').value=log?log.date:iso(T);$('#lf_miles').value=log?log.miles:odoAt(c,T);
+  const it=c.schedule.find(i=>i.id===(log?log.itemId:itemId));
+  const type=log?log.type:'diy';$$('input[name=lf_type]').forEach(r=>r.checked=r.value===type);
+  $('#lf_cost').value=log?log.cost:(it&&it.diy!=null?it.diy:(it?it.shop:''));
+  if(!log&&it&&it.diy==null)$$('input[name=lf_type]').forEach(r=>r.checked=r.value==='shop');
+  setTime(log&&+log.hrs>0?+log.hrs:null);
+  $('#lf_notes').value=log?log.notes||'':'';
+  $('#logDel').style.display=log?'':'none';
+  syncLog();$('#logDlg').showModal();
+}
+function syncLog(){
+  $('#lf_otherWrap').style.display=$('#lf_item').value?'none':'';
+  const t=($('input[name=lf_type]:checked')||{}).value;$('#lf_timeLbl').textContent=t==='diy'?'Time taken':'Time at shop (optional)';
+  const c=getCar(),it=c&&c.schedule.find(i=>i.id===$('#lf_item').value);const a=it&&avgTime(c,it);
+  $('#lf_timeHint').textContent=it&&it.diy!=null?`Estimate ${fmtHM(it.hrs)}`+(a?` · your average ${fmtHM(a.h)} over ${a.n} job${a.n>1?'s':''}`:''):'';
+  $('#lf_timer').textContent=S.timer?'⏱ Timer running':'⏱ Start timer';$('#lf_timer').disabled=!!S.timer||!!editingLog;
+}
+$('#lf_item').addEventListener('change',()=>{const c=getCar(),it=c.schedule.find(i=>i.id===$('#lf_item').value);const t=($('input[name=lf_type]:checked')||{}).value;
+  if(it){$('#lf_cost').value=t==='shop'||it.diy==null?it.shop:it.diy;}syncLog();});
+$$('input[name=lf_type]').forEach(r=>r.addEventListener('change',()=>{const c=getCar(),it=c.schedule.find(i=>i.id===$('#lf_item').value);if(it&&!editingLog)$('#lf_cost').value=r.value==='shop'||it.diy==null?it.shop:it.diy;syncLog();}));
+$('#logDel').addEventListener('click',()=>{if(!editingLog||!confirm('Delete this entry?'))return;const c=getCar();c.logs=c.logs.filter(l=>l.id!==editingLog.id);save();$('#logDlg').close('x');render();});
+$('#logDlg').addEventListener('close',()=>{
+  if($('#logDlg').returnValue!=='ok')return;
+  const c=getCar();
+  const e={itemId:$('#lf_item').value||null,title:$('#lf_title').value.trim(),cat:$('#lf_cat').value,date:$('#lf_date').value,miles:+$('#lf_miles').value||0,
+    type:($('input[name=lf_type]:checked')||{}).value||'diy',cost:numOrNull($('#lf_cost').value)||0,hrs:getTime(),notes:$('#lf_notes').value.trim()};
+  if(!e.itemId&&!e.title)e.title='Other expense';
+  if(editingLog)Object.assign(editingLog,e);else c.logs.push(Object.assign({id:uid()},e));
+  if(parseD(e.date)>=parseD(c.odoDate)&&e.miles>c.odo){c.odo=e.miles;c.odoDate=e.date;}
+  if(!editingLog&&S.timer)S.timer=null;
+  save();render();toast('Saved');
+});
+function setTime(h){if(h==null){$('#lf_h').value='';$('#lf_m').value='';return;}const t=Math.round(h*60);$('#lf_h').value=Math.floor(t/60);$('#lf_m').value=t%60;}
+function getTime(){const H=+$('#lf_h').value||0,M=+$('#lf_m').value||0;const h=H+M/60;return h>0?Math.round(h*100)/100:null;}
+/* stopwatch: survives closing the page, stored with the data */
+$('#lf_timer').addEventListener('click',()=>{const c=getCar();S.timer={carId:c.id,itemId:$('#lf_item').value,title:$('#lf_title').value.trim(),type:($('input[name=lf_type]:checked')||{}).value||'diy',start:Date.now()};
+  save();$('#logDlg').close('timer');render();toast('Timer started – tap Stop & log when you finish');});
+function timerBar(){
+  const t=S.timer;if(!t)return '';const c=S.cars.find(x=>x.id===t.carId);const it=c&&c.schedule.find(i=>i.id===t.itemId);
+  return `<div class="timerbar"><span>⏱ ${esc(it?it.name:(t.title||'Maintenance'))}${c&&c!==getCar()?' · '+esc(carLabel(c)):''}</span><span class="tt" id="timerTxt">${elapsed()}</span>
+    <button class="btn sm" data-act="timerCancel" style="background:none;color:inherit;border-color:rgba(255,255,255,.3)">Cancel</button><button class="btn sm pri" data-act="timerStop">Stop &amp; log</button></div>`;
+}
+function elapsed(){if(!S.timer)return '';const s=Math.max(0,Math.floor((Date.now()-S.timer.start)/1000));return Math.floor(s/3600)+':'+String(Math.floor(s/60)%60).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+setInterval(()=>{const e=document.getElementById('timerTxt');if(e)e.textContent=elapsed();},1000);
+function stopTimer(){const t=S.timer;if(!t)return;const c=S.cars.find(x=>x.id===t.carId);if(c&&c.id!==S.activeId){S.activeId=c.id;render();}
+  openLog(t.itemId);if(!t.itemId)$('#lf_title').value=t.title||'';$$('input[name=lf_type]').forEach(r=>r.checked=r.value===t.type);
+  setTime(Math.max(1,Math.round((Date.now()-t.start)/60000))/60);syncLog();}
+
+/* item dialog */
+let editingItem=null;
+function openItem(it){
+  editingItem=it||null;$('#itemTitle').textContent=it?'Edit item':'New schedule item';
+  const v=it||{name:'',cat:'',miles:'',months:'',sMiles:'',sMonths:'',diy:'',shop:'',hrs:'',w:1,off:false,lastMiles:'',lastDate:'',notes:''};
+  const s=(id,x)=>{$('#'+id).value=x??'';};
+  s('if_name',v.name);s('if_cat',v.cat);s('if_mi',v.miles);s('if_mo',v.months);s('if_smi',v.sMiles);s('if_smo',v.sMonths);s('if_diy',v.diy);s('if_shop',v.shop);s('if_hrs',v.hrs);
+  $('#if_w').value=impTier(v.w??1);
+  s('if_on',v.off?'0':'1');s('if_lmi',v.lastMiles);s('if_ld',v.lastDate);s('if_notes',v.notes);
+  $('#itemDel').style.display=it?'':'none';$('#itemDlg').showModal();
+}
+$('#itemDel').addEventListener('click',()=>{if(!editingItem||!confirm('Remove this item from the schedule? Logged services stay in your expenses.'))return;const c=getCar();c.schedule=c.schedule.filter(i=>i!==editingItem);save();$('#itemDlg').close('x');render();});
+$('#itemDlg').addEventListener('close',()=>{
+  if($('#itemDlg').returnValue!=='ok')return;
+  const c=getCar(),g=id=>$('#'+id).value;
+  const d={name:g('if_name').trim(),cat:g('if_cat').trim(),miles:numOrNull(g('if_mi')),months:numOrNull(g('if_mo')),sMiles:numOrNull(g('if_smi')),sMonths:numOrNull(g('if_smo')),
+    diy:numOrNull(g('if_diy')),shop:numOrNull(g('if_shop')),hrs:numOrNull(g('if_hrs')),w:(editingItem&&impTier(editingItem.w)===g('if_w'))?editingItem.w:TIER_W[g('if_w')],off:g('if_on')==='0',lastMiles:numOrNull(g('if_lmi')),lastDate:g('if_ld')||null,notes:g('if_notes').trim()};
+  if(editingItem)Object.assign(editingItem,d);else c.schedule.push(Object.assign({id:uid()},d));
+  save();render();toast('Schedule updated');
+});
+
+/* odometer */
+$('#odoDlg').addEventListener('close',()=>{
+  if($('#odoDlg').returnValue!=='ok')return;
+  const c=getCar(),m=+$('#od_mi').value,d=$('#od_date').value;if(!m||!d)return;
+  if($('#od_recalc').checked){
+    const ms=c.logs.map(l=>({m:+l.miles,d:parseD(l.date)})).concat([{m:+c.odo,d:parseD(c.odoDate)}]).filter(x=>x.d&&x.m<m&&x.d<parseD(d)).sort((a,b)=>a.d-b.d);
+    const ref=ms[0];if(ref){const days=(parseD(d)-ref.d)/DAY;if(days>=30)c.annualMiles=Math.round((m-ref.m)/days*365.25/100)*100;}
+  }
+  c.odo=m;c.odoDate=d;save();render();toast('Odometer updated');
+});
+function openOdo(){const c=getCar();$('#od_mi').value=odoAt(c,today0());$('#od_date').value=iso(today0());$('#odoDlg').showModal();}
+
+/* import schedule */
+let impSource='';
+function openImport(){$('#impText').value='';$('#impMsg').textContent='';$('#impFileName').textContent='';impSource='';$('#impDlg').showModal();}
+$('#impFileBtn').addEventListener('click',()=>{fileMode='sched';$('#fileIn').click();});
+$('#impTmplBtn').addEventListener('click',()=>downloadTemplate());
+function parseCSV(t){const rows=[];let row=[],f='',q=false;
+  for(let i=0;i<t.length;i++){const ch=t[i];
+    if(q){if(ch==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=ch;}
+    else if(ch==='"')q=true;else if(ch===','){row.push(f);f='';}
+    else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&t[i+1]==='\n')i++;row.push(f);rows.push(row);row=[];f='';}else f+=ch;}
+  if(f!==''||row.length){row.push(f);rows.push(row);}return rows.filter(r=>r.some(x=>x.trim()!==''));}
+const IMP_W={critical:4,crit:4,high:2,medium:1,med:1,normal:1,low:.3};
+function normItem(o){
+  const k={};for(const [a,b] of Object.entries(o))k[String(a).toLowerCase().replace(/[^a-z]/g,'')]=b;
+  const pick=(...ns)=>{for(const n of ns)if(k[n]!==undefined&&k[n]!=='')return k[n];return null;};
+  const name=pick('name','item','service','task');if(!name)return null;
+  const wRaw=pick('importance','w','weight');let w=1;if(wRaw!=null)w=IMP_W[String(wRaw).toLowerCase()]??(+wRaw||1);
+  const diyRaw=pick('diycost','diy','parts','partscost');
+  return{name:String(name).trim(),cat:pick('category','cat','system')||'',miles:numOrNull(pick('miles','intervalmiles','mi','everymiles')),months:numOrNull(pick('months','intervalmonths','mo','everymonths')),
+    sMiles:numOrNull(pick('severemiles','smiles')),sMonths:numOrNull(pick('severemonths','smonths')),diy:diyRaw==null||/shop/i.test(String(diyRaw))?(diyRaw==null&&pick('shopcost','shop')==null?0:null):numOrNull(diyRaw),
+    shop:numOrNull(pick('shopcost','shop','dealer')),hrs:numOrNull(pick('diyhours','hours','hrs','time')),w,notes:pick('notes','note')||'',off:false};
+}
+function parseSchedule(text){
+  text=text.trim();if(!text)throw new Error('Nothing to import.');
+  if(text[0]==='['||text[0]==='{'){let j=JSON.parse(text);if(!Array.isArray(j))j=j.schedule||j.items||(j.cars&&j.cars[0]&&j.cars[0].schedule)||[];return j.map(normItem).filter(Boolean);}
+  const rows=parseCSV(text);if(rows.length<2)throw new Error('CSV needs a header row and at least one item.');
+  const head=rows[0];return rows.slice(1).map(r=>{const o={};head.forEach((h,i)=>o[h]=r[i]);return normItem(o);}).filter(Boolean);
+}
+$('#impDlg').addEventListener('close',()=>{
+  if($('#impDlg').returnValue!=='ok')return;
+  const c=getCar();
+  try{
+    const items=parseSchedule($('#impText').value||impSource);
+    if(!items.length)throw new Error('No items found.');
+    const mode=($('input[name=impMode]:checked')||{}).value;
+    let added=0,updated=0;
+    if(mode==='replace'){
+      const old={};c.schedule.forEach(i=>old[i.name.toLowerCase()]=i);
+      c.schedule=items.map(n=>{const o=old[n.name.toLowerCase()];const it=Object.assign({id:o?o.id:uid()},n);if(o){it.lastMiles=o.lastMiles;it.lastDate=o.lastDate;}else applyBaseline(c,it,'onschedule');added++;return it;});
+    }else{
+      for(const n of items){const ex=c.schedule.find(i=>i.name.toLowerCase()===n.name.toLowerCase());
+        if(ex){const keep={id:ex.id,key:ex.key,lastMiles:ex.lastMiles,lastDate:ex.lastDate};Object.assign(ex,n,keep);updated++;}
+        else{const it=Object.assign({id:uid()},n);applyBaseline(c,it,'onschedule');c.schedule.push(it);added++;}}
+    }
+    save();render();toast(`Imported: ${added} added${updated?', '+updated+' updated':''}`);
+  }catch(e){alertSoft('Import failed: '+e.message);}
+});
+function alertSoft(m){toast(m);}
+function downloadTemplate(){
+  const c=getCar();const rows=[['name','category','miles','months','severe_miles','severe_months','diy_cost','shop_cost','diy_hours','importance','notes']];
+  const imp=w=>({crit:'critical',med:'medium',low:'low'})[impTier(w)];
+  const src=c?c.schedule:template({powertrain:'gas',trans:'auto',drive:'fwd',timing:'chain',plugs:'long'});
+  for(const i of src)rows.push([i.name,i.cat,i.miles??'',i.months??'',i.sMiles??'',i.sMonths??'',i.diy==null?'shop':i.diy,i.shop??'',i.hrs??'',imp(+i.w||0),i.notes||'']);
+  const csv=rows.map(r=>r.map(x=>{x=String(x);return /[",\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}).join(',')).join('\n');
+  download((FILE_BASE+'-'+(c?`${c.year}-${c.make}-${c.model}`:'template')).replace(/\s+/g,'-')+'-schedule.csv',csv,'text/csv');
+}
+
+/* file input (shared) */
+let fileMode='sched';
+$('#fileIn').addEventListener('change',async e=>{
+  const f=e.target.files[0];e.target.value='';if(!f)return;const text=await f.text();
+  if(fileMode==='sched'){impSource=text;$('#impText').value=text.slice(0,20000);$('#impFileName').textContent='Loaded '+f.name;return;}
+  $('#bkText').value=text;$('#bkFileName').textContent=f.name+' loaded – tap Restore this data';
+});
+
+/* ---------- backup & restore ----------
+   Works three ways so at least one always succeeds: download a .json file, copy/paste the text,
+   or the device share sheet. A restore first saves an undo copy. */
+const UNDO_KEY=KEY+'.undo';
+function backupJSON(){return JSON.stringify({app:'servicebook',appName:APP_NAME,appVersion:APP_VERSION,version:1,exported:new Date().toISOString(),cars:S.cars,activeId:S.activeId,timer:S.timer||null,mapSettings:S.mapSettings||null},null,1);}
+function backupName(){return `${FILE_BASE}-backup-${iso(today0())}.json`;}
+function backupDue(){if(PV||!S.cars.length)return false;/* in PageVault the server keeps it, so no reminder */const n=S.cars.reduce((a,c)=>a+c.logs.length,0);if(!n)return false;
+  if(!S.lastBackup)return n>=3;return (Date.now()-S.lastBackup)/DAY>30;}
+function markBackedUp(){S.lastBackup=Date.now();save();render();bkInfo();}
+function bkInfo(){const nc=S.cars.length,nl=S.cars.reduce((a,c)=>a+c.logs.length,0);
+  $('#bkInfo').innerHTML=`<b>${nc} car${nc===1?'':'s'}, ${nl} service entr${nl===1?'y':'ies'}.</b> `+(S.lastBackup?`Last backup ${fmtD(new Date(S.lastBackup),true)}.`:'Never backed up.')+
+    ` Your data is saved ${PV?'on your PageVault server (nothing is kept in this browser)':canStore?'only in this browser on this device':'<b>nowhere</b> – storage is blocked here, so back up before closing'}. Keep a backup somewhere else too.`;
+  let u=null;try{u=localStorage.getItem(UNDO_KEY);}catch(e){}$('#bkUndo').hidden=!u;}
+function openBackup(){bkInfo();$('#bkText').value='';$('#bkStatus').textContent='';$('#bkFileName').textContent='';
+  try{$('#bkShare').hidden=!(navigator.canShare&&navigator.canShare({files:[new File(['{}'],'x.json',{type:'application/json'})]}));}catch(e){$('#bkShare').hidden=true;}
+  $('#bkDlg').showModal();}
+const bkSay=m=>{$('#bkStatus').textContent=m;};
+$('#bkDownload').addEventListener('click',()=>{try{download(backupName(),backupJSON(),'application/json');markBackedUp();bkSay('Downloaded '+backupName()+'. If nothing appeared, use Copy instead.');}catch(e){bkSay('Download blocked here – use Copy to clipboard.');}});
+$('#bkCopy').addEventListener('click',async()=>{const t=backupJSON();
+  try{await navigator.clipboard.writeText(t);markBackedUp();bkSay('Copied. Paste it into a note, email or file to keep it.');}
+  catch(e){const ta=$('#bkText');ta.value=t;ta.focus();ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(_){}
+    if(ok){markBackedUp();bkSay('Copied. Paste it into a note, email or file to keep it.');}else bkSay('The backup text is in the box – select all and copy it yourself.');}});
+$('#bkShare').addEventListener('click',async()=>{try{await navigator.share({files:[new File([backupJSON()],backupName(),{type:'application/json'})],title:backupName()});markBackedUp();bkSay('Shared.');}catch(e){if(e&&e.name!=='AbortError')bkSay('Sharing failed – use Download or Copy.');}});
+$('#bkPick').addEventListener('click',()=>{fileMode='backup';$('#fileIn').click();});
+function validCar(c){return c&&typeof c==='object'&&c.make!=null&&Array.isArray(c.schedule)&&Array.isArray(c.logs);}
+$('#bkLoad').addEventListener('click',()=>{
+  let j;try{j=JSON.parse($('#bkText').value.trim());}catch(e){bkSay('That isn\'t valid backup text. Paste the whole backup, from the first { to the last }.');return;}
+  const cars=Array.isArray(j)?j:(j&&Array.isArray(j.cars)?j.cars:(validCar(j)?[j]:null));
+  if(!cars||!cars.length||!cars.every(validCar)){bkSay('No cars found in that backup.');return;}
+  try{localStorage.setItem(UNDO_KEY,JSON.stringify(S));}catch(e){}
+  const mode=($('input[name=bkMode]:checked')||{}).value;let added=0,updated=0;
+  if(mode==='replace'||!S.cars.length){S={cars:cars,activeId:(j.activeId&&cars.some(c=>c.id===j.activeId))?j.activeId:cars[0].id,timer:j.timer||null,lastBackup:S.lastBackup,mapSettings:j.mapSettings||S.mapSettings};added=cars.length;}
+  else for(const inc of cars){const ex=S.cars.find(c=>c.id===inc.id);
+    if(!ex){S.cars.push(inc);added++;continue;}
+    const have=new Set(ex.logs.map(l=>l.id));let n=0;for(const l of inc.logs)if(!have.has(l.id)){ex.logs.push(l);n++;}
+    for(const it of inc.schedule)if(!ex.schedule.some(i=>i.id===it.id))ex.schedule.push(it);
+    if(+inc.odo>+ex.odo){ex.odo=inc.odo;ex.odoDate=inc.odoDate;}
+    if(n)updated++;}
+  if(!S.cars.some(c=>c.id===S.activeId))S.activeId=S.cars[0].id;
+  save();render();bkInfo();bkSay(mode==='replace'?`Restored ${added} car${added===1?'':'s'}. You can undo this.`:`Merged: ${added} car${added===1?'':'s'} added, ${updated} updated. You can undo this.`);toast('Backup restored');
+});
+$('#bkUndo').addEventListener('click',()=>{let u=null;try{u=JSON.parse(localStorage.getItem(UNDO_KEY));localStorage.removeItem(UNDO_KEY);}catch(e){}
+  if(!u||!Array.isArray(u.cars)){bkSay('Nothing to undo.');return;}S=u;save();render();bkInfo();bkSay('Restore undone – you\'re back to how things were.');});
+
+/* ICS export */
+function exportICS(){
+  const c=getCar(),T=today0(),occ=occurrences(c,new Date(1900,0,1),addDays(T,365));
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+  const ics=s=>String(s).replace(/[\\,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
+  let out='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//A Better Maintenance Tracker//EN\r\nCALSCALE:GREGORIAN\r\n';
+  occ.forEach((o,i)=>{const d=o.date<T?T:o.date,ds=iso(d).replace(/-/g,''),de=iso(addDays(d,1)).replace(/-/g,'');
+    out+=`BEGIN:VEVENT\r\nUID:${c.id}-${o.it.id}-${ds}-${i}@servicebook\r\nDTSTAMP:${stamp}\r\nDTSTART;VALUE=DATE:${ds}\r\nDTEND;VALUE=DATE:${de}\r\nSUMMARY:${ics(c.make+' '+c.model+': '+o.it.name)}\r\nDESCRIPTION:${ics((o.miles?'Due around '+miles(o.miles)+'. ':'')+'DIY: '+(o.it.diy==null?'shop only':money(o.it.diy)+', '+hrs(o.it.hrs))+'. Shop: '+money(o.it.shop)+'.')}\r\nEND:VEVENT\r\n`;});
+  out+='END:VCALENDAR\r\n';
+  download(`${FILE_BASE}-${c.make}-${c.model}-calendar.ics`.replace(/\s+/g,'-'),out,'text/calendar');toast(`Exported ${occ.length} events`);
+}
+
+/* recalls */
+async function checkRecalls(){
+  const c=getCar(),box=$('#recallBox');if(!box)return;box.textContent='Checking NHTSA…';
+  const link=`https://www.nhtsa.gov/recalls${c.vin?'?vin='+encodeURIComponent(c.vin):''}`;
+  try{const r=await fetch(`https://api.nhtsa.gov/recalls/recallsByVehicle?make=${encodeURIComponent(c.make)}&model=${encodeURIComponent(c.model)}&modelYear=${encodeURIComponent(c.year)}`);
+    const j=await r.json();const list=j.results||j.Results||[];
+    box.innerHTML=list.length?`<p style="color:var(--ink)"><b>${list.length} recall campaign${list.length>1?'s':''}</b> for the ${esc(c.year)} ${esc(c.make)} ${esc(c.model)}. Not every one applies to every VIN — <a href="${link}" target="_blank" rel="noopener">check your VIN at NHTSA</a>.</p>`+
+      list.slice(0,8).map(x=>`<div class="kv" style="display:block"><b style="color:var(--ink)">${esc(x.Component||'')}</b> <span class="tiny">#${esc(x.NHTSACampaignNumber||'')} · ${esc(x.ReportReceivedDate||'')}</span><div class="tiny">${esc((x.Summary||'').slice(0,240))}${(x.Summary||'').length>240?'…':''}</div></div>`).join('')
+      :`<p>No recalls found for this year/make/model. <a href="${link}" target="_blank" rel="noopener">Double-check by VIN</a>.</p>`;
+  }catch(e){box.innerHTML=`Couldn't reach the NHTSA service from here. <a href="${link}" target="_blank" rel="noopener">Check recalls on nhtsa.gov</a>.`;}
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const m=e.target.closest('#menu button');
+  if(m){$('#menu').classList.remove('open');menuAct(m.dataset.m);return;}
+  if(!e.target.closest('#menu')&&!e.target.closest('#menuBtn'))$('#menu').classList.remove('open');
+  const a=e.target.closest('[data-act]');if(!a||a.tagName==='SELECT')return;
+  const act=a.dataset.act,c=getCar();
+  if(a.tagName==='A')e.preventDefault();
+  switch(act){
+    case 'addCar':openCar();break;
+    case 'restore':case 'backup':openBackup();break;
+    case 'odo':openOdo();break;
+    case 'range':agRange=+a.dataset.v;render();break;
+    case 'done':openLog(a.dataset.id);break;
+    case 'logNew':openLog((c.schedule.find(i=>!i.off)||{}).id||'');break;
+    case 'timerStop':stopTimer();break;
+    case 'timerCancel':if(confirm('Cancel the running timer?')){S.timer=null;save();render();}break;
+    case 'editLog':openLog(null,c.logs.find(l=>l.id===a.dataset.id));break;
+    case 'editItem':openItem(c.schedule.find(i=>i.id===a.dataset.id));break;
+    case 'addItem':openItem();break;
+    case 'importSched':openImport();break;
+    case 'editCar':openCar(c);break;
+    case 'recalls':checkRecalls();break;
+    case 'expf':expFilter=a.dataset.v;render();break;
+    case 'calv':calView=a.dataset.v;calSel=null;render();break;
+    case 'calprev':if(calView==='month'){calM--;if(calM<0){calM=11;calY--;}}else calY--;calSel=null;render();break;
+    case 'calnext':if(calView==='month'){calM++;if(calM>11){calM=0;calY++;}}else calY++;calSel=null;render();break;
+    case 'caltoday':{const T=today0();calY=T.getFullYear();calM=T.getMonth();calSel=null;render();break;}
+    case 'day':{const d=parseD(a.dataset.d);if(d.getMonth()!==calM){calM=d.getMonth();calY=d.getFullYear();}calSel=calSel===a.dataset.d?null:a.dataset.d;render();break;}
+    case 'gotab':tab=a.dataset.v;render();window.scrollTo(0,0);break;
+    case 'histType':histType=a.dataset.v;render();break;
+    case 'histPick':histItem=a.dataset.id;render();window.scrollTo(0,0);break;
+    case 'impInfo':e.preventDefault();openImp(a.dataset.t,a.dataset.id);break;
+    case 'lifeSub':lifeSub=a.dataset.v;render();window.scrollTo(0,0);break;
+    case 'habit':{c.habits=c.habits||{};const q=a.dataset.q,v=a.dataset.v;
+      if(q==='trips'){const auto=routeStats(c).tripsAuto;c.habits.tripsManual=!!auto;c.habits.trips=(c.habits.trips===v&&!auto)?undefined:v;}
+      else c.habits[q]=c.habits[q]===v?undefined:v;save();render();break;}
+    case 'tripsAuto':c.habits.tripsManual=false;save();render();break;
+    case 'setSevere':c.condition='severe';save();render();toast('Switched to the severe schedule');break;
+    case 'setNormal':c.condition='normal';save();render();toast('Switched to the normal schedule');break;
+    case 'useRouteMiles':c.annualMiles=+a.dataset.v;save();render();toast('Yearly miles updated');break;
+    case 'addRoute':openRoute();break;
+    case 'editRoute':openRoute((c.routes||[]).find(r=>r.id===a.dataset.id));break;
+    case 'saveCartoKey':{S.mapSettings=S.mapSettings||{};S.mapSettings.cartoKey=($('#cartoKey').value||'').trim();S.mapSettings.provider=S.mapSettings.cartoKey?'carto':'carto';save();render();toast(S.mapSettings.cartoKey?'Key saved – map updated':'Key cleared');break;}
+    case 'clearsel':calSel=null;render();break;
+    case 'gomonth':calM=+a.dataset.m;calView='month';calSel=null;render();break;
+  }
+});
+document.addEventListener('change',e=>{
+  const a=e.target.closest('select[data-act]');if(!a)return;
+  if(a.dataset.act==='calm'){calM=+a.value;calSel=null;}
+  if(a.dataset.act==='caly'){calY=+a.value;calSel=null;}
+  if(a.dataset.act==='histItem')histItem=a.value;
+  if(a.dataset.act==='histYear')histYear=a.value;
+  render();
+});
+function menuAct(k){
+  const c=getCar();
+  if(k==='restore'||k==='backup'){openBackup();return;}
+  if(k==='tmpl'){downloadTemplate();return;}
+  if(!c){toast('Add a car first');return;}
+  if(k==='editCar')openCar(c);
+  if(k==='odo')openOdo();
+  if(k==='ics')exportICS();
+  if(k==='importSched')openImport();
+  if(k==='delCar'&&confirm(`Delete ${carLabel(c)} and all its history? This can't be undone.`)){S.cars=S.cars.filter(x=>x!==c);S.activeId=S.cars[0]?S.cars[0].id:null;save();render();}
+}
+$('#menuBtn').addEventListener('click',()=>$('#menu').classList.toggle('open'));
+$('#addCarBtn').addEventListener('click',()=>openCar());
+$('#carSelect').addEventListener('change',e=>{S.activeId=e.target.value;save();render();});
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-tab]');if(!b)return;tab=b.dataset.tab;render();window.scrollTo(0,0);});
+
+$('#appVer').textContent=APP_VERSION;$('#appVer2').textContent=APP_VERSION;
+function setHdr(){const h=$('header.top');if(h)document.documentElement.style.setProperty('--hdr',(h.offsetHeight+14)+'px');}
+window.addEventListener('resize',setHdr);
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('legendcard')&&!e.target.open&&!S.legendSeen){S.legendSeen=true;save();}},true);
+document.addEventListener('change',e=>{const t=e.target;if(t.matches&&t.matches('input[data-act=mapProv]')){S.mapSettings=S.mapSettings||{};S.mapSettings.provider=t.value;save();render();return;}
+  if(t.matches&&t.matches('input[data-act=otherMonthly]')){const c=getCar();c.otherMonthly=Math.max(0,+t.value||0);save();render();}});
+$('#rt_from').addEventListener('input',()=>searchPlace('from'));$('#rt_to').addEventListener('input',()=>searchPlace('to'));
+['from','to'].forEach(w=>$('#rt_'+w+'_s').addEventListener('click',e=>{const b=e.target.closest('button[data-lat]');if(b)setPoint(w,+b.dataset.lat,+b.dataset.lng,b.dataset.l);}));
+$('#rt_here').addEventListener('click',()=>{if(!navigator.geolocation){$('#rtMsg').textContent='Location isn\'t available here.';return;}
+  $('#rtMsg').textContent='Finding your location…';navigator.geolocation.getCurrentPosition(p=>{setPoint('from',p.coords.latitude,p.coords.longitude,null);$('#rtMsg').textContent='';},()=>{$('#rtMsg').textContent='Couldn\'t get your location – search or tap the map instead.';},{timeout:10000});});
+$('#rt_del').addEventListener('click',()=>{if(!editingRoute||!confirm('Delete this route?'))return;const c=getCar();c.routes=(c.routes||[]).filter(r=>r!==editingRoute);save();$('#routeDlg').close('x');render();});
+$('#routeDlg').addEventListener('close',()=>{
+  if(rtMap){try{rtMap.remove();}catch(e){}rtMap=null;rtLayer=null;}
+  if($('#routeDlg').returnValue!=='ok')return;
+  const c=getCar(),hw=numOrNull($('#rt_hwy').value);
+  const r={name:$('#rt_name').value.trim()||'Route',from:rt.from,to:rt.to,geom:rt.geom,miles:+$('#rt_miles').value||0,hwy:hw==null?null:Math.min(100,Math.max(0,hw))/100,
+    mins:numOrNull($('#rt_mins').value),roundTrip:$('#rt_round').checked,times:+$('#rt_times').value||0,per:$('#rt_per').value,when:$('#rt_when').value};
+  c.routes=c.routes||[];
+  if(editingRoute)Object.assign(editingRoute,r);else c.routes.push(Object.assign({id:uid()},r));
+  save();render();toast('Route saved');
+});
+load();render();setHdr();
+</script>
+</body>
+</html>

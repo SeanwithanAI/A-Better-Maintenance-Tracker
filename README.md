@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--11%20mk13-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--11%20mk14-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -54,10 +54,10 @@ Online lookups (VIN decoding, recalls, route maps) use free public services. Eve
 
 ## Where your data is stored
 
-| Opened from… | Saved to |
-|---|---|
-| **PageVault** | Your own server, separately for each signed-in person |
-| **A local file** | This browser only. Use **Back up & restore** to keep a copy. |
+| Opened from… | Saved to | Badge shown next to the car |
+|---|---|---|
+| **PageVault** | Your own server only, separately for each signed-in person. Nothing is kept in the browser. | *Saved to your server* |
+| **A local file** | This browser only. Use **Back up & restore** to keep a copy. | *Saved on this device only* |
 
 ## Versioning
 
@@ -65,7 +65,8 @@ Every release is a new file named with the release date, plus `mkN` when there's
 
 | Version | Notes |
 |---|---|
-| **2026-11-11 mk13** | Current release |
+| **2026-11-11 mk14** | New badge showing where data is saved: *Saved to your server* in PageVault (no "Backup due" reminder there), *Saved on this device only* elsewhere. |
+| **2026-11-11 mk13** | Previous release |
 
 ---
 
