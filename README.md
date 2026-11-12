@@ -62,7 +62,7 @@ Online lookups (VIN decoding, recalls, route maps) use free public services. Eve
 
 ## Versioning
 
-Every release is a new file named with the release date, plus `mkN` when there's more than one release that day, e.g. `A-Better-Maintenance-Tracker-2026-11-11-mk13.html`. The version also appears under the app's name and in the footer. Older files stay in the repo, so PageVault can roll back to any of them.
+Every release is a new file named with the release date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day), e.g. `A-Better-Maintenance-Tracker-2026-11-12.html`, then `A-Better-Maintenance-Tracker-2026-11-12-mk1.html`. The version also appears under the app's name and in the footer. Older files stay in the repo, so PageVault can roll back to any of them.
 
 | Version | Notes |
 |---|---|
