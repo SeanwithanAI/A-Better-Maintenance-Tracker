@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--11%20mk14-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--11%20mk15-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -33,6 +33,7 @@ A Better Maintenance Tracker builds a maintenance schedule for each of your cars
 - **Safety recalls.** Checks NHTSA for open recalls on your car.
 - **Odometer tracking.** Update the odometer now and then, and yearly mileage is re-estimated so due dates stay accurate.
 - **Multiple cars,** each with its own schedule and history.
+- **Works on phones,** with a bottom tab bar and full-width dialogs on small screens.
 - **Backup and restore,** with undo if you restore the wrong file.
 
 ## Screenshots
@@ -65,6 +66,7 @@ Every release is a new file named with the release date, plus `mkN` when there's
 
 | Version | Notes |
 |---|---|
+| **2026-11-11 mk15** | Phone-friendly: nothing is cut off on small screens (320–412 px). The bottom tab bar fits all six tabs and stays fully on screen, *Done* buttons no longer get pushed off the edge by long *Overdue* labels, the car picker shows the nickname on phones, and times like "1 h 57 min" no longer break mid-value. |
 | **2026-11-11 mk14** | New badge showing where data is saved: *Saved to your server* in PageVault (no "Backup due" reminder there), *Saved on this device only* elsewhere. |
 | **2026-11-11 mk13** | Previous release |
 
