@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--12%20mk1-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--13-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -68,6 +68,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-13** | Version bump only, no changes. |
 | **2026-11-12 mk1** | Details for every schedule item: what it is, why it matters, brief how-to steps and what you'll need (built in for all standard items, plus hood/liftgate struts, A/C desiccant and underbody flush), with your own how-to notes per item, *Watch how* video search, and Log it / Edit shortcuts. |
 | **2026-11-12** | Factory schedule: progress bar and *✓ Manual* / *Typical* tags showing how much of each car's schedule matches its owner's manual, a guided *Check items one by one* walkthrough, *Paste from manual* (reads manual text, including “Every 30,000 miles:” headings, miles/km, months/years and a severe-conditions section, with a preview), and a *Find my manual* link. CSV/JSON imports count as checked. |
 | **2026-11-11 mk15** | Phone-friendly: nothing is cut off on small screens (320–412 px). The bottom tab bar fits all six tabs and stays fully on screen, *Done* buttons no longer get pushed off the edge by long *Overdue* labels, the car picker shows the nickname on phones, and times like "1 h 57 min" no longer break mid-value. |
