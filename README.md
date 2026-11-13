@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--12-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--12%20mk1-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -25,6 +25,7 @@ A Better Maintenance Tracker builds a maintenance schedule for each of your cars
 
 - **Add a car in seconds.** Enter the VIN and the year, make, model, engine, transmission and drive type are decoded from the **NHTSA** database. Or fill them in by hand.
 - **A schedule made for that car.** Intervals start from typical values for the powertrain (gas, diesel, hybrid or EV), transmission, drive type and driving conditions.
+- **Details for every item.** Tap an item's name (or **Details**) to see what it is, why it matters, how it's done step by step, and what you'll need, with its interval, last service, next due date and cost. Add your own how-to notes (part numbers, sizes, tips) to any item. **Watch how** searches videos for your exact car.
 - **Your factory schedule.** The owner's manual is the most accurate source, so the Schedule page tracks how much of your schedule has been checked against it (a progress bar and a *✓ Manual* or *Typical* tag on every item). Three ways to get there: **Check items one by one** (a guided walk through each item, with normal and severe intervals, or *Not in my manual* to turn it off); **Paste from manual** (paste the schedule text as written – one item per line or under headings like “Every 30,000 miles:”, with an optional *Severe* section – and see a preview before it updates your items); or **Find my manual**, a search for your exact year, make and model.
 - **Agenda.** Everything due in the next 30 days, 3 months, 6 months or year, ranked Critical, Medium or Low. Shows the **DIY vs. shop** cost and estimated time for each job.
 - **History and calendar.** Every service you've logged, plus a calendar of what's coming that you can export to your own calendar app.
@@ -67,6 +68,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-12 mk1** | Details for every schedule item: what it is, why it matters, brief how-to steps and what you'll need (built in for all standard items, plus hood/liftgate struts, A/C desiccant and underbody flush), with your own how-to notes per item, *Watch how* video search, and Log it / Edit shortcuts. |
 | **2026-11-12** | Factory schedule: progress bar and *✓ Manual* / *Typical* tags showing how much of each car's schedule matches its owner's manual, a guided *Check items one by one* walkthrough, *Paste from manual* (reads manual text, including “Every 30,000 miles:” headings, miles/km, months/years and a severe-conditions section, with a preview), and a *Find my manual* link. CSV/JSON imports count as checked. |
 | **2026-11-11 mk15** | Phone-friendly: nothing is cut off on small screens (320–412 px). The bottom tab bar fits all six tabs and stays fully on screen, *Done* buttons no longer get pushed off the edge by long *Overdue* labels, the car picker shows the nickname on phones, and times like "1 h 57 min" no longer break mid-value. |
 | **2026-11-11 mk14** | New badge showing where data is saved: *Saved to your server* in PageVault (no "Backup due" reminder there), *Saved on this device only* elsewhere. |
