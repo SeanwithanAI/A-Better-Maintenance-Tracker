@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--14%20mk1-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--14%20mk2-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -37,7 +37,7 @@ A Better Maintenance Tracker builds a maintenance schedule for each of your cars
 - **Multiple cars,** each with its own schedule and history.
 - **Works on phones,** with a bottom tab bar and full-width dialogs on small screens.
 - **Backup and restore,** with undo if you restore the wrong file.
-- **Download this app.** In **Back up & restore**, download the HTML file for the version you're using, to keep or to run on its own. In PageVault it's the exact file that's installed. Your data isn't in it, so back up for that.
+- **Download app + data.** In **Back up & restore**, one click downloads a .zip with this version of the app, a backup of your data, and a short note on how to restore it. Open the HTML anywhere and restore the backup to pick up where you left off. In PageVault it's the exact file that's installed.
 
 ## Screenshots
 
@@ -69,6 +69,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-14 mk2** | **Download app + data (.zip)** replaces Download this app: one click gives a zip with the app's HTML, your backup and a how-to-restore note. |
 | **2026-11-14 mk1** | **Download this app** in **Back up & restore**: the HTML file for this version, to keep or run on its own. |
 | **2026-11-14** | Day, Dark or Auto appearance, chosen from the **⋯** menu (Auto follows your device, as before). The map switches to its dark style with the app. |
 | **2026-11-13** | Version bump only, no changes. |
