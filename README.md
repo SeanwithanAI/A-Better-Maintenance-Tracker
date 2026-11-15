@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--15%20mk1-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--15%20mk2-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -69,8 +69,8 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-15 mk2** | **CVT transmissions count toward the lifespan estimate** (×0.90), since they tend to wear out sooner than conventional automatics. Skipped when you enter your model's own typical lifespan, which already accounts for it. |
 | **2026-11-15 mk1** | **More accurate lifespan.** Typical age now depends on body type (about 17 years for cars, 20 for SUVs and vans, 25 for pickups, from a 2024 study of US vehicle scrappage), guessed from the model or VIN. New optional **Typical lifespan for this model** (e.g. from iSeeCars' used-car data) replaces the generic powertrain figure. |
-| **2026-11-15 mk1** | **More accurate lifespan estimate.** The age limit now depends on body type (about 17 years for cars, 20 for SUVs and vans, 25 for pickups, from U.S. vehicle survival research), with a new **Body type** field filled in from the VIN or guessed from the model. CVT transmissions now count (×0.90), since they tend to wear out sooner than conventional automatics. |
 | **2026-11-15** | **Phone keyboard fix.** Pop-up forms now fit above the on-screen keyboard and keep the field you're typing in visible, instead of sliding it out of view on iPhone. |
 | **2026-11-14 mk2** | **Download app + data (.zip)** replaces Download this app: one click gives a zip with the app's HTML, your backup and a how-to-restore note. |
 | **2026-11-14 mk1** | **Download this app** in **Back up & restore**: the HTML file for this version, to keep or run on its own. |
