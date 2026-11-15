@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--14%20mk2-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--15-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -69,6 +69,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-15** | **Phone keyboard fix.** Pop-up forms now fit above the on-screen keyboard and keep the field you're typing in visible, instead of sliding it out of view on iPhone. |
 | **2026-11-14 mk2** | **Download app + data (.zip)** replaces Download this app: one click gives a zip with the app's HTML, your backup and a how-to-restore note. |
 | **2026-11-14 mk1** | **Download this app** in **Back up & restore**: the HTML file for this version, to keep or run on its own. |
 | **2026-11-14** | Day, Dark or Auto appearance, chosen from the **⋯** menu (Auto follows your device, as before). The map switches to its dark style with the app. |
