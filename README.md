@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--15%20mk2-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--15%20mk3-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -69,6 +69,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-15 mk3** | Same as 2026-11-15 mk2, re-released so PageVault picks up the update. |
 | **2026-11-15 mk2** | **CVT transmissions count toward the lifespan estimate** (×0.90), since they tend to wear out sooner than conventional automatics. Skipped when you enter your model's own typical lifespan, which already accounts for it. |
 | **2026-11-15 mk1** | **More accurate lifespan.** Typical age now depends on body type (about 17 years for cars, 20 for SUVs and vans, 25 for pickups, from a 2024 study of US vehicle scrappage), guessed from the model or VIN. New optional **Typical lifespan for this model** (e.g. from iSeeCars' used-car data) replaces the generic powertrain figure. |
 | **2026-11-15** | **Phone keyboard fix.** Pop-up forms now fit above the on-screen keyboard and keep the field you're typing in visible, instead of sliding it out of view on iPhone. |
