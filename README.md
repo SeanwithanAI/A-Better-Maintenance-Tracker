@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--16-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--16%20mk1-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -66,9 +66,9 @@ The app is one self-contained `.html` file: no install, no account, nothing else
 3. Bookmark it, and always open it the same way: same file, same place, same browser. Your data is saved in that browser for that file, so a copy in another folder or another browser starts empty.
 
 **iPhone and iPad**
-Safari can't run a downloaded `.html` file. Tapping it in the Files app only shows a preview with the buttons turned off. Use one of these instead:
+**Because of iOS, an HTML file saved on your iPhone or iPad can't be opened in Safari.** iOS doesn't offer Safari as a way to open it, and tapping the file in the Files app only shows a preview with the buttons turned off. Use one of these instead:
 - **PageVault (recommended).** Open the app's PageVault link in **Safari**, then tap **Share** (on iOS 26, tap **•••** first, then **Share**). Scroll down the list and tap **Add to Home Screen**. If it isn't there, tap **Edit Actions** at the bottom of the list and add it. It then opens like a regular app, and your data is saved on your server and syncs with your other devices.
-- **Microsoft Edge.** Save the file to the Files app, then open it with Edge (in Files, open the file, tap **Share** and choose **Edge**). Keep backups: data saved this way can be lost if Edge clears its storage.
+- **Microsoft Edge (may work).** Save the file to the Files app, then try opening it with Edge (in Files, open the file, tap **Share** and choose **Edge**). Keep backups: data saved this way can be lost if Edge clears its storage.
 
 **Android**
 1. Download the file in Chrome.
@@ -91,6 +91,7 @@ Every release is a new file named with the release date. The first release of a 
 
 | Version | Notes |
 |---|---|
+| **2026-11-16 mk1** | The preview now says plainly that, because of iOS, an HTML file saved on an iPhone or iPad can't be opened in Safari, and points to PageVault instead. |
 | **2026-11-16** | The preview shown when the file can't run (like in the iPhone Files app) now explains how to open it on a computer, Android, iPhone and iPad. Map messages no longer mention other apps. |
 | **2026-11-15 mk3** | Same as 2026-11-15 mk2, re-released so PageVault picks up the update. |
 | **2026-11-15 mk2** | **CVT transmissions count toward the lifespan estimate** (×0.90), since they tend to wear out sooner than conventional automatics. Skipped when you enter your model's own typical lifespan, which already accounts for it. |
