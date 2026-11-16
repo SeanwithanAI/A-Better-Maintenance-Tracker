@@ -94,12 +94,31 @@ The app is one self-contained `.html` file: no install, no account, nothing else
 
 ## Versioning
 
-Only the newest release is kept here: `A-Better-Maintenance-Tracker-2026-11-16-mk2.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
+Only the newest release is kept in the repo: `A-Better-Maintenance-Tracker-2026-11-16-mk2.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
 
 Releases are named with their date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day). The version is also shown inside the app.
 
+### Changelog
+
+Every release so far, newest first. Older releases are listed for reference; only the current one is available to download.
+
 | Version | Notes |
 |---|---|
-| **2026-11-16 mk2** | Current release. |
+| **2026-11-16 mk2** | **Use it online.** The app now has a web link, [seanwithanai.github.io/A-Better-Maintenance-Tracker](https://seanwithanai.github.io/A-Better-Maintenance-Tracker/), that works on any device, including iPhone and iPad, and always has the newest version. The preview shown when the file can't run points to it. |
+| **2026-11-16 mk1** | The preview now says plainly that, because of iOS, an HTML file saved on an iPhone or iPad can't be opened in Safari, and points to PageVault instead. |
+| **2026-11-16** | The preview shown when the file can't run (like in the iPhone Files app) now explains how to open it on a computer, Android, iPhone and iPad. Map messages no longer mention other apps. |
+| **2026-11-15 mk3** | Same as 2026-11-15 mk2, re-released so PageVault picks up the update. |
+| **2026-11-15 mk2** | **CVT transmissions count toward the lifespan estimate** (×0.90), since they tend to wear out sooner than conventional automatics. Skipped when you enter your model's own typical lifespan, which already accounts for it. |
+| **2026-11-15 mk1** | **More accurate lifespan.** Typical age now depends on body type (about 17 years for cars, 20 for SUVs and vans, 25 for pickups, from a 2024 study of US vehicle scrappage), guessed from the model or VIN. New optional **Typical lifespan for this model** (e.g. from iSeeCars' used-car data) replaces the generic powertrain figure. |
+| **2026-11-15** | **Phone keyboard fix.** Pop-up forms now fit above the on-screen keyboard and keep the field you're typing in visible, instead of sliding it out of view on iPhone. |
+| **2026-11-14 mk2** | **Download app + data (.zip)** replaces Download this app: one click gives a zip with the app's HTML, your backup and a how-to-restore note. |
+| **2026-11-14 mk1** | **Download this app** in **Back up & restore**: the HTML file for this version, to keep or run on its own. |
+| **2026-11-14** | Day, Dark or Auto appearance, chosen from the **⋯** menu (Auto follows your device, as before). The map switches to its dark style with the app. |
+| **2026-11-13** | Version bump only, no changes. |
+| **2026-11-12 mk1** | Details for every schedule item: what it is, why it matters, brief how-to steps and what you'll need (built in for all standard items, plus hood/liftgate struts, A/C desiccant and underbody flush), with your own how-to notes per item, *Watch how* video search, and Log it / Edit shortcuts. |
+| **2026-11-12** | Factory schedule: progress bar and *✓ Manual* / *Typical* tags showing how much of each car's schedule matches its owner's manual, a guided *Check items one by one* walkthrough, *Paste from manual* (reads manual text, including “Every 30,000 miles:” headings, miles/km, months/years and a severe-conditions section, with a preview), and a *Find my manual* link. CSV/JSON imports count as checked. |
+| **2026-11-11 mk15** | Phone-friendly: nothing is cut off on small screens (320–412 px). The bottom tab bar fits all six tabs and stays fully on screen, *Done* buttons no longer get pushed off the edge by long *Overdue* labels, the car picker shows the nickname on phones, and times like "1 h 57 min" no longer break mid-value. |
+| **2026-11-11 mk14** | New badge showing where data is saved: *Saved to your server* in PageVault (no "Backup due" reminder there), *Saved on this device only* elsewhere. |
+| **2026-11-11 mk13** | Previous release |
 
 <div align="center"><sub>A Better Maintenance Tracker · Car Service & Cost Planner · by SeanwithanAI</sub></div>
