@@ -198,6 +198,7 @@ button.imp{cursor:pointer;padding:2px 0}
 .tier-h b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.05em}
 .legend{display:grid;gap:6px;font-size:.85rem}
 .legend div{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:baseline}
+.fundrow{display:flex;gap:18px;flex-basis:100%;margin:4px 0 2px}.fundrow>span{display:flex;flex-direction:column}.fundrow b{font-family:var(--mono);font-size:1.25rem;font-variant-numeric:tabular-nums}.fundcard{margin-bottom:14px}
 .legendcard summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
 .legendcard summary::-webkit-details-marker{display:none}
 .legendcard summary::before{content:"▸";transition:transform .15s}
@@ -314,7 +315,7 @@ a{color:var(--info)}
 <body>
 <div id="nojs" style="max-width:560px;width:calc(100% - 32px);box-sizing:border-box;margin:40px auto;padding:22px 24px;border:1px solid #E4E7EC;border-radius:16px;background:#fff;color:#101828;font:15px/1.6 system-ui,-apple-system,sans-serif">
   <h1 style="font-size:24px;font-weight:800;margin:0 0 6px;letter-spacing:-.02em">A Better Maintenance Tracker</h1>
-  <p style="margin:0 0 14px;color:#667085;font-weight:600">Car Service &amp; Cost Planner · Version 2026-11-16 mk3 · by SeanwithanAI</p>
+  <p style="margin:0 0 14px;color:#667085;font-weight:600">Car Service &amp; Cost Planner · Version 2026-11-18 · by SeanwithanAI</p>
   <p style="margin:8px 0 0">This preview can’t run the app. Previews like the iPhone Files app show web pages without running them, so it stays blank here. To use it:</p>
   <p style="margin:8px 0 0"><b>Easiest, on any device:</b> use it online at <a href="https://seanwithanai.github.io/A-Better-Maintenance-Tracker/">seanwithanai.github.io/A-Better-Maintenance-Tracker</a>. Nothing to install, and your data stays in your browser on your device.</p>
   <p style="margin:8px 0 0"><b>On a computer:</b> double-click the file, or drag it onto Chrome, Edge, Firefox or Safari.</p>
@@ -356,7 +357,7 @@ a{color:var(--info)}
   </div>
 </header>
 <main class="wrap"><div id="main"></div>
-  <p class="appinfo"><b>A Better Maintenance Tracker</b> · Car Service &amp; Cost Planner · Version <span id="appVer2">2026-11-16 mk3</span> · by SeanwithanAI</p>
+  <p class="appinfo"><b>A Better Maintenance Tracker</b> · Car Service &amp; Cost Planner · Version <span id="appVer2">2026-11-18</span> · by SeanwithanAI</p>
 </main>
 <div class="toast" id="toast"></div>
 <input type="file" id="fileIn" accept=".json,.csv,.txt,application/json,text/csv" hidden>
@@ -701,7 +702,7 @@ document.getElementById('nojs').remove();
   document.addEventListener('focusin', e => { const t = e.target; if(t && t.matches && t.matches('input,select,textarea') && t.closest(SCROLLER)){ active = t; setTimeout(keep, 350); } });
   document.addEventListener('focusout', () => { active = null; });
 })();
-const APP_NAME = 'A Better Maintenance Tracker', APP_VERSION = '2026-11-16 mk3', APP_BY = 'SeanwithanAI';   // bump the version with every update
+const APP_NAME = 'A Better Maintenance Tracker', APP_VERSION = '2026-11-18', APP_BY = 'SeanwithanAI';   // bump the version with every update
 const FILE_BASE = APP_NAME.replace(/ /g, '-');   // A-Better-Maintenance-Tracker
 setTimeout(() => { document.querySelectorAll('.selfVer').forEach(e => e.textContent = APP_VERSION); const b = document.getElementById('selfDl'); if(b) b.onclick = () => downloadBundle({title:APP_NAME, version:APP_VERSION, base:FILE_BASE, htmlName:FILE_BASE + '-' + APP_VERSION.replace(/ /g, '-') + '.html', dataName:backupName(),
   data:backupJSON, done:markBackedUp, restore:'open Back up & restore, choose the backup file, then tap Restore this data', say:m => { const st = document.getElementById('bkStatus'); if(st) st.textContent = m; }}); });
@@ -1104,6 +1105,34 @@ function costLine(it){
 }
 const ST_LBL={overdue:'Overdue',soon:'Due soon',ok:'Upcoming',unknown:'Unknown history'};
 
+/* Monthly set-aside: each item's cost spread over how often it comes due (by miles at your yearly mileage, or by time, whichever is sooner) */
+function monthlyFund(c){
+  const moPerMile=1/(mpd(c)*365.25/12),T=today0();
+  let diy=0,shop=0,catchD=0,catchS=0;const items=[];
+  for(const it of c.schedule){
+    if(it.off)continue;const iv=intv(c,it);
+    const ms=[iv.mi?iv.mi*moPerMile:0,iv.mo||0].filter(x=>x>0);if(!ms.length)continue;
+    const every=Math.min(...ms),sc=+it.shop||0,dc=it.diy==null||it.diy===''?sc:+it.diy||0;
+    if(!sc&&!dc)continue;
+    diy+=dc/every;shop+=sc/every;items.push({it,every,d:dc/every,s:sc/every});
+    const n=nextDue(c,it);if(n&&(n.status==='overdue'||n.status==='unknown')){catchD+=dc;catchS+=sc;}
+  }
+  items.sort((a,b)=>b.s-a.s);
+  return{diy,shop,catchD,catchS,items};
+}
+const fmtEvery=m=>m<1.5?'~monthly':m<23.5?'every '+Math.round(m)+' mo':'every '+(Math.round(m/6)/2)+' yr';
+function fundCard(c){
+  const F=monthlyFund(c);
+  if(!F.items.length)return '';
+  return `<details class="card legendcard fundcard"><summary><span style="flex:1"><b>Put away each month</b></span>
+    <span class="fundrow"><span><span class="tiny muted">If you DIY</span><b class="num">${money(F.diy)}</b></span><span><span class="tiny muted">At a shop</span><b class="num">${money(F.shop)}</b></span></span>
+    <span class="tiny muted" style="flex-basis:100%">${money(F.diy*12)}–${money(F.shop*12)} a year · tap for the breakdown</span></summary>
+    ${F.catchS?`<p class="small" style="margin:8px 0 0">Plus about <b>${money(F.catchD)}</b> DIY / <b>${money(F.catchS)}</b> shop now for items that are overdue or have no record.</p>`:''}
+    <table class="tbl" style="margin-top:8px"><thead><tr><th>Item</th><th class="r">DIY/mo</th><th class="r">Shop/mo</th></tr></thead><tbody>
+    ${F.items.map(x=>`<tr><td>${esc(x.it.name)}<div class="tiny muted">${fmtEvery(x.every)}</div></td><td class="r num">$${x.d.toFixed(2)}</td><td class="r num">$${x.s.toFixed(2)}</td></tr>`).join('')}</tbody></table>
+    <p class="tiny muted" style="margin:8px 0 0">Each item's cost divided by how often it comes due at ${miles(Math.round(mpd(c)*365.25))} a year. Saving this every month covers big, rare jobs like tires, brakes and the battery when they come up. Items turned off or without a cost aren't counted.</p></details>`;
+}
+
 /* Agenda */
 function agendaView(c){
   const T=today0(),to=addDays(T,agRange);
@@ -1120,6 +1149,7 @@ function agendaView(c){
     <div class="stat"><div class="k">DIY time</div><div class="v">${fmtHM(h)}</div><div class="tiny muted">${occ.length} service${occ.length===1?'':'s'}</div></div>
   </div>
   <p class="small" style="margin:-4px 0 12px"><a href="#" data-act="impInfo" data-t="crit">What do Critical, Medium and Low mean?</a></p>
+  ${fundCard(c)}
   <div class="card deskonly small"><h3 style="margin-bottom:6px">Car outlook</h3>
     <div class="kv"><span>Maintenance score</span><b class="num">${Math.round(L.score*100)}%</b></div>
     <div class="kv"><span>Expected life</span><b class="num">${miles(Math.round(L.lifeMiles/1000)*1000)}</b></div>
@@ -2222,7 +2252,7 @@ $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button[data-ta
 $('#appVer').textContent=APP_VERSION;$('#appVer2').textContent=APP_VERSION;
 function setHdr(){const h=$('header.top');if(h)document.documentElement.style.setProperty('--hdr',(h.offsetHeight+14)+'px');}
 window.addEventListener('resize',setHdr);
-document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('legendcard')&&!e.target.open&&!S.legendSeen){S.legendSeen=true;save();}},true);
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('legendcard')&&!e.target.classList.contains('fundcard')&&!e.target.open&&!S.legendSeen){S.legendSeen=true;save();}},true);
 document.addEventListener('change',e=>{const t=e.target;if(t.matches&&t.matches('input[data-act=mapProv]')){S.mapSettings=S.mapSettings||{};S.mapSettings.provider=t.value;save();render();return;}
   if(t.matches&&t.matches('input[data-act=otherMonthly]')){const c=getCar();c.otherMonthly=Math.max(0,+t.value||0);save();render();}});
 $('#rt_from').addEventListener('input',()=>searchPlace('from'));$('#rt_to').addEventListener('input',()=>searchPlace('to'));
