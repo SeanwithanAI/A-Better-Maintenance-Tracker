@@ -4,7 +4,7 @@
 
 **Car Service & Cost Planner: what's due, what it costs, and how long your car will last**
 
-![Version](https://img.shields.io/badge/version-2026--11--16%20mk3-C2410C)
+![Version](https://img.shields.io/badge/version-2026--11--18-C2410C)
 ![Single file](https://img.shields.io/badge/single%20file-HTML-9A3412)
 ![No account needed](https://img.shields.io/badge/no%20sign--up-required-334155)
 ![PageVault ready](https://img.shields.io/badge/PageVault-ready-2563eb)
@@ -31,6 +31,7 @@ A Better Maintenance Tracker builds a maintenance schedule for each of your cars
 - **Your factory schedule.** The owner's manual is the most accurate source, so the Schedule page tracks how much of your schedule has been checked against it (a progress bar and a *✓ Manual* or *Typical* tag on every item). Three ways to get there: **Check items one by one** (a guided walk through each item, with normal and severe intervals, or *Not in my manual* to turn it off); **Paste from manual** (paste the schedule text as written – one item per line or under headings like “Every 30,000 miles:”, with an optional *Severe* section – and see a preview before it updates your items); or **Find my manual**, a search for your exact year, make and model.
 - **Agenda.** Everything due in the next 30 days, 3 months, 6 months or year, ranked Critical, Medium or Low. Shows the **DIY vs. shop** cost and estimated time for each job.
 - **History and calendar.** Every service you've logged, plus a calendar of what's coming that you can export to your own calendar app.
+- **Monthly set-aside.** How much to put away each month (DIY and shop) so every service is covered when it comes due, with a per-item breakdown.
 - **Expenses.** Spending by category and by year, DIY savings, cost per mile, and a full service log you can filter by DIY or shop.
 - **Built-in job timer** for timing DIY work, so time estimates learn from your own jobs.
 - **Lifespan.** Expected lifetime mileage and the year the car is *likely useful until*, based on reliability, driving conditions, your habits, your regular routes and how well it's maintained. Shows which maintenance would add the most life.
@@ -94,7 +95,7 @@ The app is one self-contained `.html` file: no install, no account, nothing else
 
 ## Versioning
 
-Only the newest release is kept in the repo: `A-Better-Maintenance-Tracker-2026-11-16-mk3.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
+Only the newest release is kept in the repo: `A-Better-Maintenance-Tracker-2026-11-18.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
 
 Releases are named with their date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day). The version is also shown inside the app.
 
@@ -104,6 +105,7 @@ Every release so far, newest first. Older releases are listed for reference; onl
 
 | Version | Notes |
 |---|---|
+| **2026-11-18** | **Put away each month.** A new card on the Agenda shows how much to set aside every month for maintenance, if you DIY and at a shop, so big, rare jobs like tires, brakes and the battery are already paid for when they come due. Each item's cost is spread over how often it comes due at your yearly mileage. Tap it for a per-item breakdown, plus what overdue items would cost now. |
 | **2026-11-16 mk3** | **Room to grow.** Opened on its own, the app now keeps its data in the browser's large storage (IndexedDB) instead of the small save area (about 5 MB, shared with every page on the same site), so a big history never runs out of room. Your data moves over automatically the first time you open this version. The app asks the browser to keep its data, and says so plainly if the browser ever can't save. In PageVault nothing changes. (An older copy of the file opened afterwards won't see data saved by this version, so use this one or newer.) |
 | **2026-11-16 mk2** | **Use it online.** The app now has a web link, [seanwithanai.github.io/A-Better-Maintenance-Tracker](https://seanwithanai.github.io/A-Better-Maintenance-Tracker/), that works on any device, including iPhone and iPad, and always has the newest version. The preview shown when the file can't run points to it. |
 | **2026-11-16 mk1** | The preview now says plainly that, because of iOS, an HTML file saved on an iPhone or iPad can't be opened in Safari, and points to PageVault instead. |
