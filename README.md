@@ -95,7 +95,7 @@ The app is one self-contained `.html` file: no install, no account, nothing else
 
 ## Versioning
 
-Only the newest release is kept in the repo: `A-Better-Maintenance-Tracker-2026-11-18.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
+Only the newest release is kept in the repo: `A-Better-Maintenance-Tracker-2026-11-25.html`. Each new release replaces it, and `docs/index.html` (what the web link opens) is updated to match. Your data isn't stored in the file, so moving to a new release keeps it (if you use the downloaded file, open the new one the same way as before, in the same browser, and download a backup first to be safe).
 
 Releases are named with their date. The first release of a day is just the date; later releases that same day add `mk1`, `mk2`, `mk3`… (the count starts over each day). The version is also shown inside the app.
 
@@ -105,6 +105,7 @@ Every release so far, newest first. Older releases are listed for reference; onl
 
 | Version | Notes |
 |---|---|
+| **2026-11-25** | **Backup reminder after a week.** *Backup due* now appears 7 days after your last backup (it was 30), as the README says. It's also checked again whenever the app comes back on screen and every hour while it stays open, so it isn't missed when the tracker is added to a phone's Home Screen. |
 | **2026-11-18** | **Put away each month.** A new card on the Agenda shows how much to set aside every month for maintenance, if you DIY and at a shop, so big, rare jobs like tires, brakes and the battery are already paid for when they come due. Each item's cost is spread over how often it comes due at your yearly mileage. Tap it for a per-item breakdown, plus what overdue items would cost now. |
 | **2026-11-16 mk3** | **Room to grow.** Opened on its own, the app now keeps its data in the browser's large storage (IndexedDB) instead of the small save area (about 5 MB, shared with every page on the same site), so a big history never runs out of room. Your data moves over automatically the first time you open this version. The app asks the browser to keep its data, and says so plainly if the browser ever can't save. In PageVault nothing changes. (An older copy of the file opened afterwards won't see data saved by this version, so use this one or newer.) |
 | **2026-11-16 mk2** | **Use it online.** The app now has a web link, [seanwithanai.github.io/A-Better-Maintenance-Tracker](https://seanwithanai.github.io/A-Better-Maintenance-Tracker/), that works on any device, including iPhone and iPad, and always has the newest version. The preview shown when the file can't run points to it. |
